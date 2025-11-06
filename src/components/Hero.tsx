@@ -14,7 +14,7 @@ const Hero = () => {
       <div className="container relative z-10 px-4 py-24">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight">Hi, I'm IvanLay<span className="gradient-primary bg-clip-text text-slate-950">Ivan</span>
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight">Hey! I'm <span className="gradient-primary bg-clip-text text-slate-950">Ivan</span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground">A Motion Grapher & Video Editor</p>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">I Crafting stories that move — with rhythm and soul.</p>
