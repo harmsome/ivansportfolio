@@ -7,6 +7,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 const Projects = () => {
   const [api, setApi] = useState<CarouselApi>();
   const containerRef = useRef<HTMLDivElement>(null);
+  const isScrollingRef = useRef(false);
 
   const projects = [{
     title: "E-Commerce Platform",
@@ -51,18 +52,36 @@ const Projects = () => {
     const handleWheel = (e: WheelEvent) => {
       if (Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
       
+      // If currently scrolling, prevent any action
+      if (isScrollingRef.current) {
+        e.preventDefault();
+        return;
+      }
+      
       const canScrollNext = api.canScrollNext();
       const canScrollPrev = api.canScrollPrev();
       
       // If scrolling down and can move to next slide, prevent default and scroll carousel
       if (e.deltaY > 0 && canScrollNext) {
         e.preventDefault();
+        isScrollingRef.current = true;
         api.scrollNext();
+        
+        // Add delay before allowing next scroll
+        setTimeout(() => {
+          isScrollingRef.current = false;
+        }, 300);
       } 
       // If scrolling up and can move to previous slide, prevent default and scroll carousel
       else if (e.deltaY < 0 && canScrollPrev) {
         e.preventDefault();
+        isScrollingRef.current = true;
         api.scrollPrev();
+        
+        // Add delay before allowing next scroll
+        setTimeout(() => {
+          isScrollingRef.current = false;
+        }, 300);
       }
       // Otherwise, allow normal page scrolling
     };
