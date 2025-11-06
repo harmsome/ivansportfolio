@@ -14,14 +14,12 @@ const Hero = () => {
       <div className="container relative z-10 px-4 py-24">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
-              Hi, I'm <span className="gradient-primary bg-clip-text text-slate-950">Ivan</span>
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight">Hi, I'm Ivan<span className="gradient-primary bg-clip-text text-slate-950">Ivan</span>
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground">
-              Full Stack Developer & Designer
-            </p>
+            <p className="text-xl md:text-2xl text-muted-foreground">Motion Grapher & Video Editor</p>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              2D animator and Video Editor
+              I craft beautiful, functional web experiences that make a difference. 
+              Specializing in modern web technologies and user-centered design.
             </p>
           </div>
 
