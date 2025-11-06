@@ -29,6 +29,20 @@ const Projects = () => {
     liveUrl: "#",
     githubUrl: "#",
     image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=600&fit=crop"
+  }, {
+    title: "Mobile Banking App",
+    description: "Secure mobile banking application with biometric authentication, transaction history, and bill payments.",
+    tech: ["React Native", "Firebase", "Redux", "Plaid API"],
+    liveUrl: "#",
+    githubUrl: "#",
+    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop"
+  }, {
+    title: "Social Media Dashboard",
+    description: "Analytics dashboard for social media management with scheduling, insights, and engagement tracking.",
+    tech: ["Vue.js", "Express", "MongoDB", "Chart.js"],
+    liveUrl: "#",
+    githubUrl: "#",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"
   }];
 
   useEffect(() => {
@@ -37,13 +51,20 @@ const Projects = () => {
     const handleWheel = (e: WheelEvent) => {
       if (Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
       
-      e.preventDefault();
+      const canScrollNext = api.canScrollNext();
+      const canScrollPrev = api.canScrollPrev();
       
-      if (e.deltaY > 0) {
-        api?.scrollNext();
-      } else {
-        api?.scrollPrev();
+      // If scrolling down and can move to next slide, prevent default and scroll carousel
+      if (e.deltaY > 0 && canScrollNext) {
+        e.preventDefault();
+        api.scrollNext();
+      } 
+      // If scrolling up and can move to previous slide, prevent default and scroll carousel
+      else if (e.deltaY < 0 && canScrollPrev) {
+        e.preventDefault();
+        api.scrollPrev();
       }
+      // Otherwise, allow normal page scrolling
     };
 
     const container = containerRef.current;
@@ -68,7 +89,7 @@ const Projects = () => {
           setApi={setApi}
           opts={{
             align: "start",
-            loop: true,
+            loop: false,
           }}
           className="w-full"
         >
