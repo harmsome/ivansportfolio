@@ -21,8 +21,7 @@ const Hero = () => {
               Full Stack Developer & Designer
             </p>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              I craft beautiful, functional web experiences that make a difference. 
-              Specializing in modern web technologies and user-centered design.
+              2D animator and Video Editor
             </p>
           </div>
 
