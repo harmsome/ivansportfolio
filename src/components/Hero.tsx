@@ -16,11 +16,8 @@ const Hero = () => {
           <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-1000">
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight">Hi, I'm Ivan Lay<span className="gradient-primary bg-clip-text text-slate-950">Ivan</span>
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground">Motion Grapher & Video Editor</p>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              I craft beautiful, functional web experiences that make a difference. 
-              Specializing in modern web technologies and user-centered design.
-            </p>
+            <p className="text-xl md:text-2xl text-muted-foreground">A Motion Grapher & Video Editor</p>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">I Crafting stories that move — with rhythm and soul.</p>
           </div>
 
           <div className="flex flex-wrap gap-4 justify-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300">
