@@ -6,8 +6,8 @@ import premiereLogo from "@/assets/premiere-logo.png";
 
 const Skills = () => {
   const tools = [
-    { name: "Adobe Photoshop", icon: photoshopLogo },
-    { name: "Adobe Illustrator", icon: illustratorLogo },
+    { name: "Photoshop", icon: photoshopLogo },
+    { name: "Illustrator", icon: illustratorLogo },
     { name: "After Effects", icon: aftereffectsLogo },
     { name: "Premiere Pro", icon: premiereLogo },
     { name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
