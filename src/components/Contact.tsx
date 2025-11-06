@@ -3,16 +3,13 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, MapPin, Phone } from "lucide-react";
-
 const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission
     console.log("Form submitted");
   };
-
-  return (
-    <section id="contact" className="py-24 px-4 bg-muted/30">
+  return <section id="contact" className="py-24 px-4 bg-muted/30">
       <div className="container max-w-6xl mx-auto">
         <div className="text-center space-y-4 mb-16">
           <h2 className="text-3xl md:text-4xl font-bold">Get In Touch</h2>
@@ -42,7 +39,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold mb-1">Phone</h3>
-                  <p className="text-muted-foreground">+1 (555) 123-4567</p>
+                  <p className="text-muted-foreground">+60 13 713 1212</p>
                 </div>
               </div>
             </Card>
@@ -69,11 +66,7 @@ const Contact = () => {
                 <Input type="email" placeholder="Your Email" className="bg-background" />
               </div>
               <div>
-                <Textarea
-                  placeholder="Your Message"
-                  rows={5}
-                  className="bg-background resize-none"
-                />
+                <Textarea placeholder="Your Message" rows={5} className="bg-background resize-none" />
               </div>
               <Button type="submit" variant="hero" className="w-full">
                 Send Message
@@ -82,8 +75,6 @@ const Contact = () => {
           </Card>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Contact;
