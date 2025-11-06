@@ -1,11 +1,15 @@
 import { Card } from "@/components/ui/card";
+import photoshopLogo from "@/assets/photoshop-logo.png";
+import illustratorLogo from "@/assets/illustrator-logo.png";
+import aftereffectsLogo from "@/assets/aftereffects-logo.png";
+import premiereLogo from "@/assets/premiere-logo.png";
 
 const Skills = () => {
   const tools = [
-    { name: "Adobe Photoshop", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg" },
-    { name: "Adobe Illustrator", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-plain.svg" },
-    { name: "After Effects", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/aftereffects/aftereffects-original.svg" },
-    { name: "Premiere Pro", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/premierepro/premierepro-original.svg" },
+    { name: "Adobe Photoshop", icon: photoshopLogo },
+    { name: "Adobe Illustrator", icon: illustratorLogo },
+    { name: "After Effects", icon: aftereffectsLogo },
+    { name: "Premiere Pro", icon: premiereLogo },
     { name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
     { name: "DaVinci Resolve", icon: "https://upload.wikimedia.org/wikipedia/commons/4/4d/DaVinci_Resolve_Studio.png" }
   ];
