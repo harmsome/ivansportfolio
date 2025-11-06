@@ -1,18 +1,14 @@
 import { Card } from "@/components/ui/card";
-import { Code2, Palette, Zap } from "lucide-react";
 const About = () => {
   const highlights = [{
-    icon: Code2,
-    title: "Clean Code",
-    description: "Writing maintainable, scalable, and efficient code is my priority"
+    title: "🎨 Visual Storytelling",
+    description: "I create motion pieces that tell stories and capture feelings, not just visuals that look nice."
   }, {
-    icon: Palette,
-    title: "Beautiful Design",
-    description: "Creating aesthetically pleasing and intuitive user interfaces"
+    title: "💫 Design with Emotion",
+    description: "Every movement has purpose — I design with feeling, flow, and a sense of rhythm."
   }, {
-    icon: Zap,
-    title: "Performance",
-    description: "Optimizing for speed and seamless user experiences"
+    title: "🎵 Timing & Flow",
+    description: "I pay attention to pacing and energy, making sure everything moves naturally and connects with the audience."
   }];
   return <section id="about" className="py-24 px-4">
       <div className="container max-w-6xl mx-auto">
@@ -24,9 +20,6 @@ My strength lies in creating visuals that move with emotion — blending design,
 
         <div className="grid md:grid-cols-3 gap-8">
           {highlights.map((item, index) => <Card key={index} className="p-8 text-center hover:shadow-custom-lg transition-smooth border-border bg-card">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full gradient-primary mb-6">
-                <item.icon className="h-8 w-8 text-primary-foreground" />
-              </div>
               <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
               <p className="text-muted-foreground">{item.description}</p>
             </Card>)}
