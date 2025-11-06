@@ -30,7 +30,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold mb-1">Email</h3>
-                  <p className="text-muted-foreground">your.email@example.com</p>
+                  <p className="text-muted-foreground">ivanlay88@gmail.com</p>
                 </div>
               </div>
             </Card>

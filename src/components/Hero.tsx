@@ -38,7 +38,7 @@ const Hero = () => {
             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-smooth" aria-label="LinkedIn">
               <Linkedin className="h-6 w-6" />
             </a>
-            <a href="mailto:your.email@example.com" className="text-muted-foreground hover:text-foreground transition-smooth" aria-label="Email">
+            <a href="mailto:ivanlay88@gmail.com" className="text-muted-foreground hover:text-foreground transition-smooth" aria-label="Email">
               <Mail className="h-6 w-6" />
             </a>
           </div>

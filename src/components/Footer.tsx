@@ -25,7 +25,7 @@ const Footer = () => {
               <Linkedin className="h-6 w-6" />
             </a>
             <a
-              href="mailto:your.email@example.com"
+              href="mailto:ivanlay88@gmail.com"
               className="text-muted-foreground hover:text-foreground transition-smooth"
               aria-label="Email"
             >
