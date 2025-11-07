@@ -131,6 +131,9 @@ All colors MUST be HSL.
       hsl(43 74% 66%), 
       hsl(263 70% 60%));
     background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     animation: gradient-shift 3s ease infinite;
   }
 
