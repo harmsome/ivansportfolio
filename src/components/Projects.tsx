@@ -60,29 +60,31 @@ const Projects = () => {
       const canScrollNext = api.canScrollNext();
       const canScrollPrev = api.canScrollPrev();
       
-      // If scrolling down and can move to next slide, prevent default and scroll carousel
-      if (e.deltaY > 0 && canScrollNext) {
+      // ALWAYS prevent default when inside the carousel to trap scroll
+      if (canScrollNext || canScrollPrev) {
         e.preventDefault();
-        isScrollingRef.current = true;
-        api.scrollNext();
         
-        // Add delay before allowing next scroll
-        setTimeout(() => {
-          isScrollingRef.current = false;
-        }, 300);
-      } 
-      // If scrolling up and can move to previous slide, prevent default and scroll carousel
-      else if (e.deltaY < 0 && canScrollPrev) {
-        e.preventDefault();
-        isScrollingRef.current = true;
-        api.scrollPrev();
-        
-        // Add delay before allowing next scroll
-        setTimeout(() => {
-          isScrollingRef.current = false;
-        }, 300);
+        // If scrolling down and can move to next slide
+        if (e.deltaY > 0 && canScrollNext) {
+          isScrollingRef.current = true;
+          api.scrollNext();
+          
+          // Add delay before allowing next scroll
+          setTimeout(() => {
+            isScrollingRef.current = false;
+          }, 600);
+        } 
+        // If scrolling up and can move to previous slide
+        else if (e.deltaY < 0 && canScrollPrev) {
+          isScrollingRef.current = true;
+          api.scrollPrev();
+          
+          // Add delay before allowing next scroll
+          setTimeout(() => {
+            isScrollingRef.current = false;
+          }, 600);
+        }
       }
-      // Otherwise, allow normal page scrolling
     };
 
     const container = containerRef.current;
@@ -153,7 +155,7 @@ const Projects = () => {
                         asChild
                         className="opacity-0 group-hover:opacity-100 transition-all duration-500 delay-300 bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-custom-lg"
                       >
-                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                        <a href={`/project/${index + 1}`}>
                           See More Details
                           <ArrowRight className="h-4 w-4" />
                         </a>
