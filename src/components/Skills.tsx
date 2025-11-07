@@ -17,7 +17,7 @@ const Skills = () => {
   return (
     <section id="skills" className="py-24 px-4 bg-muted/30">
       <div className="container max-w-6xl mx-auto">
-        <div className="text-center space-y-4 mb-16">
+        <div className="text-center space-y-4 mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
           <h2 className="text-3xl md:text-4xl font-bold">Skills</h2>
           <p className="text-muted-foreground text-lg">Tools that I work with</p>
         </div>

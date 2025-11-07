@@ -10,9 +10,9 @@ const About = () => {
     title: "🎵 Timing & Flow",
     description: "I pay attention to pacing and energy, making sure everything moves naturally and connects with the audience."
   }];
-  return <section id="about" className="py-24 px-4">
+  return <section id="about" className="py-24 px-4 bg-card">
       <div className="container max-w-6xl mx-auto">
-        <div className="text-center space-y-4 mb-16">
+        <div className="text-center space-y-4 mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
           <h2 className="text-3xl md:text-4xl font-bold">About Me</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">I’m Ivan, a motion designer and video editor driven by positivity and rhythm.
 My strength lies in creating visuals that move with emotion — blending design, timing, and storytelling into one seamless experience.</p>
