@@ -97,7 +97,7 @@ const Projects = () => {
     <section id="projects" className="py-24 overflow-hidden" ref={containerRef}>
       <div className="container max-w-7xl mx-auto px-4">
         <div className="text-center space-y-4 mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">SELECTED WORKS</h2>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Projects</h2>
           <p className="text-muted-foreground text-lg font-mono tracking-wider">
             / Portfolio Showcase
           </p>
@@ -106,8 +106,9 @@ const Projects = () => {
         <Carousel
           setApi={setApi}
           opts={{
-            align: "center",
+            align: "start",
             loop: false,
+            containScroll: "trimSnaps",
           }}
           className="w-full"
         >
