@@ -14,7 +14,8 @@ const Footer = () => {
               <Mail className="h-6 w-6" />
             </a>
           </div>
-          <p className="text-muted-foreground text-sm">© 2025 i. All rights reserved.{new Date().getFullYear()} Your Name. All rights reserved.
+          <p className="text-muted-foreground text-sm">
+            © {new Date().getFullYear()} Ivan Lay. All rights reserved.
           </p>
         </div>
       </div>
