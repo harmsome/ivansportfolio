@@ -46,55 +46,157 @@ const Projects = () => {
   }];
 
   useEffect(() => {
-    if (!containerRef.current || !api) return;
+    const sectionEl = containerRef.current;
+    if (!sectionEl || !api) return;
 
-    const handleWheel = (e: WheelEvent) => {
-      if (Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
-      
-      // If currently scrolling, prevent any action
-      if (isScrollingRef.current) {
-        e.preventDefault();
-        return;
-      }
-      
-      const canScrollNext = api.canScrollNext();
-      const canScrollPrev = api.canScrollPrev();
-      
-      // If scrolling down and can move to next slide
-      if (e.deltaY > 0 && canScrollNext) {
-        e.preventDefault();
-        isScrollingRef.current = true;
-        api.scrollNext();
-        
-        // Add delay before allowing next scroll
-        setTimeout(() => {
-          isScrollingRef.current = false;
-        }, 600);
-      } 
-      // If scrolling up and can move to previous slide
-      else if (e.deltaY < 0 && canScrollPrev) {
-        e.preventDefault();
-        isScrollingRef.current = true;
-        api.scrollPrev();
-        
-        // Add delay before allowing next scroll
-        setTimeout(() => {
-          isScrollingRef.current = false;
-        }, 600);
-      }
-      // Otherwise allow normal page scrolling (when at first/last slide)
+    const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const reduced = mql.matches;
+    if (reduced) return;
+
+    let snapping = false;
+
+    const canNext = () => api?.canScrollNext() ?? false;
+    const canPrev = () => api?.canScrollPrev() ?? false;
+
+    const horizontalStep = (dir: 'next' | 'prev') => {
+      if (isScrollingRef.current) return;
+      isScrollingRef.current = true;
+      if (dir === 'next') api.scrollNext();
+      else api.scrollPrev();
+      setTimeout(() => {
+        isScrollingRef.current = false;
+      }, 600);
     };
 
-    const container = containerRef.current;
-    container.addEventListener('wheel', handleWheel, { passive: false });
+    const isActive = () => {
+      const rect = sectionEl.getBoundingClientRect();
+      const atTopAligned = Math.abs(rect.top) < 2; // snapped to top
+      const visible = rect.top < window.innerHeight && rect.bottom > 0;
+      return atTopAligned && visible;
+    };
+
+    const snapIntoView = () => {
+      if (snapping) return;
+      snapping = true;
+      const top = sectionEl.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top, behavior: 'smooth' });
+      setTimeout(() => {
+        snapping = false;
+      }, 400);
+    };
+
+    const handleWheel = (e: WheelEvent) => {
+      if (snapping || (window as any).manualExitProjects) return;
+
+      const rect = sectionEl.getBoundingClientRect();
+      const enteringFromAbove = e.deltaY > 0 && rect.top < window.innerHeight && rect.top > 0;
+      const enteringFromBelow = e.deltaY < 0 && rect.bottom > 0 && rect.bottom < window.innerHeight;
+
+      // Snap section fully into view on first entry
+      if (enteringFromAbove || enteringFromBelow) {
+        e.preventDefault();
+        snapIntoView();
+        return;
+      }
+
+      if (!isActive()) return; // allow normal scroll outside active state
+
+      const midGallery = canPrev() && canNext();
+
+      if (e.deltaY > 0) {
+        if (canNext()) {
+          e.preventDefault();
+          horizontalStep('next');
+        } else if (midGallery) {
+          // block vertical while mid-gallery
+          e.preventDefault();
+        }
+      } else if (e.deltaY < 0) {
+        if (canPrev()) {
+          e.preventDefault();
+          horizontalStep('prev');
+        } else if (midGallery) {
+          e.preventDefault();
+        }
+      }
+    };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((window as any).manualExitProjects) return;
+      if (!isActive()) return;
+
+      switch (e.key) {
+        case 'ArrowRight':
+          if (canNext()) { e.preventDefault(); horizontalStep('next'); }
+          break;
+        case 'ArrowLeft':
+          if (canPrev()) { e.preventDefault(); horizontalStep('prev'); }
+          break;
+        case 'ArrowDown':
+          if (canNext()) { e.preventDefault(); horizontalStep('next'); }
+          break;
+        case 'ArrowUp':
+          if (canPrev()) { e.preventDefault(); horizontalStep('prev'); }
+          break;
+        case 'Escape':
+          (window as any).manualExitProjects = true;
+          break;
+      }
+    };
+
+    // Touch handlers for mobile/tablet
+    let startX = 0, startY = 0;
+    const handleTouchStart = (e: TouchEvent) => {
+      if ((window as any).manualExitProjects) return;
+      const t = e.touches[0];
+      startX = t.clientX; startY = t.clientY;
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if ((window as any).manualExitProjects) return;
+      if (!isActive()) return;
+
+      const t = e.touches[0];
+      const dx = t.clientX - startX;
+      const dy = t.clientY - startY;
+      const midGallery = canPrev() && canNext();
+
+      if (Math.abs(dx) > Math.abs(dy)) {
+        // Horizontal swipe
+        if (dx < -10 && canNext()) { e.preventDefault(); horizontalStep('next'); startX = t.clientX; startY = t.clientY; }
+        if (dx > 10 && canPrev()) { e.preventDefault(); horizontalStep('prev'); startX = t.clientX; startY = t.clientY; }
+      } else if (midGallery) {
+        // Block vertical scroll while mid-gallery
+        e.preventDefault();
+      }
+    };
+
+    // Reset manual exit when section is not visible
+    const io = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      if (!entry.isIntersecting) {
+        (window as any).manualExitProjects = false;
+      }
+    }, { threshold: 0.01 });
+    io.observe(sectionEl);
+
+    // Listeners
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    window.addEventListener('keydown', handleKeyDown);
+    sectionEl.addEventListener('touchstart', handleTouchStart, { passive: true });
+    sectionEl.addEventListener('touchmove', handleTouchMove, { passive: false });
 
     return () => {
-      container.removeEventListener('wheel', handleWheel);
+      window.removeEventListener('wheel', handleWheel as any);
+      window.removeEventListener('keydown', handleKeyDown as any);
+      sectionEl.removeEventListener('touchstart', handleTouchStart as any);
+      sectionEl.removeEventListener('touchmove', handleTouchMove as any);
+      io.disconnect();
     };
   }, [api]);
 
   return (
-    <section id="projects" className="py-24 overflow-hidden" ref={containerRef}>
+    <section id="projects-section" className="py-24 overflow-hidden" ref={containerRef}>
       <div className="container max-w-7xl mx-auto px-4">
         <div className="text-center space-y-4 mb-16">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Projects</h2>
@@ -112,10 +214,10 @@ const Projects = () => {
           }}
           className="w-full"
         >
-          <CarouselContent className="-ml-4">
+          <CarouselContent id="projects-scroller" className="-ml-4">
             {projects.map((project, index) => (
               <CarouselItem key={index} className="pl-4 basis-full">
-                <div className="group relative h-[600px] overflow-hidden border border-border bg-background">
+                <div className="project-card group relative h-[600px] overflow-hidden border border-border bg-background">
                   {/* Background Image */}
                   <img 
                     src={project.image} 
