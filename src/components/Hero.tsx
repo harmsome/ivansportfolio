@@ -12,7 +12,7 @@ const Hero = () => {
       >
         <source src="/videos/hero-video.mp4" type="video/mp4" />
       </video>
-      <div className="absolute inset-0 bg-black/60 z-0" />
+      <div className="absolute inset-0 bg-black/75 z-0" />
       
       <div className="container relative z-10 px-4 py-24">
         <div className="max-w-4xl mx-auto text-center space-y-8">
