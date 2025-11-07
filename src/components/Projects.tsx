@@ -60,31 +60,29 @@ const Projects = () => {
       const canScrollNext = api.canScrollNext();
       const canScrollPrev = api.canScrollPrev();
       
-      // ALWAYS prevent default when inside the carousel to trap scroll
-      if (canScrollNext || canScrollPrev) {
+      // If scrolling down and can move to next slide
+      if (e.deltaY > 0 && canScrollNext) {
         e.preventDefault();
+        isScrollingRef.current = true;
+        api.scrollNext();
         
-        // If scrolling down and can move to next slide
-        if (e.deltaY > 0 && canScrollNext) {
-          isScrollingRef.current = true;
-          api.scrollNext();
-          
-          // Add delay before allowing next scroll
-          setTimeout(() => {
-            isScrollingRef.current = false;
-          }, 600);
-        } 
-        // If scrolling up and can move to previous slide
-        else if (e.deltaY < 0 && canScrollPrev) {
-          isScrollingRef.current = true;
-          api.scrollPrev();
-          
-          // Add delay before allowing next scroll
-          setTimeout(() => {
-            isScrollingRef.current = false;
-          }, 600);
-        }
+        // Add delay before allowing next scroll
+        setTimeout(() => {
+          isScrollingRef.current = false;
+        }, 600);
+      } 
+      // If scrolling up and can move to previous slide
+      else if (e.deltaY < 0 && canScrollPrev) {
+        e.preventDefault();
+        isScrollingRef.current = true;
+        api.scrollPrev();
+        
+        // Add delay before allowing next scroll
+        setTimeout(() => {
+          isScrollingRef.current = false;
+        }, 600);
       }
+      // Otherwise allow normal page scrolling (when at first/last slide)
     };
 
     const container = containerRef.current;
