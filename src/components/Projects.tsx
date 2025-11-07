@@ -98,7 +98,7 @@ const Projects = () => {
       <div className="container max-w-7xl mx-auto px-4">
         <div className="text-center space-y-4 mb-16">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight">SELECTED WORKS</h2>
-          <p className="text-muted-foreground text-lg font-mono">
+          <p className="text-muted-foreground text-lg font-mono tracking-wider">
             / Portfolio Showcase
           </p>
         </div>
@@ -123,7 +123,7 @@ const Projects = () => {
                   />
                   
                   {/* Dark Overlay */}
-                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/70 transition-all duration-500" />
+                  <div className="absolute inset-0 bg-black/60 group-hover:bg-black/80 transition-all duration-500" />
                   
                   {/* Content Overlay - Always visible but enhanced on hover */}
                   <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
@@ -140,7 +140,7 @@ const Projects = () => {
                         {project.tech.map((tech, techIndex) => (
                           <span 
                             key={techIndex} 
-                            className="text-xs px-4 py-2 border border-white/30 text-white font-mono backdrop-blur-sm"
+                            className="text-xs px-4 py-2 border border-primary/30 text-primary font-mono backdrop-blur-sm"
                           >
                             {tech}
                           </span>
@@ -148,10 +148,9 @@ const Projects = () => {
                       </div>
                       
                       <Button 
-                        variant="outline" 
                         size="lg"
                         asChild
-                        className="opacity-0 group-hover:opacity-100 transition-all duration-500 delay-300 border-white text-white hover:bg-white hover:text-background"
+                        className="opacity-0 group-hover:opacity-100 transition-all duration-500 delay-300 bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-custom-lg"
                       >
                         <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                           See More Details
@@ -162,15 +161,15 @@ const Projects = () => {
                   </div>
                   
                   {/* Project Number */}
-                  <div className="absolute top-8 left-8 text-white/50 font-mono text-sm">
+                  <div className="absolute top-8 left-8 text-foreground/40 font-mono text-sm tracking-wider">
                     [{String(index + 1).padStart(2, '0')}]
                   </div>
                 </div>
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="hidden md:flex border-white/30 text-white hover:bg-white hover:text-background" />
-          <CarouselNext className="hidden md:flex border-white/30 text-white hover:bg-white hover:text-background" />
+          <CarouselPrevious className="hidden md:flex border-border hover:bg-primary hover:text-primary-foreground hover:border-primary" />
+          <CarouselNext className="hidden md:flex border-border hover:bg-primary hover:text-primary-foreground hover:border-primary" />
         </Carousel>
       </div>
     </section>
