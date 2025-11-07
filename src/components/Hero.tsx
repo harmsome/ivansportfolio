@@ -10,15 +10,17 @@ const Hero = () => {
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-0"
       >
-        <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-colorful-ink-in-water-3240-large.mp4" type="video/mp4" />
+        <source src="/videos/hero-video.mp4" type="video/mp4" />
       </video>
-      <div className="absolute inset-0 bg-background/80 backdrop-blur-sm z-0" />
+      <div className="absolute inset-0 z-0" style={{
+        background: 'linear-gradient(to bottom, rgba(15, 15, 23, 0.9) 0%, rgba(15, 15, 23, 0) 10%)'
+      }} />
       
       <div className="container relative z-10 px-4 py-24">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-1000">
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight animate-in slide-in-from-left-8 duration-1000 delay-200">
-              Hey! I'm <span className="gradient-primary bg-clip-text text-transparent">Ivan</span>
+              Hey! I'm <span className="gradient-animated bg-clip-text text-transparent">Ivan</span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground animate-in slide-in-from-right-8 duration-1000 delay-400">
               A Motion Grapher & Video Editor

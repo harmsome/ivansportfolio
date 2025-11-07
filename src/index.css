@@ -125,6 +125,24 @@ All colors MUST be HSL.
     background: var(--gradient-primary);
   }
 
+  .gradient-animated {
+    background: linear-gradient(90deg, 
+      hsl(263 70% 60%), 
+      hsl(43 74% 66%), 
+      hsl(263 70% 60%));
+    background-size: 200% auto;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% center;
+    }
+    50% {
+      background-position: 100% center;
+    }
+  }
+
   .gradient-hero {
     background: var(--gradient-hero);
   }
