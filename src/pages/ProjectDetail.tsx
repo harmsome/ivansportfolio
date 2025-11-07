@@ -1,7 +1,20 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, ExternalLink, Github } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import Footer from "@/components/Footer";
+import project2DAnimation from "@/assets/project-2d-animation.jpg";
+import projectVideoEditing from "@/assets/project-video-editing.jpg";
+import projectUIUXDesign from "@/assets/project-uiux-design.jpg";
+import project3DModeling from "@/assets/project-3d-modeling.jpg";
+import projectInstallations from "@/assets/project-installations.jpg";
+import photoshopLogo from "@/assets/photoshop-logo.png";
+import illustratorLogo from "@/assets/illustrator-logo.png";
+import aftereffectsLogo from "@/assets/aftereffects-logo.png";
+import premiereLogo from "@/assets/premiere-logo.png";
+import figmaLogo from "@/assets/figma-logo.png";
+import framerLogo from "@/assets/framer-logo.png";
+import blenderLogo from "@/assets/blender-logo.png";
+import unityLogo from "@/assets/unity-logo.png";
 
 const ProjectDetail = () => {
   const { id } = useParams();
@@ -9,99 +22,66 @@ const ProjectDetail = () => {
 
   const projects = [{
     id: 1,
-    title: "E-Commerce Platform",
-    description: "A full-stack e-commerce solution with payment integration, inventory management, and real-time analytics.",
-    longDescription: "This comprehensive e-commerce platform was built to handle thousands of concurrent users with a focus on performance and user experience. The platform includes advanced features such as real-time inventory tracking, multiple payment gateway integrations, automated email notifications, and detailed analytics dashboards for both customers and administrators.",
-    tech: ["React", "Node.js", "MongoDB", "Stripe"],
-    liveUrl: "#",
-    githubUrl: "#",
-    image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=600&fit=crop",
-    features: [
-      "Secure payment processing with Stripe integration",
-      "Real-time inventory management system",
-      "Advanced product filtering and search",
-      "Customer reviews and ratings",
-      "Admin dashboard with analytics",
-      "Email notifications for orders and shipping"
+    title: "2D Animation",
+    description: "Motion story that made with 2D and smooth animation to show feelings and rhythm.",
+    longDescription: "This project explores the art of 2D animation, combining smooth motion graphics with emotional storytelling. Using industry-standard tools, every frame is carefully crafted to convey rhythm, mood, and narrative flow.",
+    apps: [
+      { name: "After Effects", icon: aftereffectsLogo },
+      { name: "Illustrator", icon: illustratorLogo },
+      { name: "Photoshop", icon: photoshopLogo }
     ],
-    challenges: "One of the main challenges was implementing a robust inventory system that could handle concurrent purchases without overselling. We solved this using MongoDB transactions and optimistic locking.",
-    outcome: "The platform now serves over 10,000 active users and processes hundreds of transactions daily with 99.9% uptime."
+    image: project2DAnimation,
+    process: "The animation process began with storyboarding and character design in Illustrator. Assets were then refined in Photoshop before being brought to life in After Effects with carefully timed keyframes and easing curves.",
+    outcome: "Created a compelling visual narrative that effectively communicates emotion through movement and timing."
   }, {
     id: 2,
-    title: "Task Management App",
-    description: "Collaborative task management tool with real-time updates, team workspaces, and deadline tracking.",
-    longDescription: "A powerful task management application designed for teams of all sizes. Built with real-time collaboration in mind, this app allows teams to create workspaces, assign tasks, set priorities, and track progress in real-time. The application uses WebSocket technology to ensure all team members see updates instantly.",
-    tech: ["Next.js", "TypeScript", "PostgreSQL", "WebSockets"],
-    liveUrl: "#",
-    githubUrl: "#",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop",
-    features: [
-      "Real-time collaboration with WebSocket integration",
-      "Drag-and-drop task organization",
-      "Team workspaces with role-based permissions",
-      "Advanced deadline tracking and reminders",
-      "Task dependencies and subtasks",
-      "Activity timeline and audit logs"
+    title: "Video Editing",
+    description: "Cut and mix videos with music and mood to make the story feel alive.",
+    longDescription: "A comprehensive video editing project that combines cinematic techniques with rhythmic pacing to create engaging visual stories. Each cut is intentional, each transition meaningful.",
+    apps: [
+      { name: "After Effects", icon: aftereffectsLogo },
+      { name: "Premiere Pro", icon: premiereLogo },
+      { name: "DaVinci Resolve", icon: "https://upload.wikimedia.org/wikipedia/commons/4/4d/DaVinci_Resolve_Studio.png" }
     ],
-    challenges: "Implementing real-time synchronization across multiple users while maintaining data consistency was complex. We used operational transformation techniques to resolve conflicts.",
-    outcome: "Successfully deployed to 50+ teams with average daily active users of 500+. Reduced project management overhead by 40% for early adopters."
+    image: projectVideoEditing,
+    process: "The editing workflow involved rough cuts in Premiere Pro, followed by color grading in DaVinci Resolve, and final effects and motion graphics in After Effects.",
+    outcome: "Produced dynamic video content that maintains viewer engagement through strategic pacing and visual storytelling."
   }, {
     id: 3,
-    title: "Portfolio Website",
-    description: "Modern portfolio website with blog functionality, project showcase, and contact form integration.",
-    longDescription: "A stunning portfolio website built with modern web technologies, featuring a headless CMS for easy content management. The site includes a fully-functional blog, project showcase with filtering capabilities, and an integrated contact form with email notifications.",
-    tech: ["React", "Tailwind CSS", "Sanity CMS"],
-    liveUrl: "#",
-    githubUrl: "#",
-    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=600&fit=crop",
-    features: [
-      "Headless CMS integration with Sanity",
-      "Dynamic blog with markdown support",
-      "Project showcase with filtering",
-      "Contact form with email notifications",
-      "SEO optimized with meta tags",
-      "Fully responsive design"
+    title: "UI/UX Design",
+    description: "User Friendly and convenient design that looks nice and feels simple to use.",
+    longDescription: "A user-centered design approach focusing on intuitive interfaces and seamless user experiences. Every element is designed with purpose, every interaction carefully considered.",
+    apps: [
+      { name: "Figma", icon: figmaLogo },
+      { name: "Framer", icon: framerLogo },
+      { name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" }
     ],
-    challenges: "Creating a performant, SEO-friendly site while maintaining a rich, interactive user experience required careful optimization and server-side rendering strategies.",
-    outcome: "Achieved 95+ Lighthouse scores across all categories and increased client inquiries by 200%."
+    image: projectUIUXDesign,
+    process: "Started with user research and wireframing in Figma, created interactive prototypes in Framer, and implemented the final design with clean, maintainable code.",
+    outcome: "Delivered an intuitive interface that balances aesthetics with functionality, resulting in improved user satisfaction."
   }, {
     id: 4,
-    title: "Mobile Banking App",
-    description: "Secure mobile banking application with biometric authentication, transaction history, and bill payments.",
-    longDescription: "A secure mobile banking application that prioritizes user security and convenience. Features include biometric authentication, real-time transaction alerts, bill payment scheduling, and detailed transaction history with advanced filtering options. Built with React Native for cross-platform compatibility.",
-    tech: ["React Native", "Firebase", "Redux", "Plaid API"],
-    liveUrl: "#",
-    githubUrl: "#",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=600&fit=crop",
-    features: [
-      "Biometric authentication (fingerprint/face ID)",
-      "Real-time transaction notifications",
-      "Bill payment scheduling",
-      "Account linking with Plaid API",
-      "Transaction categorization and budgeting",
-      "Push notifications for important events"
+    title: "3D Modeling",
+    description: "Detailed 3D models with nice light and smooth shape.",
+    longDescription: "High-quality 3D modeling project featuring detailed geometry, realistic materials, and professional lighting setups. Each model is crafted with attention to form, texture, and visual appeal.",
+    apps: [
+      { name: "Blender", icon: blenderLogo },
+      { name: "Photoshop", icon: photoshopLogo }
     ],
-    challenges: "Ensuring bank-level security while maintaining a smooth user experience was critical. We implemented multiple layers of security including encryption, secure storage, and session management.",
-    outcome: "Successfully launched with 5,000+ downloads in the first month. Maintains a 4.8-star rating on app stores."
+    image: project3DModeling,
+    process: "Models were sculpted and textured in Blender using PBR workflows. Final renders were enhanced in Photoshop with color correction and post-processing effects.",
+    outcome: "Created photorealistic 3D assets with clean topology and optimized materials suitable for various applications."
   }, {
     id: 5,
-    title: "Social Media Dashboard",
-    description: "Analytics dashboard for social media management with scheduling, insights, and engagement tracking.",
-    longDescription: "A comprehensive social media management dashboard that helps businesses and influencers manage multiple social media accounts from one place. Features include post scheduling, advanced analytics, engagement tracking, and competitor analysis. Built with Vue.js for a reactive and performant user interface.",
-    tech: ["Vue.js", "Express", "MongoDB", "Chart.js"],
-    liveUrl: "#",
-    githubUrl: "#",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
-    features: [
-      "Multi-account management",
-      "Post scheduling and automation",
-      "Advanced analytics and insights",
-      "Engagement tracking and reporting",
-      "Competitor analysis tools",
-      "Custom reports and exports"
+    title: "Installations",
+    description: "Interactive project that i made on physical",
+    longDescription: "An interactive installation project that bridges digital and physical spaces. Using real-time technology, this project creates immersive experiences that respond to user interaction.",
+    apps: [
+      { name: "Unity", icon: unityLogo }
     ],
-    challenges: "Integrating with multiple social media APIs while handling rate limits and different data formats required careful architecture and error handling.",
-    outcome: "Currently managing 1,000+ social media accounts with 99.5% uptime. Helped clients increase engagement by an average of 150%."
+    image: projectInstallations,
+    process: "Developed in Unity using C# scripting for interactive behaviors. Integrated sensors and physical computing elements to create responsive installations.",
+    outcome: "Successfully deployed interactive installation that engages audiences through intuitive physical interaction."
   }];
 
   const project = projects.find(p => p.id === Number(id));
@@ -122,99 +102,135 @@ const ProjectDetail = () => {
 
   return (
     <main className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="border-b border-border">
-        <div className="container max-w-7xl mx-auto px-4 py-6">
+      {/* Hero Image - Full Width */}
+      <div className="relative h-[70vh] w-full overflow-hidden">
+        <img 
+          src={project.image} 
+          alt={project.title}
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/40" />
+        
+        {/* Back Button Overlay */}
+        <div className="absolute top-8 left-8">
           <Button 
             variant="ghost" 
             onClick={() => navigate("/")}
-            className="hover:bg-primary/10"
+            className="bg-background/10 backdrop-blur-sm hover:bg-background/20 text-white border border-white/20"
           >
             <ArrowLeft className="h-4 w-4" />
-            Back to Projects
+            Back
           </Button>
+        </div>
+        
+        {/* Title Overlay */}
+        <div className="absolute bottom-0 left-0 right-0 p-8 md:p-16 bg-gradient-to-t from-black/80 to-transparent">
+          <div className="container max-w-7xl mx-auto">
+            <h1 className="text-5xl md:text-7xl font-bold text-white tracking-tight mb-4">
+              {project.title}
+            </h1>
+            <p className="text-white/90 text-xl md:text-2xl max-w-3xl">
+              {project.description}
+            </p>
+          </div>
         </div>
       </div>
 
-      {/* Hero Section */}
-      <section className="py-16 border-b border-border">
+      {/* Project Details */}
+      <section className="py-24 bg-background">
         <div className="container max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-16 items-start">
+            {/* Description */}
             <div>
-              <div className="text-primary font-mono text-sm mb-4">[PROJECT DETAILS]</div>
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight">{project.title}</h1>
-              <p className="text-muted-foreground text-lg mb-8">{project.longDescription}</p>
-              <div className="flex gap-4">
-                <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
-                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="h-4 w-4" />
-                    View Live
-                  </a>
+              <div className="text-primary font-mono text-sm mb-4">[OVERVIEW]</div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight">
+                About This Project
+              </h2>
+              <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+                {project.longDescription}
+              </p>
+            </div>
+
+            {/* Apps Used */}
+            <div>
+              <div className="text-primary font-mono text-sm mb-4">[TOOLS & SOFTWARE]</div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-8 tracking-tight">
+                Apps Used
+              </h2>
+              <div className="grid grid-cols-2 gap-6">
+                {project.apps.map((app, index) => (
+                  <div 
+                    key={index}
+                    className="flex flex-col items-center gap-4 p-6 border border-border bg-card hover:border-primary/50 transition-colors"
+                  >
+                    <div className="w-16 h-16 flex items-center justify-center">
+                      <img 
+                        src={app.icon} 
+                        alt={`${app.name} logo`}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                    <span className="text-sm font-medium text-center">{app.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Process & Outcome */}
+      <section className="py-24 bg-muted/30">
+        <div className="container max-w-7xl mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-16">
+            <div>
+              <div className="text-primary font-mono text-sm mb-4">[PROCESS]</div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight">
+                How It Was Made
+              </h2>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                {project.process}
+              </p>
+            </div>
+            <div>
+              <div className="text-primary font-mono text-sm mb-4">[OUTCOME]</div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight">
+                Final Result
+              </h2>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                {project.outcome}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Next Project Navigation */}
+      <section className="py-16 border-t border-border">
+        <div className="container max-w-7xl mx-auto px-4">
+          <div className="flex justify-between items-center">
+            <div className="text-muted-foreground font-mono text-sm">
+              [PROJECT {id} / {projects.length}]
+            </div>
+            <div className="flex gap-4">
+              {Number(id) > 1 && (
+                <Button 
+                  variant="outline" 
+                  onClick={() => navigate(`/project/${Number(id) - 1}`)}
+                >
+                  <ArrowLeft className="h-4 w-4" />
+                  Previous Project
                 </Button>
-                <Button size="lg" variant="outline" asChild>
-                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                    <Github className="h-4 w-4" />
-                    Source Code
-                  </a>
+              )}
+              {Number(id) < projects.length && (
+                <Button 
+                  onClick={() => navigate(`/project/${Number(id) + 1}`)}
+                  className="bg-primary text-primary-foreground hover:bg-primary/90"
+                >
+                  Next Project
+                  <ArrowLeft className="h-4 w-4 rotate-180" />
                 </Button>
-              </div>
-            </div>
-            <div className="relative aspect-video overflow-hidden border border-border">
-              <img 
-                src={project.image} 
-                alt={project.title}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Tech Stack */}
-      <section className="py-16 border-b border-border">
-        <div className="container max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8">Tech Stack</h2>
-          <div className="flex flex-wrap gap-4">
-            {project.tech.map((tech, index) => (
-              <div 
-                key={index}
-                className="px-6 py-3 border border-primary/30 bg-primary/5 text-primary font-mono text-lg"
-              >
-                {tech}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Features */}
-      <section className="py-16 border-b border-border">
-        <div className="container max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8">Key Features</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {project.features.map((feature, index) => (
-              <div key={index} className="flex gap-4 p-6 border border-border bg-card">
-                <div className="text-primary font-mono text-sm flex-shrink-0">
-                  [{String(index + 1).padStart(2, '0')}]
-                </div>
-                <p className="text-foreground">{feature}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Challenges & Outcome */}
-      <section className="py-16">
-        <div className="container max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12">
-            <div>
-              <h2 className="text-3xl font-bold mb-6">Challenges</h2>
-              <p className="text-muted-foreground text-lg leading-relaxed">{project.challenges}</p>
-            </div>
-            <div>
-              <h2 className="text-3xl font-bold mb-6">Outcome</h2>
-              <p className="text-muted-foreground text-lg leading-relaxed">{project.outcome}</p>
+              )}
             </div>
           </div>
         </div>
