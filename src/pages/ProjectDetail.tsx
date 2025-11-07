@@ -17,71 +17,86 @@ import blenderLogo from "@/assets/blender-logo.png";
 import unityLogo from "@/assets/unity-logo.png";
 
 const ProjectDetail = () => {
-  const { id } = useParams();
+  const { id, subId } = useParams();
   const navigate = useNavigate();
 
   const projects = [{
     id: 1,
     title: "2D Animation",
+    year: "2024",
     description: "Motion story that made with 2D and smooth animation to show feelings and rhythm.",
-    longDescription: "This project explores the art of 2D animation, combining smooth motion graphics with emotional storytelling. Using industry-standard tools, every frame is carefully crafted to convey rhythm, mood, and narrative flow.",
     apps: [
       { name: "After Effects", icon: aftereffectsLogo },
       { name: "Illustrator", icon: illustratorLogo },
       { name: "Photoshop", icon: photoshopLogo }
     ],
     image: project2DAnimation,
-    process: "The animation process began with storyboarding and character design in Illustrator. Assets were then refined in Photoshop before being brought to life in After Effects with carefully timed keyframes and easing curves.",
-    outcome: "Created a compelling visual narrative that effectively communicates emotion through movement and timing."
+    subProjects: [
+      { id: 1, title: "Character Animation Study", year: "2024", description: "Expressive character movements exploring emotion", image: project2DAnimation },
+      { id: 2, title: "Motion Graphics Reel", year: "2024", description: "Dynamic typography and shape animations", image: project2DAnimation },
+      { id: 3, title: "Explainer Animation", year: "2024", description: "Clear visual storytelling for complex concepts", image: project2DAnimation }
+    ]
   }, {
     id: 2,
     title: "Video Editing",
+    year: "2024",
     description: "Cut and mix videos with music and mood to make the story feel alive.",
-    longDescription: "A comprehensive video editing project that combines cinematic techniques with rhythmic pacing to create engaging visual stories. Each cut is intentional, each transition meaningful.",
     apps: [
       { name: "After Effects", icon: aftereffectsLogo },
       { name: "Premiere Pro", icon: premiereLogo },
       { name: "DaVinci Resolve", icon: "https://upload.wikimedia.org/wikipedia/commons/4/4d/DaVinci_Resolve_Studio.png" }
     ],
     image: projectVideoEditing,
-    process: "The editing workflow involved rough cuts in Premiere Pro, followed by color grading in DaVinci Resolve, and final effects and motion graphics in After Effects.",
-    outcome: "Produced dynamic video content that maintains viewer engagement through strategic pacing and visual storytelling."
+    subProjects: [
+      { id: 1, title: "Documentary Edit", year: "2024", description: "Narrative-driven documentary storytelling", image: projectVideoEditing },
+      { id: 2, title: "Commercial Campaign", year: "2024", description: "Fast-paced promotional content", image: projectVideoEditing },
+      { id: 3, title: "Music Video", year: "2024", description: "Rhythmic editing synced to music", image: projectVideoEditing }
+    ]
   }, {
     id: 3,
     title: "UI/UX Design",
+    year: "2024",
     description: "User Friendly and convenient design that looks nice and feels simple to use.",
-    longDescription: "A user-centered design approach focusing on intuitive interfaces and seamless user experiences. Every element is designed with purpose, every interaction carefully considered.",
     apps: [
       { name: "Figma", icon: figmaLogo },
       { name: "Framer", icon: framerLogo },
       { name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" }
     ],
     image: projectUIUXDesign,
-    process: "Started with user research and wireframing in Figma, created interactive prototypes in Framer, and implemented the final design with clean, maintainable code.",
-    outcome: "Delivered an intuitive interface that balances aesthetics with functionality, resulting in improved user satisfaction."
+    subProjects: [
+      { id: 1, title: "E-commerce Platform", year: "2024", description: "Seamless shopping experience design", image: projectUIUXDesign },
+      { id: 2, title: "Mobile App Interface", year: "2024", description: "Intuitive mobile-first design", image: projectUIUXDesign },
+      { id: 3, title: "Dashboard Design", year: "2024", description: "Data visualization and analytics", image: projectUIUXDesign }
+    ]
   }, {
     id: 4,
     title: "3D Modeling",
+    year: "2024",
     description: "Detailed 3D models with nice light and smooth shape.",
-    longDescription: "High-quality 3D modeling project featuring detailed geometry, realistic materials, and professional lighting setups. Each model is crafted with attention to form, texture, and visual appeal.",
     apps: [
       { name: "Blender", icon: blenderLogo },
       { name: "Photoshop", icon: photoshopLogo }
     ],
     image: project3DModeling,
-    process: "Models were sculpted and textured in Blender using PBR workflows. Final renders were enhanced in Photoshop with color correction and post-processing effects.",
-    outcome: "Created photorealistic 3D assets with clean topology and optimized materials suitable for various applications."
+    subProjects: [
+      { id: 1, title: "Product Visualization", year: "2024", description: "Photorealistic product renders", image: project3DModeling },
+      { id: 2, title: "Character Modeling", year: "2024", description: "Stylized 3D character creation", image: project3DModeling },
+      { id: 3, title: "Environment Design", year: "2024", description: "Immersive 3D environments", image: project3DModeling }
+    ]
   }, {
     id: 5,
     title: "Installations",
+    year: "2024",
     description: "Interactive project that i made on physical",
-    longDescription: "An interactive installation project that bridges digital and physical spaces. Using real-time technology, this project creates immersive experiences that respond to user interaction.",
     apps: [
       { name: "Unity", icon: unityLogo }
     ],
     image: projectInstallations,
-    process: "Developed in Unity using C# scripting for interactive behaviors. Integrated sensors and physical computing elements to create responsive installations.",
-    outcome: "Successfully deployed interactive installation that engages audiences through intuitive physical interaction."
+    subProjects: [
+      { id: 1, title: "Interactive Wall", year: "2024", description: "Touch-responsive digital installation", image: projectInstallations },
+      { id: 2, title: "VR Experience", year: "2024", description: "Immersive virtual reality environment", image: projectInstallations },
+      { id: 3, title: "Motion Tracking", year: "2024", description: "Gesture-controlled interactive space", image: projectInstallations }
+    ]
   }];
 
   const project = projects.find(p => p.id === Number(id));
@@ -100,6 +115,159 @@ const ProjectDetail = () => {
     );
   }
 
+  // If subId is provided, show individual sub-project detail
+  if (subId) {
+    const subProject = project.subProjects.find(sp => sp.id === Number(subId));
+    
+    if (!subProject) {
+      return (
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="text-center">
+            <h1 className="text-4xl font-bold mb-4">Project Not Found</h1>
+            <Button onClick={() => navigate(`/project/${id}`)}>
+              <ArrowLeft className="h-4 w-4" />
+              Back to Category
+            </Button>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <main className="min-h-screen bg-background">
+        {/* Hero Image - Full Width */}
+        <div className="relative h-screen w-full overflow-hidden">
+          <img 
+            src={subProject.image} 
+            alt={subProject.title}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/50" />
+          
+          {/* Back Button Overlay */}
+          <div className="absolute top-8 left-8 z-10">
+            <Button 
+              variant="ghost" 
+              onClick={() => navigate(`/project/${id}`)}
+              className="bg-background/10 backdrop-blur-sm hover:bg-background/20 text-white border border-white/20"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Back to {project.title}
+            </Button>
+          </div>
+          
+          {/* Title Overlay */}
+          <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-16">
+            <div className="container max-w-7xl mx-auto">
+              <div className="text-white/60 font-mono text-sm mb-2">{project.title}</div>
+              <h1 className="text-6xl md:text-8xl font-bold text-white tracking-tight mb-4">
+                {subProject.title}
+              </h1>
+              <div className="text-white/80 text-lg md:text-xl mb-2">{subProject.year}</div>
+              <p className="text-white/90 text-xl md:text-2xl max-w-3xl">
+                {subProject.description}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Project Content Sections */}
+        <section className="py-32 bg-background">
+          <div className="container max-w-7xl mx-auto px-4">
+            <div className="grid md:grid-cols-2 gap-24">
+              <div>
+                <div className="text-primary font-mono text-sm mb-6">[OVERVIEW]</div>
+                <h2 className="text-4xl md:text-5xl font-bold mb-8 tracking-tight">
+                  Project Overview
+                </h2>
+                <p className="text-muted-foreground text-lg leading-relaxed">
+                  This project showcases expertise in {project.title.toLowerCase()}, utilizing industry-standard tools and techniques to deliver exceptional results. Every detail has been carefully crafted to achieve the desired impact.
+                </p>
+              </div>
+
+              <div>
+                <div className="text-primary font-mono text-sm mb-6">[TOOLS]</div>
+                <h2 className="text-4xl md:text-5xl font-bold mb-8 tracking-tight">
+                  Software Used
+                </h2>
+                <div className="flex flex-wrap gap-4">
+                  {project.apps.map((app, index) => (
+                    <div 
+                      key={index}
+                      className="flex items-center gap-3 px-6 py-3 border border-border bg-card"
+                    >
+                      <img 
+                        src={app.icon} 
+                        alt={app.name}
+                        className="w-8 h-8 object-contain"
+                      />
+                      <span className="text-sm font-medium">{app.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Full Width Image Section */}
+        <section className="w-full">
+          <img 
+            src={subProject.image} 
+            alt="Project detail"
+            className="w-full h-[80vh] object-cover"
+          />
+        </section>
+
+        {/* Process Section */}
+        <section className="py-32 bg-muted/30">
+          <div className="container max-w-7xl mx-auto px-4">
+            <div className="max-w-4xl">
+              <div className="text-primary font-mono text-sm mb-6">[PROCESS]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-8 tracking-tight">
+                Creative Process
+              </h2>
+              <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+                The creative process involved careful planning, iterative design, and attention to detail. Each phase was executed with precision to ensure the final outcome met the highest standards.
+              </p>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                From initial concept to final delivery, the project demonstrated strong technical skills and creative vision, resulting in a compelling piece that effectively communicates its intended message.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Navigation */}
+        <section className="py-16 border-t border-border">
+          <div className="container max-w-7xl mx-auto px-4">
+            <div className="flex justify-between items-center">
+              <Button 
+                variant="outline" 
+                onClick={() => navigate(`/project/${id}`)}
+              >
+                <ArrowLeft className="h-4 w-4" />
+                Back to {project.title}
+              </Button>
+              
+              {Number(subId) < project.subProjects.length && (
+                <Button 
+                  onClick={() => navigate(`/project/${id}/${Number(subId) + 1}`)}
+                  className="bg-primary text-primary-foreground hover:bg-primary/90"
+                >
+                  Next Project
+                  <ArrowLeft className="h-4 w-4 rotate-180" />
+                </Button>
+              )}
+            </div>
+          </div>
+        </section>
+
+        <Footer />
+      </main>
+    );
+  }
+
+  // Category overview showing sub-projects
   return (
     <main className="min-h-screen bg-background">
       {/* Hero Image - Full Width */}
@@ -126,6 +294,7 @@ const ProjectDetail = () => {
         {/* Title Overlay */}
         <div className="absolute bottom-0 left-0 right-0 p-8 md:p-16 bg-gradient-to-t from-black/80 to-transparent">
           <div className="container max-w-7xl mx-auto">
+            <div className="text-white/60 font-mono text-sm mb-2">{project.year}</div>
             <h1 className="text-5xl md:text-7xl font-bold text-white tracking-tight mb-4">
               {project.title}
             </h1>
@@ -136,81 +305,83 @@ const ProjectDetail = () => {
         </div>
       </div>
 
-      {/* Project Details */}
-      <section className="py-24 bg-background">
+      {/* Apps Used Section */}
+      <section className="py-24 bg-background border-b border-border">
         <div className="container max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-16 items-start">
-            {/* Description */}
-            <div>
-              <div className="text-primary font-mono text-sm mb-4">[OVERVIEW]</div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight">
-                About This Project
-              </h2>
-              <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-                {project.longDescription}
-              </p>
-            </div>
-
-            {/* Apps Used */}
-            <div>
-              <div className="text-primary font-mono text-sm mb-4">[TOOLS & SOFTWARE]</div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-8 tracking-tight">
-                Apps Used
-              </h2>
-              <div className="grid grid-cols-2 gap-6">
-                {project.apps.map((app, index) => (
-                  <div 
-                    key={index}
-                    className="flex flex-col items-center gap-4 p-6 border border-border bg-card hover:border-primary/50 transition-colors"
-                  >
-                    <div className="w-16 h-16 flex items-center justify-center">
-                      <img 
-                        src={app.icon} 
-                        alt={`${app.name} logo`}
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-                    <span className="text-sm font-medium text-center">{app.name}</span>
-                  </div>
-                ))}
+          <div className="text-primary font-mono text-sm mb-6">[TOOLS & SOFTWARE]</div>
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 tracking-tight">
+            Apps Used
+          </h2>
+          <div className="flex flex-wrap gap-6">
+            {project.apps.map((app, index) => (
+              <div 
+                key={index}
+                className="flex items-center gap-4 px-8 py-4 border border-border bg-card hover:border-primary/50 transition-colors"
+              >
+                <div className="w-12 h-12 flex items-center justify-center">
+                  <img 
+                    src={app.icon} 
+                    alt={`${app.name} logo`}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <span className="text-base font-medium">{app.name}</span>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Process & Outcome */}
+      {/* Sub-Projects List */}
       <section className="py-24 bg-muted/30">
         <div className="container max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-16">
-            <div>
-              <div className="text-primary font-mono text-sm mb-4">[PROCESS]</div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight">
-                How It Was Made
-              </h2>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                {project.process}
-              </p>
-            </div>
-            <div>
-              <div className="text-primary font-mono text-sm mb-4">[OUTCOME]</div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight">
-                Final Result
-              </h2>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                {project.outcome}
-              </p>
-            </div>
+          <div className="text-primary font-mono text-sm mb-6">[PROJECTS]</div>
+          <h2 className="text-3xl md:text-4xl font-bold mb-16 tracking-tight">
+            Featured Work
+          </h2>
+          
+          <div className="space-y-6">
+            {project.subProjects.map((subProject) => (
+              <div 
+                key={subProject.id}
+                className="group border border-border bg-card hover:border-primary/50 transition-all duration-300"
+              >
+                <div className="grid md:grid-cols-[1fr_auto] gap-8 p-8 md:p-12 items-center">
+                  <div>
+                    <div className="flex items-baseline gap-4 mb-4">
+                      <h3 className="text-2xl md:text-3xl font-bold tracking-tight">
+                        {subProject.title}
+                      </h3>
+                      <span className="text-muted-foreground font-mono text-sm">
+                        {subProject.year}
+                      </span>
+                    </div>
+                    <p className="text-muted-foreground text-lg">
+                      {subProject.description}
+                    </p>
+                  </div>
+                  
+                  <Button 
+                    onClick={() => navigate(`/project/${id}/${subProject.id}`)}
+                    variant="outline"
+                    className="group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all whitespace-nowrap"
+                  >
+                    View This Project
+                    <ArrowLeft className="h-4 w-4 rotate-180 ml-2" />
+                  </Button>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Next Project Navigation */}
+      {/* Category Navigation */}
       <section className="py-16 border-t border-border">
         <div className="container max-w-7xl mx-auto px-4">
           <div className="flex justify-between items-center">
             <div className="text-muted-foreground font-mono text-sm">
-              [PROJECT {id} / {projects.length}]
+              [CATEGORY {id} / {projects.length}]
             </div>
             <div className="flex gap-4">
               {Number(id) > 1 && (
@@ -219,7 +390,7 @@ const ProjectDetail = () => {
                   onClick={() => navigate(`/project/${Number(id) - 1}`)}
                 >
                   <ArrowLeft className="h-4 w-4" />
-                  Previous Project
+                  Previous Category
                 </Button>
               )}
               {Number(id) < projects.length && (
@@ -227,7 +398,7 @@ const ProjectDetail = () => {
                   onClick={() => navigate(`/project/${Number(id) + 1}`)}
                   className="bg-primary text-primary-foreground hover:bg-primary/90"
                 >
-                  Next Project
+                  Next Category
                   <ArrowLeft className="h-4 w-4 rotate-180" />
                 </Button>
               )}
