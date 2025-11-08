@@ -74,6 +74,8 @@ const Contact = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <MagicBento />
+
           <div className="space-y-6">
             <Card className="p-6 border-border bg-card">
               <div className="flex items-start gap-4">
@@ -153,8 +155,6 @@ const Contact = () => {
               </form>
             </Card>
           </div>
-
-          <MagicBento />
         </div>
       </div>
     </section>;
