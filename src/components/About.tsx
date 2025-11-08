@@ -16,6 +16,7 @@ const About = () => {
   }];
 
   const [isVisible, setIsVisible] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -42,8 +43,10 @@ const About = () => {
   return (
     <section id="about" className="py-24 px-4 bg-card" ref={sectionRef}>
       <div className="container max-w-6xl mx-auto">
-        <div className="text-center space-y-4 mb-16">
-          <ASCIIText text="About Me" asciiFontSize={6} textFontSize={120} />
+        <div className="text-center space-y-2 mb-8">
+          <div className="h-24 relative">
+            <ASCIIText text="About Me" asciiFontSize={2} textFontSize={120} />
+          </div>
           <div
             className={`transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -63,17 +66,18 @@ const About = () => {
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
               }`}
               style={{ transitionDelay: `${index * 200}ms` }}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
             >
-              <Card className="p-8 text-center hover:shadow-custom-lg transition-smooth border-border bg-card h-full">
+              <Card 
+                className="p-8 text-center hover:shadow-custom-lg transition-all duration-500 border-border bg-card h-full"
+                style={{
+                  filter: hoveredIndex === null ? 'blur(0px)' : hoveredIndex === index ? 'blur(0px)' : 'blur(4px)',
+                  transform: hoveredIndex === index ? 'scale(1.02)' : 'scale(1)'
+                }}
+              >
                 <h3 className="text-xl font-semibold mb-3">
-                  <TrueFocus 
-                    sentence={item.title} 
-                    manualMode={true}
-                    blurAmount={3}
-                    borderColor="hsl(var(--primary))"
-                    glowColor="hsl(var(--primary) / 0.6)"
-                    animationDuration={0.3}
-                  />
+                  {item.title}
                 </h3>
                 <p className="text-muted-foreground">{item.description}</p>
               </Card>
