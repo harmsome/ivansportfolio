@@ -47,13 +47,13 @@ const Hero = () => {
           <div className="space-y-6">
             <h1
               ref={headingRef}
-              className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-wide leading-tight"
+              className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-wide leading-tight whitespace-nowrap"
               style={{
                 perspective: "1000px",
                 transformStyle: "preserve-3d",
               }}
             >
-              Hey! I&apos;m <span className="gradient-animated block mt-4">Ivan</span>
+              Hey! I&apos;m <span className="gradient-animated">Ivan</span>
             </h1>
             <p className="text-2xl md:text-3xl lg:text-4xl text-muted-foreground animate-in slide-in-from-right-8 duration-1000 delay-400 mt-6">
               A Motion Grapher & Video Editor
