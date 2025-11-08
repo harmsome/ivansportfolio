@@ -1,135 +1,92 @@
-'use client';
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 
-import { useRef, useEffect, useCallback } from 'react';
-import gsap from 'gsap';
-import './BlobCursor.css';
-
-interface BlobCursorProps {
-  blobType?: string;
-  fillColor?: string;
-  trailCount?: number;
-  sizes?: number[];
-  innerSizes?: number[];
-  innerColor?: string;
-  opacities?: number[];
-  shadowColor?: string;
-  shadowBlur?: number;
-  shadowOffsetX?: number;
-  shadowOffsetY?: number;
-  filterId?: string;
-  filterStdDeviation?: number;
-  filterColorMatrixValues?: string;
-  useFilter?: boolean;
-  fastDuration?: number;
-  slowDuration?: number;
-  fastEase?: string;
-  slowEase?: string;
-  zIndex?: number;
-}
-
-export default function BlobCursor({
-  blobType = 'circle',
-  fillColor = '#5227FF',
-  trailCount = 3,
-  sizes = [60, 125, 75],
-  innerSizes = [20, 35, 25],
-  innerColor = 'rgba(255,255,255,0.8)',
-  opacities = [0.6, 0.6, 0.6],
-  shadowColor = 'rgba(0,0,0,0.75)',
-  shadowBlur = 5,
-  shadowOffsetX = 10,
-  shadowOffsetY = 10,
-  filterId = 'blob',
-  filterStdDeviation = 30,
-  filterColorMatrixValues = '1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 35 -10',
-  useFilter = true,
-  fastDuration = 0.1,
-  slowDuration = 0.5,
-  fastEase = 'power3.out',
-  slowEase = 'power1.out',
-  zIndex = 100
-}: BlobCursorProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const blobsRef = useRef<(HTMLDivElement | null)[]>([]);
-
-  const updateOffset = useCallback(() => {
-    if (!containerRef.current) return { left: 0, top: 0 };
-    const rect = containerRef.current.getBoundingClientRect();
-    return { left: rect.left, top: rect.top };
-  }, []);
-
-  const handleMove = useCallback(
-    (e: MouseEvent | TouchEvent) => {
-      const { left, top } = updateOffset();
-      const x = 'clientX' in e ? e.clientX : e.touches[0].clientX;
-      const y = 'clientY' in e ? e.clientY : e.touches[0].clientY;
-
-      blobsRef.current.forEach((el, i) => {
-        if (!el) return;
-        const isLead = i === 0;
-        gsap.to(el, {
-          x: x - left,
-          y: y - top,
-          duration: isLead ? fastDuration : slowDuration,
-          ease: isLead ? fastEase : slowEase
-        });
-      });
-    },
-    [updateOffset, fastDuration, slowDuration, fastEase, slowEase]
-  );
+const BlobCursor = () => {
+  const blobRef = useRef<HTMLDivElement>(null);
+  const trailsRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
-    const onResize = () => updateOffset();
-    window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
-  }, [updateOffset]);
+    const handleMouseMove = (e: MouseEvent) => {
+      const { clientX, clientY } = e;
+
+      if (blobRef.current) {
+        gsap.to(blobRef.current, {
+          x: clientX - 60,
+          y: clientY - 60,
+          duration: 0.1,
+          ease: "power2.out",
+        });
+      }
+
+      trailsRef.current.forEach((trail, index) => {
+        if (trail) {
+          gsap.to(trail, {
+            x: clientX - (index === 0 ? 62.5 : index === 1 ? 37.5 : 30),
+            y: clientY - (index === 0 ? 62.5 : index === 1 ? 37.5 : 30),
+            duration: 0.5 + index * 0.1,
+            ease: "power2.out",
+          });
+        }
+      });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
 
   return (
-    <div
-      ref={containerRef}
-      className="blob-container"
-      style={{ zIndex }}
-      onMouseMove={handleMove as any}
-      onTouchMove={handleMove as any}
-    >
-      {useFilter && (
-        <svg style={{ position: 'absolute', width: 0, height: 0 }}>
-          <filter id={filterId}>
-            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation={filterStdDeviation} />
-            <feColorMatrix in="blur" values={filterColorMatrixValues} />
-          </filter>
-        </svg>
-      )}
-
-      <div className="blob-main" style={{ filter: useFilter ? `url(#${filterId})` : undefined }}>
-        {Array.from({ length: trailCount }).map((_, i) => (
-          <div
-            key={i}
-            ref={el => (blobsRef.current[i] = el)}
-            className="blob"
-            style={{
-              width: sizes[i],
-              height: sizes[i],
-              borderRadius: blobType === 'circle' ? '50%' : '0%',
-              backgroundColor: fillColor,
-              opacity: opacities[i],
-              boxShadow: `${shadowOffsetX}px ${shadowOffsetY}px ${shadowBlur}px 0 ${shadowColor}`
-            }}
-          >
-            <div
-              className="inner-dot"
-              style={{
-                width: innerSizes[i],
-                height: innerSizes[i],
-                top: (sizes[i] - innerSizes[i]) / 2,
-                left: (sizes[i] - innerSizes[i]) / 2,
-                backgroundColor: innerColor,
-                borderRadius: blobType === 'circle' ? '50%' : '0%'
-              }}
-            />
-          </div>
-        ))}
+    <>
+      <div
+        ref={(el) => {
+          if (el) trailsRef.current[0] = el;
+        }}
+        className="fixed pointer-events-none z-[100] w-[125px] h-[125px] rounded-full opacity-60"
+        style={{
+          background: "radial-gradient(circle, rgba(82, 39, 255, 0.4) 0%, transparent 70%)",
+          filter: "blur(30px)",
+        }}
+      />
+      <div
+        ref={(el) => {
+          if (el) trailsRef.current[1] = el;
+        }}
+        className="fixed pointer-events-none z-[100] w-[75px] h-[75px] rounded-full opacity-60"
+        style={{
+          background: "radial-gradient(circle, rgba(147, 51, 234, 0.5) 0%, transparent 70%)",
+          filter: "blur(20px)",
+        }}
+      />
+      <div
+        ref={blobRef}
+        className="fixed pointer-events-none z-[100] w-[60px] h-[60px] rounded-full opacity-60"
+        style={{
+          background: "radial-gradient(circle, rgba(168, 85, 247, 0.6) 0%, rgba(236, 72, 153, 0.3) 100%)",
+          boxShadow: "0 0 20px rgba(168, 85, 247, 0.8), 10px 10px 5px rgba(0,0,0,0.75)",
+          filter: "blur(5px)",
+        }}
+      >
+        <div
+          className="w-[20px] h-[20px] rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          style={{
+            background: "rgba(255,255,255,0.8)",
+          }}
+        />
       </div>
-    </div>
+      <div
+        ref={(el) => {
+          if (el) trailsRef.current[2] = el;
+        }}
+        className="fixed pointer-events-none z-[100] w-[60px] h-[60px] rounded-full opacity-60"
+        style={{
+          background: "radial-gradient(circle, rgba(219, 39, 119, 0.4) 0%, transparent 70%)",
+          filter: "blur(25px)",
+        }}
+      />
+    </>
   );
-}
+};
+
+export default BlobCursor;

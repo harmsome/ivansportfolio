@@ -1,52 +1,35 @@
 import { ReactNode } from "react";
-import './StarBorder.css';
 
 interface StarBorderProps {
-  as?: keyof JSX.IntrinsicElements;
-  className?: string;
-  color?: string;
-  speed?: string;
-  thickness?: number;
   children: ReactNode;
-  [key: string]: any;
+  className?: string;
+  speed?: string;
 }
 
-const StarBorder = ({
-  as: Component = 'button',
-  className = '',
-  color = 'white',
-  speed = '6s',
-  thickness = 1,
-  children,
-  ...rest
-}: StarBorderProps) => {
-  const Comp = Component as any;
-  
+const StarBorder = ({ children, className = "", speed = "5s" }: StarBorderProps) => {
   return (
-    <Comp
-      className={`star-border-container ${className}`}
-      style={{
-        padding: `${thickness}px 0`,
-        ...rest.style
-      }}
-      {...rest}
-    >
+    <div className={`relative ${className}`}>
       <div
-        className="border-gradient-bottom"
+        className="absolute inset-0 rounded-md overflow-hidden"
         style={{
-          background: `radial-gradient(circle, ${color}, transparent 10%)`,
-          animationDuration: speed
+          background: "linear-gradient(90deg, transparent, cyan, transparent)",
+          animation: `rotate ${speed} linear infinite`,
         }}
-      ></div>
-      <div
-        className="border-gradient-top"
-        style={{
-          background: `radial-gradient(circle, ${color}, transparent 10%)`,
-          animationDuration: speed
-        }}
-      ></div>
-      <div className="inner-content">{children}</div>
-    </Comp>
+      />
+      <div className="relative bg-background rounded-md m-[2px]">
+        {children}
+      </div>
+      <style>{`
+        @keyframes rotate {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      `}</style>
+    </div>
   );
 };
 
