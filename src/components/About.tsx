@@ -43,10 +43,14 @@ const About = () => {
   return (
     <section id="about" className="py-24 px-4 bg-card" ref={sectionRef}>
       <div className="container max-w-6xl mx-auto">
-        <div className="text-center space-y-2 mb-8">
-          <div className="h-24 relative">
-            <ASCIIText text="About Me" asciiFontSize={2} textFontSize={120} />
-          </div>
+        <div className="text-center space-y-6 mb-12">
+          <h2 
+            className={`text-6xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent transition-all duration-1000 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
+            About Me
+          </h2>
           <div
             className={`transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -72,7 +76,7 @@ const About = () => {
               <Card 
                 className="p-8 text-center hover:shadow-custom-lg transition-all duration-500 border-border bg-card h-full"
                 style={{
-                  filter: hoveredIndex === null ? 'blur(0px)' : hoveredIndex === index ? 'blur(0px)' : 'blur(4px)',
+                  filter: hoveredIndex === null ? 'blur(4px)' : hoveredIndex === index ? 'blur(0px)' : 'blur(4px)',
                   transform: hoveredIndex === index ? 'scale(1.02)' : 'scale(1)'
                 }}
               >
