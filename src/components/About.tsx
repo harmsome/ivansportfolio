@@ -41,7 +41,7 @@ const About = () => {
   }, []);
 
   return (
-    <section id="about" className="py-24 px-4 bg-card" ref={sectionRef}>
+    <section id="about" className="relative py-24 px-4 bg-gradient-to-b from-card via-card to-muted/30" ref={sectionRef}>
       <div className="container max-w-6xl mx-auto">
         <div className="text-center space-y-6 mb-12">
           <div 
@@ -83,7 +83,7 @@ const About = () => {
               <Card 
                 className="p-8 text-center hover:shadow-custom-lg transition-all duration-500 border-border bg-card h-full"
                 style={{
-                  filter: hoveredIndex === null ? 'blur(4px)' : hoveredIndex === index ? 'blur(0px)' : 'blur(4px)',
+                  filter: hoveredIndex === null ? 'blur(1px)' : hoveredIndex === index ? 'blur(0px)' : 'blur(1px)',
                   transform: hoveredIndex === index ? 'scale(1.02)' : 'scale(1)'
                 }}
               >

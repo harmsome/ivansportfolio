@@ -15,7 +15,7 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-24 px-4 bg-muted/30">
+    <section id="skills" className="relative py-24 px-4 bg-gradient-to-b from-muted/30 via-muted/30 to-background">
       <div className="container max-w-6xl mx-auto">
         <div className="text-center space-y-4 mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
           <h2 className="text-3xl md:text-4xl font-bold">Skills</h2>
@@ -26,7 +26,10 @@ const Skills = () => {
           {tools.map((tool, index) => (
             <Card 
               key={index} 
-              className="p-6 flex flex-col items-center justify-center gap-4 hover:shadow-custom-lg transition-smooth border-border bg-card"
+              className="p-6 flex flex-col items-center justify-center gap-4 hover:shadow-custom-lg transition-smooth border-border bg-card animate-float"
+              style={{
+                animationDelay: `${index * 0.2}s`
+              }}
             >
               <div className="w-16 h-16 flex items-center justify-center">
                 <img 

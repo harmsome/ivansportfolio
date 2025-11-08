@@ -6,6 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import ProjectDetail from "./pages/ProjectDetail";
 import NotFound from "./pages/NotFound";
+import BlobCursor from "./components/BlobCursor";
+import ClickSpark from "./components/ClickSpark";
 
 const queryClient = new QueryClient();
 
@@ -15,13 +17,16 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/project/:id" element={<ProjectDetail />} />
-          <Route path="/project/:id/:subId" element={<ProjectDetail />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <ClickSpark sparkColor="#a855f7" sparkRadius={25} sparkCount={12}>
+          <BlobCursor />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/project/:id" element={<ProjectDetail />} />
+            <Route path="/project/:id/:subId" element={<ProjectDetail />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </ClickSpark>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
