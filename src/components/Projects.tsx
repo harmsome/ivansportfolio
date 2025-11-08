@@ -64,11 +64,11 @@ const Projects = () => {
   }];
 
   return (
-    <section id="projects" className="py-12 overflow-hidden bg-card">
+    <section id="projects" className="pt-20 pb-12 overflow-hidden bg-card">
       <div className="container max-w-7xl mx-auto px-4">
-        <div className="text-center space-y-2 mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Projects</h2>
-          <p className="text-muted-foreground text-lg font-mono tracking-wider">
+        <div className="text-center space-y-1 mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Projects</h2>
+          <p className="text-muted-foreground text-base font-mono tracking-wider">
             / Portfolio Showcase
           </p>
         </div>

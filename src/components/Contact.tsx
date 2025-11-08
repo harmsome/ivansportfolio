@@ -77,9 +77,9 @@ const Contact = () => {
           <MagicBento />
 
           <div className="space-y-6">
-            <Card className="p-6 border-border bg-card">
+            <Card className="p-6 border-border bg-card hover:shadow-lg transition-all duration-300 hover:scale-[1.02] group">
               <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full gradient-primary">
+                <div className="p-3 rounded-full gradient-primary group-hover:scale-110 transition-transform duration-300">
                   <Mail className="h-6 w-6 text-primary-foreground" />
                 </div>
                 <div>
@@ -89,9 +89,9 @@ const Contact = () => {
               </div>
             </Card>
 
-            <Card className="p-6 border-border bg-card">
+            <Card className="p-6 border-border bg-card hover:shadow-lg transition-all duration-300 hover:scale-[1.02] group">
               <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full gradient-primary">
+                <div className="p-3 rounded-full gradient-primary group-hover:scale-110 transition-transform duration-300">
                   <Phone className="h-6 w-6 text-primary-foreground" />
                 </div>
                 <div>
@@ -101,9 +101,9 @@ const Contact = () => {
               </div>
             </Card>
 
-            <Card className="p-6 border-border bg-card">
+            <Card className="p-6 border-border bg-card hover:shadow-lg transition-all duration-300 hover:scale-[1.02] group">
               <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full gradient-primary">
+                <div className="p-3 rounded-full gradient-primary group-hover:scale-110 transition-transform duration-300">
                   <MapPin className="h-6 w-6 text-primary-foreground" />
                 </div>
                 <div>
@@ -113,7 +113,7 @@ const Contact = () => {
               </div>
             </Card>
 
-            <Card className="p-6 border-border bg-card">
+            <Card className="p-6 border-border bg-card hover:shadow-lg transition-all duration-300 group">
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <Input 

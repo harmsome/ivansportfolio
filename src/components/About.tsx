@@ -1,7 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { useEffect, useRef, useState } from "react";
 import ASCIIText from "./ASCIIText";
-import TrueFocus from "./TrueFocus";
 
 const About = () => {
   const highlights = [{
@@ -84,7 +83,7 @@ const About = () => {
               <Card 
                 className="p-8 text-center hover:shadow-custom-lg transition-all duration-500 border-border bg-card h-full"
                 style={{
-                  filter: hoveredIndex === null ? 'blur(4px)' : hoveredIndex === index ? 'blur(0px)' : 'blur(4px)',
+                  filter: hoveredIndex === null ? 'none' : hoveredIndex === index ? 'none' : 'blur(4px)',
                   transform: hoveredIndex === index ? 'scale(1.02)' : 'scale(1)'
                 }}
               >

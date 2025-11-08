@@ -6,7 +6,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import ProjectDetail from "./pages/ProjectDetail";
 import NotFound from "./pages/NotFound";
-import BlobCursor from "./components/BlobCursor";
 import ClickSpark from "./components/ClickSpark";
 
 const queryClient = new QueryClient();
@@ -18,7 +17,6 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ClickSpark sparkColor="#ffffff" sparkRadius={25} sparkCount={12}>
-          <BlobCursor />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/project/:id" element={<ProjectDetail />} />
