@@ -44,6 +44,7 @@ const About = () => {
     <section id="about" className="relative py-24 px-4 bg-gradient-to-b from-card via-card to-muted/30" ref={sectionRef}>
       <div className="container max-w-6xl mx-auto">
         <div className="text-center space-y-6 mb-12">
+          <h2 className="sr-only">About Me</h2>
           <div 
             className={`relative mx-auto flex justify-center items-center h-[140px] md:h-[180px] w-full max-w-5xl transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -83,7 +84,7 @@ const About = () => {
               <Card 
                 className="p-8 text-center hover:shadow-custom-lg transition-all duration-500 border-border bg-card h-full"
                 style={{
-                  filter: hoveredIndex === null ? 'blur(1px)' : hoveredIndex === index ? 'blur(0px)' : 'blur(1px)',
+                  filter: hoveredIndex === null ? 'blur(4px)' : hoveredIndex === index ? 'blur(0px)' : 'blur(4px)',
                   transform: hoveredIndex === index ? 'scale(1.02)' : 'scale(1)'
                 }}
               >

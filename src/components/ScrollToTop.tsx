@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { ArrowUp } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import scrollTopIcon from "@/assets/scroll-top-icon.png";
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -31,15 +30,17 @@ const ScrollToTop = () => {
   return (
     <>
       {isVisible && (
-        <Button
+        <button
           onClick={scrollToTop}
-          variant="hero"
-          size="icon"
-          className="fixed bottom-8 right-8 z-50 shadow-custom-lg animate-fade-in"
+          className="fixed bottom-8 right-8 z-50 w-14 h-14 rounded-full bg-white shadow-custom-lg hover:scale-110 transition-transform duration-300 animate-fade-in flex items-center justify-center"
           aria-label="Scroll to top"
         >
-          <ArrowUp className="h-5 w-5" />
-        </Button>
+          <img 
+            src={scrollTopIcon} 
+            alt="Scroll to top" 
+            className="w-8 h-8 object-contain"
+          />
+        </button>
       )}
     </>
   );

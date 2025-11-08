@@ -6,6 +6,7 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
+import MagicBento from "./MagicBento";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -72,7 +73,7 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           <div className="space-y-6">
             <Card className="p-6 border-border bg-card">
               <div className="flex items-start gap-4">
@@ -109,49 +110,51 @@ const Contact = () => {
                 </div>
               </div>
             </Card>
+
+            <Card className="p-6 border-border bg-card">
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <Input 
+                    placeholder="Your Name" 
+                    className="bg-background" 
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    required
+                  />
+                </div>
+                <div>
+                  <Input 
+                    type="email" 
+                    placeholder="Your Email" 
+                    className="bg-background" 
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    required
+                  />
+                </div>
+                <div>
+                  <Textarea 
+                    placeholder="Your Message" 
+                    rows={5} 
+                    className="bg-background resize-none" 
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    required
+                  />
+                </div>
+                <Button 
+                  type="submit" 
+                  variant="hero" 
+                  className="w-full hover-scale" 
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                </Button>
+              </form>
+            </Card>
           </div>
 
-          <Card className="p-6 border-border bg-card">
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <Input 
-                  placeholder="Your Name" 
-                  className="bg-background" 
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  required
-                />
-              </div>
-              <div>
-                <Input 
-                  type="email" 
-                  placeholder="Your Email" 
-                  className="bg-background" 
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  required
-                />
-              </div>
-              <div>
-                <Textarea 
-                  placeholder="Your Message" 
-                  rows={5} 
-                  className="bg-background resize-none" 
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  required
-                />
-              </div>
-              <Button 
-                type="submit" 
-                variant="hero" 
-                className="w-full hover-scale" 
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? "Sending..." : "Send Message"}
-              </Button>
-            </form>
-          </Card>
+          <MagicBento />
         </div>
       </div>
     </section>;
