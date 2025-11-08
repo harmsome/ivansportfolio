@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { useEffect, useRef, useState } from "react";
 import ASCIIText from "./ASCIIText";
+import TrueFocus from "./TrueFocus";
 
 const About = () => {
   const highlights = [{
@@ -43,20 +44,13 @@ const About = () => {
     <section id="about" className="py-24 px-4 bg-card" ref={sectionRef}>
       <div className="container max-w-6xl mx-auto">
         <div className="text-center space-y-6 mb-12">
-          <div 
-            className={`relative mx-auto h-[180px] md:h-[220px] w-full max-w-5xl transition-all duration-1000 ${
+          <h2 
+            className={`text-6xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            <ASCIIText
-              text="About Me"
-              asciiFontSize={6}
-              textFontSize={180}
-              textColor="#fdf9f3"
-              planeBaseHeight={6}
-              enableWaves={true}
-            />
-          </div>
+            About Me
+          </h2>
           <div
             className={`transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
