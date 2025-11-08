@@ -6,7 +6,7 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
-import MagicBento from "./MagicBento";
+
 
 const Contact = () => {
   const { toast } = useToast();
@@ -73,11 +73,9 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          <MagicBento />
-
+        <div className="max-w-2xl mx-auto">
           <div className="space-y-6">
-            <Card className="p-6 border-border bg-card hover:shadow-lg transition-all duration-300 hover:scale-[1.02] group">
+            <Card className="p-6 border-2 border-border bg-card hover:shadow-lg transition-all duration-300 hover:scale-[1.02] hover:border-primary group">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-full gradient-primary group-hover:scale-110 transition-transform duration-300">
                   <Mail className="h-6 w-6 text-primary-foreground" />
@@ -89,7 +87,7 @@ const Contact = () => {
               </div>
             </Card>
 
-            <Card className="p-6 border-border bg-card hover:shadow-lg transition-all duration-300 hover:scale-[1.02] group">
+            <Card className="p-6 border-2 border-border bg-card hover:shadow-lg transition-all duration-300 hover:scale-[1.02] hover:border-primary group">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-full gradient-primary group-hover:scale-110 transition-transform duration-300">
                   <Phone className="h-6 w-6 text-primary-foreground" />
@@ -101,7 +99,7 @@ const Contact = () => {
               </div>
             </Card>
 
-            <Card className="p-6 border-border bg-card hover:shadow-lg transition-all duration-300 hover:scale-[1.02] group">
+            <Card className="p-6 border-2 border-border bg-card hover:shadow-lg transition-all duration-300 hover:scale-[1.02] hover:border-primary group">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-full gradient-primary group-hover:scale-110 transition-transform duration-300">
                   <MapPin className="h-6 w-6 text-primary-foreground" />
@@ -113,7 +111,7 @@ const Contact = () => {
               </div>
             </Card>
 
-            <Card className="p-6 border-border bg-card hover:shadow-lg transition-all duration-300 group">
+            <Card className="p-6 border-2 border-border bg-card hover:shadow-lg transition-all duration-300 hover:border-primary group">
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <Input 

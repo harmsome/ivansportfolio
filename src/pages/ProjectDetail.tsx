@@ -2,6 +2,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import Footer from "@/components/Footer";
+import FlowingMenu from "@/components/FlowingMenu";
+import CircularNextButton from "@/components/CircularNextButton";
 import project2DAnimation from "@/assets/project-2d-animation.jpg";
 import projectVideoEditing from "@/assets/project-video-editing.jpg";
 import projectUIUXDesign from "@/assets/project-uiux-design.jpg";
@@ -332,7 +334,7 @@ const ProjectDetail = () => {
         </div>
       </section>
 
-      {/* Sub-Projects List */}
+      {/* Sub-Projects List with FlowingMenu */}
       <section className="py-24 bg-muted/30">
         <div className="container max-w-7xl mx-auto px-4">
           <div className="text-primary font-mono text-sm mb-6">[PROJECTS]</div>
@@ -340,72 +342,34 @@ const ProjectDetail = () => {
             Featured Work
           </h2>
           
-          <div className="space-y-6">
-            {project.subProjects.map((subProject) => (
-              <div 
-                key={subProject.id}
-                className="group border border-border bg-card hover:border-primary/50 transition-all duration-300"
-              >
-                <div className="grid md:grid-cols-[1fr_auto] gap-8 p-8 md:p-12 items-center">
-                  <div>
-                    <div className="flex items-baseline gap-4 mb-4">
-                      <h3 className="text-2xl md:text-3xl font-bold tracking-tight">
-                        {subProject.title}
-                      </h3>
-                      <span className="text-muted-foreground font-mono text-sm">
-                        {subProject.year}
-                      </span>
-                    </div>
-                    <p className="text-muted-foreground text-lg">
-                      {subProject.description}
-                    </p>
-                  </div>
-                  
-                  <Button 
-                    onClick={() => navigate(`/project/${id}/${subProject.id}`)}
-                    variant="outline"
-                    className="group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all whitespace-nowrap"
-                  >
-                    View This Project
-                    <ArrowLeft className="h-4 w-4 rotate-180 ml-2" />
-                  </Button>
-                </div>
-              </div>
-            ))}
+          <div className="h-[600px]">
+            <FlowingMenu 
+              items={project.subProjects.map((subProject) => ({
+                link: `/project/${id}/${subProject.id}`,
+                text: subProject.title,
+                image: subProject.image
+              }))}
+            />
           </div>
         </div>
       </section>
 
-      {/* Category Navigation */}
+      {/* Category Navigation - Hidden */}
       <section className="py-16 border-t border-border">
         <div className="container max-w-7xl mx-auto px-4">
-          <div className="flex justify-between items-center">
-            <div className="text-muted-foreground font-mono text-sm">
-              [CATEGORY {id} / {projects.length}]
-            </div>
-            <div className="flex gap-4">
-              {Number(id) > 1 && (
-                <Button 
-                  variant="outline" 
-                  onClick={() => navigate(`/project/${Number(id) - 1}`)}
-                >
-                  <ArrowLeft className="h-4 w-4" />
-                  Previous Category
-                </Button>
-              )}
-              {Number(id) < projects.length && (
-                <Button 
-                  onClick={() => navigate(`/project/${Number(id) + 1}`)}
-                  className="bg-primary text-primary-foreground hover:bg-primary/90"
-                >
-                  Next Category
-                  <ArrowLeft className="h-4 w-4 rotate-180" />
-                </Button>
-              )}
-            </div>
+          <div className="text-muted-foreground font-mono text-sm text-center">
+            [CATEGORY {id} / {projects.length}]
           </div>
         </div>
       </section>
+
+      {/* Circular Next Category Button */}
+      {Number(id) < projects.length && (
+        <CircularNextButton 
+          nextCategoryName={projects[Number(id)]?.title || "Next Category"}
+          onClick={() => navigate(`/project/${Number(id) + 1}`)}
+        />
+      )}
 
       <Footer />
     </main>

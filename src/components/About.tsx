@@ -83,7 +83,7 @@ const About = () => {
               <Card 
                 className="p-8 text-center hover:shadow-custom-lg transition-all duration-500 border-border bg-card h-full"
                 style={{
-                  filter: hoveredIndex === null ? 'none' : hoveredIndex === index ? 'none' : 'blur(4px)',
+                  filter: hoveredIndex === null ? 'blur(1px)' : hoveredIndex === index ? 'blur(0px)' : 'blur(4px)',
                   transform: hoveredIndex === index ? 'scale(1.02)' : 'scale(1)'
                 }}
               >
