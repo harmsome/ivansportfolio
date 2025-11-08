@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
 import { gsap } from "gsap";
 import TypewriterText from "./TypewriterText";
-import StarBorder from "./StarBorder";
 
 const Hero = () => {
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -74,11 +73,9 @@ const Hero = () => {
                 <ArrowRight className="ml-2 h-6 w-6" />
               </a>
             </Button>
-            <StarBorder speed="5s">
-              <Button variant="outline" size="lg" asChild className="text-lg px-10 py-6 bg-transparent">
-                <a href="#contact">Get In Touch</a>
-              </Button>
-            </StarBorder>
+            <Button variant="outline" size="lg" asChild className="text-lg px-10 py-6">
+              <a href="#contact">Get In Touch</a>
+            </Button>
           </div>
 
           <div className="flex gap-8 justify-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500 mt-10">
