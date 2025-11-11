@@ -4,8 +4,6 @@ import { ArrowLeft } from "lucide-react";
 import Footer from "@/components/Footer";
 import FlowingMenu from "@/components/FlowingMenu";
 import CircularNextButton from "@/components/CircularNextButton";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { useState } from "react";
 import project2DAnimation from "@/assets/fearflix-door.jpg";
 import fearflixHeroEyes from "@/assets/fearflix-hero-eyes.jpg";
 import projectVideoEditing from "@/assets/project-video-editing.jpg";
@@ -44,7 +42,6 @@ interface SubProject {
 const ProjectDetail = () => {
   const { id, subId } = useParams();
   const navigate = useNavigate();
-  const [selectedStyleframe, setSelectedStyleframe] = useState<string | null>(null);
 
   const projects = [{
     id: 1,
@@ -278,27 +275,16 @@ const ProjectDetail = () => {
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {subProject.styleframes.map((frame) => (
-                  <Dialog key={frame.id}>
-                    <DialogTrigger asChild>
-                      <div className="relative cursor-pointer group">
-                        <div className="absolute -top-6 left-0 text-primary font-mono text-xs">
-                          Styleframe {frame.id}
-                        </div>
-                        <img 
-                          src={frame.image} 
-                          alt={`Styleframe ${frame.id}`}
-                          className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-105"
-                        />
-                      </div>
-                    </DialogTrigger>
-                    <DialogContent className="max-w-6xl w-full p-0 border-0">
-                      <img 
-                        src={frame.image} 
-                        alt={`Styleframe ${frame.id}`}
-                        className="w-full h-auto object-contain"
-                      />
-                    </DialogContent>
-                  </Dialog>
+                  <div key={frame.id} className="relative cursor-pointer group">
+                    <div className="absolute -top-6 left-0 text-primary font-mono text-xs">
+                      Styleframe {frame.id}
+                    </div>
+                    <img 
+                      src={frame.image} 
+                      alt={`Styleframe ${frame.id}`}
+                      className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-105"
+                    />
+                  </div>
                 ))}
               </div>
             </div>
