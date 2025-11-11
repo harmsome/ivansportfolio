@@ -6,6 +6,7 @@ import FlowingMenu from "@/components/FlowingMenu";
 import CircularNextButton from "@/components/CircularNextButton";
 import project2DAnimation from "@/assets/fearflix-door.jpg";
 import fearflixHeroEyes from "@/assets/fearflix-hero-eyes.jpg";
+import fearflixNetflixBg from "@/assets/fearflix-netflix-bg.jpg";
 import projectVideoEditing from "@/assets/project-video-editing.jpg";
 import projectUIUXDesign from "@/assets/project-uiux-design.jpg";
 import project3DModeling from "@/assets/project-3d-modeling.jpg";
@@ -60,7 +61,7 @@ const ProjectDetail = () => {
         title: "The Fearflix", 
         year: "2024", 
         description: "This is a Netflix horror series 2d animation ads", 
-        image: fearflixHeroEyes,
+        image: fearflixNetflixBg,
         overview: "A chilling Netflix horror series brought to life through compelling 2D animation. This project combines dark atmospheric visuals with smooth motion design to create an engaging promotional campaign that captures the essence of fear and suspense. Each frame was meticulously crafted to build tension and intrigue, drawing viewers into a world of supernatural terror.",
         styleframes: [
           { id: 1, image: fearflixStyleframe1 },

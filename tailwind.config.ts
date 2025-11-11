@@ -16,7 +16,7 @@ export default {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
-        horror: ['Creepster', 'cursive'],
+        horror: ['Nosifer', 'cursive'],
       },
       colors: {
         border: "hsl(var(--border))",
