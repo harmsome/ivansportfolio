@@ -4,11 +4,19 @@ import { ArrowLeft } from "lucide-react";
 import Footer from "@/components/Footer";
 import FlowingMenu from "@/components/FlowingMenu";
 import CircularNextButton from "@/components/CircularNextButton";
-import project2DAnimation from "@/assets/project-2d-animation.jpg";
+import project2DAnimation from "@/assets/fearflix-door.jpg";
 import projectVideoEditing from "@/assets/project-video-editing.jpg";
 import projectUIUXDesign from "@/assets/project-uiux-design.jpg";
 import project3DModeling from "@/assets/project-3d-modeling.jpg";
 import projectInstallations from "@/assets/project-installations.jpg";
+import fearflixNetflix from "@/assets/fearflix-netflix.jpg";
+import fearflixStyleframe1 from "@/assets/fearflix-styleframe-1.jpg";
+import fearflixStyleframe2 from "@/assets/fearflix-styleframe-2.jpg";
+import fearflixStyleframe3 from "@/assets/fearflix-styleframe-3.jpg";
+import fearflixStyleframe4 from "@/assets/fearflix-styleframe-4.jpg";
+import fearflixStyleframe5 from "@/assets/fearflix-styleframe-5.jpg";
+import fearflixStyleframe6 from "@/assets/fearflix-styleframe-6.jpg";
+import fearflixStyleframe7 from "@/assets/fearflix-styleframe-7.jpg";
 import photoshopLogo from "@/assets/photoshop-logo.png";
 import illustratorLogo from "@/assets/illustrator-logo.png";
 import aftereffectsLogo from "@/assets/aftereffects-logo.png";
@@ -17,6 +25,17 @@ import figmaLogo from "@/assets/figma-logo.png";
 import framerLogo from "@/assets/framer-logo.png";
 import blenderLogo from "@/assets/blender-logo.png";
 import unityLogo from "@/assets/unity-logo.png";
+
+interface SubProject {
+  id: number;
+  title: string;
+  year: string;
+  description: string;
+  image: string;
+  overview?: string;
+  styleframes?: Array<{ id: number; image: string }>;
+  videoPath?: string;
+}
 
 const ProjectDetail = () => {
   const { id, subId } = useParams();
@@ -34,10 +53,27 @@ const ProjectDetail = () => {
     ],
     image: project2DAnimation,
     subProjects: [
-      { id: 1, title: "Character Animation Study", year: "2024", description: "Expressive character movements exploring emotion", image: project2DAnimation },
+      { 
+        id: 1, 
+        title: "The Fearflix", 
+        year: "2024", 
+        description: "This is a Netflix horror series 2d animation ads", 
+        image: fearflixNetflix,
+        overview: "A chilling Netflix horror series brought to life through compelling 2D animation. This project combines dark atmospheric visuals with smooth motion design to create an engaging promotional campaign that captures the essence of fear and suspense. Each frame was meticulously crafted to build tension and intrigue, drawing viewers into a world of supernatural terror.",
+        styleframes: [
+          { id: 1, image: fearflixStyleframe1 },
+          { id: 2, image: fearflixStyleframe2 },
+          { id: 3, image: fearflixStyleframe3 },
+          { id: 4, image: fearflixStyleframe4 },
+          { id: 5, image: fearflixStyleframe5 },
+          { id: 6, image: fearflixStyleframe6 },
+          { id: 7, image: fearflixStyleframe7 }
+        ],
+        videoPath: "/videos/fearflix-final.mp4"
+      },
       { id: 2, title: "Motion Graphics Reel", year: "2024", description: "Dynamic typography and shape animations", image: project2DAnimation },
       { id: 3, title: "Explainer Animation", year: "2024", description: "Clear visual storytelling for complex concepts", image: project2DAnimation }
-    ]
+    ] as SubProject[]
   }, {
     id: 2,
     title: "Video Editing",
@@ -53,7 +89,7 @@ const ProjectDetail = () => {
       { id: 1, title: "Documentary Edit", year: "2024", description: "Narrative-driven documentary storytelling", image: projectVideoEditing },
       { id: 2, title: "Commercial Campaign", year: "2024", description: "Fast-paced promotional content", image: projectVideoEditing },
       { id: 3, title: "Music Video", year: "2024", description: "Rhythmic editing synced to music", image: projectVideoEditing }
-    ]
+    ] as SubProject[]
   }, {
     id: 3,
     title: "UI/UX Design",
@@ -69,7 +105,7 @@ const ProjectDetail = () => {
       { id: 1, title: "E-commerce Platform", year: "2024", description: "Seamless shopping experience design", image: projectUIUXDesign },
       { id: 2, title: "Mobile App Interface", year: "2024", description: "Intuitive mobile-first design", image: projectUIUXDesign },
       { id: 3, title: "Dashboard Design", year: "2024", description: "Data visualization and analytics", image: projectUIUXDesign }
-    ]
+    ] as SubProject[]
   }, {
     id: 4,
     title: "3D Modeling",
@@ -84,7 +120,7 @@ const ProjectDetail = () => {
       { id: 1, title: "Product Visualization", year: "2024", description: "Photorealistic product renders", image: project3DModeling },
       { id: 2, title: "Character Modeling", year: "2024", description: "Stylized 3D character creation", image: project3DModeling },
       { id: 3, title: "Environment Design", year: "2024", description: "Immersive 3D environments", image: project3DModeling }
-    ]
+    ] as SubProject[]
   }, {
     id: 5,
     title: "Installations",
@@ -98,7 +134,7 @@ const ProjectDetail = () => {
       { id: 1, title: "Interactive Wall", year: "2024", description: "Touch-responsive digital installation", image: projectInstallations },
       { id: 2, title: "VR Experience", year: "2024", description: "Immersive virtual reality environment", image: projectInstallations },
       { id: 3, title: "Motion Tracking", year: "2024", description: "Gesture-controlled interactive space", image: projectInstallations }
-    ]
+    ] as SubProject[]
   }];
 
   const project = projects.find(p => p.id === Number(id));
@@ -183,7 +219,7 @@ const ProjectDetail = () => {
                   Project Overview
                 </h2>
                 <p className="text-muted-foreground text-lg leading-relaxed">
-                  This project showcases expertise in {project.title.toLowerCase()}, utilizing industry-standard tools and techniques to deliver exceptional results. Every detail has been carefully crafted to achieve the desired impact.
+                  {subProject.overview || `This project showcases expertise in ${project.title.toLowerCase()}, utilizing industry-standard tools and techniques to deliver exceptional results. Every detail has been carefully crafted to achieve the desired impact.`}
                 </p>
               </div>
 
@@ -196,12 +232,15 @@ const ProjectDetail = () => {
                   {project.apps.map((app, index) => (
                     <div 
                       key={index}
-                      className="flex items-center gap-3 px-6 py-3 border border-border bg-card"
+                      className="group flex items-center gap-3 px-6 py-3 border border-border bg-card hover:border-primary/50 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                      style={{
+                        animation: `float 3s ease-in-out infinite ${index * 0.2}s`
+                      }}
                     >
                       <img 
                         src={app.icon} 
                         alt={app.name}
-                        className="w-8 h-8 object-contain"
+                        className="w-8 h-8 object-contain group-hover:scale-110 transition-transform duration-300"
                       />
                       <span className="text-sm font-medium">{app.name}</span>
                     </div>
@@ -212,32 +251,64 @@ const ProjectDetail = () => {
           </div>
         </section>
 
-        {/* Full Width Image Section */}
-        <section className="w-full">
-          <img 
-            src={subProject.image} 
-            alt="Project detail"
-            className="w-full h-[80vh] object-cover"
-          />
-        </section>
+        <style>{`
+          @keyframes float {
+            0%, 100% {
+              transform: translateY(0px);
+            }
+            50% {
+              transform: translateY(-10px);
+            }
+          }
+        `}</style>
 
-        {/* Process Section */}
-        <section className="py-32 bg-muted/30">
-          <div className="container max-w-7xl mx-auto px-4">
-            <div className="max-w-4xl">
-              <div className="text-primary font-mono text-sm mb-6">[PROCESS]</div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-8 tracking-tight">
-                Creative Process
+        {/* Design Styleframes Section - Only show if styleframes exist */}
+        {subProject.styleframes && subProject.styleframes.length > 0 && (
+          <section className="py-32 bg-background">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[DESIGN STYLEFRAMES]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Design Styleframes
               </h2>
-              <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-                The creative process involved careful planning, iterative design, and attention to detail. Each phase was executed with precision to ensure the final outcome met the highest standards.
-              </p>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                From initial concept to final delivery, the project demonstrated strong technical skills and creative vision, resulting in a compelling piece that effectively communicates its intended message.
-              </p>
+              <div className="grid grid-cols-1 gap-12">
+                {subProject.styleframes.map((frame, index) => (
+                  <div key={frame.id} className="relative">
+                    <div className="absolute -top-8 left-0 text-primary font-mono text-sm">
+                      Styleframe {frame.id}
+                    </div>
+                    <img 
+                      src={frame.image} 
+                      alt={`Styleframe ${frame.id}`}
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
+
+        {/* Final Outcome Video Section - Only show if video exists */}
+        {subProject.videoPath && (
+          <section className="py-32 bg-muted/30">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[FINAL OUTCOME]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Final Outcome
+              </h2>
+              <div className="relative w-full aspect-video bg-black">
+                <video 
+                  controls
+                  className="w-full h-full"
+                  poster={subProject.image}
+                >
+                  <source src={subProject.videoPath} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Navigation */}
         <section className="py-16 border-t border-border">
