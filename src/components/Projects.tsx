@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, CarouselApi } from "@/components/ui/carousel";
-import project2DAnimation from "@/assets/project-2d-animation.jpg";
+import project2DAnimation from "@/assets/fearflix-door.jpg";
 import projectVideoEditing from "@/assets/project-video-editing.jpg";
 import projectUIUXDesign from "@/assets/project-uiux-design.jpg";
 import project3DModeling from "@/assets/project-3d-modeling.jpg";

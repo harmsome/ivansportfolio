@@ -4,7 +4,10 @@ import { ArrowLeft } from "lucide-react";
 import Footer from "@/components/Footer";
 import FlowingMenu from "@/components/FlowingMenu";
 import CircularNextButton from "@/components/CircularNextButton";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { useState } from "react";
 import project2DAnimation from "@/assets/fearflix-door.jpg";
+import fearflixHeroEyes from "@/assets/fearflix-hero-eyes.jpg";
 import projectVideoEditing from "@/assets/project-video-editing.jpg";
 import projectUIUXDesign from "@/assets/project-uiux-design.jpg";
 import project3DModeling from "@/assets/project-3d-modeling.jpg";
@@ -35,11 +38,13 @@ interface SubProject {
   overview?: string;
   styleframes?: Array<{ id: number; image: string }>;
   videoPath?: string;
+  isHorror?: boolean;
 }
 
 const ProjectDetail = () => {
   const { id, subId } = useParams();
   const navigate = useNavigate();
+  const [selectedStyleframe, setSelectedStyleframe] = useState<string | null>(null);
 
   const projects = [{
     id: 1,
@@ -58,7 +63,7 @@ const ProjectDetail = () => {
         title: "The Fearflix", 
         year: "2024", 
         description: "This is a Netflix horror series 2d animation ads", 
-        image: fearflixNetflix,
+        image: fearflixHeroEyes,
         overview: "A chilling Netflix horror series brought to life through compelling 2D animation. This project combines dark atmospheric visuals with smooth motion design to create an engaging promotional campaign that captures the essence of fear and suspense. Each frame was meticulously crafted to build tension and intrigue, drawing viewers into a world of supernatural terror.",
         styleframes: [
           { id: 1, image: fearflixStyleframe1 },
@@ -69,7 +74,8 @@ const ProjectDetail = () => {
           { id: 6, image: fearflixStyleframe6 },
           { id: 7, image: fearflixStyleframe7 }
         ],
-        videoPath: "/videos/fearflix-final.mp4"
+        videoPath: "/videos/fearflix-final.mp4",
+        isHorror: true
       },
       { id: 2, title: "Motion Graphics Reel", year: "2024", description: "Dynamic typography and shape animations", image: project2DAnimation },
       { id: 3, title: "Explainer Animation", year: "2024", description: "Clear visual storytelling for complex concepts", image: project2DAnimation }
@@ -198,7 +204,7 @@ const ProjectDetail = () => {
           <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-16">
             <div className="container max-w-7xl mx-auto">
               <div className="text-white/60 font-mono text-sm mb-2">{project.title}</div>
-              <h1 className="text-6xl md:text-8xl font-bold text-white tracking-tight mb-4">
+              <h1 className={`text-6xl md:text-8xl font-bold text-white tracking-tight mb-4 ${subProject.isHorror ? 'font-horror' : ''}`}>
                 {subProject.title}
               </h1>
               <div className="text-white/80 text-lg md:text-xl mb-2">{subProject.year}</div>
@@ -267,21 +273,32 @@ const ProjectDetail = () => {
           <section className="py-32 bg-background">
             <div className="container max-w-7xl mx-auto px-4">
               <div className="text-primary font-mono text-sm mb-6">[DESIGN STYLEFRAMES]</div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+              <h2 className={`text-4xl md:text-5xl font-bold mb-16 tracking-tight ${subProject.isHorror ? 'font-horror' : ''}`}>
                 Design Styleframes
               </h2>
-              <div className="grid grid-cols-1 gap-12">
-                {subProject.styleframes.map((frame, index) => (
-                  <div key={frame.id} className="relative">
-                    <div className="absolute -top-8 left-0 text-primary font-mono text-sm">
-                      Styleframe {frame.id}
-                    </div>
-                    <img 
-                      src={frame.image} 
-                      alt={`Styleframe ${frame.id}`}
-                      className="w-full h-auto object-cover"
-                    />
-                  </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {subProject.styleframes.map((frame) => (
+                  <Dialog key={frame.id}>
+                    <DialogTrigger asChild>
+                      <div className="relative cursor-pointer group">
+                        <div className="absolute -top-6 left-0 text-primary font-mono text-xs">
+                          Styleframe {frame.id}
+                        </div>
+                        <img 
+                          src={frame.image} 
+                          alt={`Styleframe ${frame.id}`}
+                          className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-105"
+                        />
+                      </div>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-6xl w-full p-0 border-0">
+                      <img 
+                        src={frame.image} 
+                        alt={`Styleframe ${frame.id}`}
+                        className="w-full h-auto object-contain"
+                      />
+                    </DialogContent>
+                  </Dialog>
                 ))}
               </div>
             </div>
@@ -293,7 +310,7 @@ const ProjectDetail = () => {
           <section className="py-32 bg-muted/30">
             <div className="container max-w-7xl mx-auto px-4">
               <div className="text-primary font-mono text-sm mb-6">[FINAL OUTCOME]</div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+              <h2 className={`text-4xl md:text-5xl font-bold mb-16 tracking-tight ${subProject.isHorror ? 'font-horror' : ''}`}>
                 Final Outcome
               </h2>
               <div className="relative w-full aspect-video bg-black">
