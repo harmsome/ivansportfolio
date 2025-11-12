@@ -27,6 +27,8 @@ import figmaLogo from "@/assets/figma-logo.png";
 import framerLogo from "@/assets/framer-logo.png";
 import blenderLogo from "@/assets/blender-logo.png";
 import unityLogo from "@/assets/unity-logo.png";
+import treasureChestReference from "@/assets/treasure-chest-reference.jpg";
+import treasureChestOutcome from "@/assets/treasure-chest-outcome.jpg";
 
 interface SubProject {
   id: number;
@@ -38,6 +40,7 @@ interface SubProject {
   styleframes?: Array<{ id: number; image: string }>;
   videoPath?: string;
   isHorror?: boolean;
+  referenceImages?: Array<{ id: number; title: string; image: string }>;
 }
 
 const ProjectDetail = () => {
@@ -121,7 +124,18 @@ const ProjectDetail = () => {
     ],
     image: project3DModeling,
     subProjects: [
-      { id: 1, title: "Product Visualization", year: "2024", description: "Photorealistic product renders", image: project3DModeling },
+      { 
+        id: 1, 
+        title: "Treasure Chest 3D Modeling", 
+        year: "2024", 
+        description: "", 
+        image: project3DModeling,
+        overview: "This is a practice in college",
+        referenceImages: [
+          { id: 1, title: "Reference", image: treasureChestReference },
+          { id: 2, title: "Outcome", image: treasureChestOutcome }
+        ]
+      },
       { id: 2, title: "Character Modeling", year: "2024", description: "Stylized 3D character creation", image: project3DModeling },
       { id: 3, title: "Environment Design", year: "2024", description: "Immersive 3D environments", image: project3DModeling }
     ] as SubProject[]
@@ -205,10 +219,12 @@ const ProjectDetail = () => {
               <h1 className={`text-6xl md:text-8xl font-bold text-white tracking-tight mb-4 ${subProject.isHorror ? 'font-horror' : ''}`}>
                 {subProject.title}
               </h1>
-              <div className="text-white/80 text-lg md:text-xl mb-2">{subProject.year}</div>
-              <p className="text-white/90 text-xl md:text-2xl max-w-3xl">
-                {subProject.description}
-              </p>
+              {subProject.year && <div className="text-white/80 text-lg md:text-xl mb-2">{subProject.year}</div>}
+              {subProject.description && (
+                <p className="text-white/90 text-xl md:text-2xl max-w-3xl">
+                  {subProject.description}
+                </p>
+              )}
             </div>
           </div>
         </div>
@@ -265,6 +281,32 @@ const ProjectDetail = () => {
             }
           }
         `}</style>
+
+        {/* Reference Images Section - Only show if referenceImages exist */}
+        {subProject.referenceImages && subProject.referenceImages.length > 0 && (
+          <section className="py-32 bg-background">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[REFERENCE & OUTCOME]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Project Images
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                {subProject.referenceImages.map((ref) => (
+                  <div key={ref.id} className="relative cursor-pointer group" onClick={() => window.open(ref.image, '_blank')}>
+                    <div className="text-primary font-mono text-sm mb-4">
+                      {ref.title}
+                    </div>
+                    <img 
+                      src={ref.image} 
+                      alt={ref.title}
+                      className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Design Styleframes Section - Only show if styleframes exist */}
         {subProject.styleframes && subProject.styleframes.length > 0 && (
