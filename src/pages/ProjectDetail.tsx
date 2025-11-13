@@ -34,6 +34,15 @@ import imperfectionStoryboard from "@/assets/imperfection-storyboard.png";
 import timelinePast from "@/assets/timeline-past.jpg";
 import timelineNow from "@/assets/timeline-now.jpg";
 import timelineFuture from "@/assets/timeline-future.jpg";
+import imperfectionPhysicalPhoto from "@/assets/imperfection-physical-photo.png";
+import disquietDesign1 from "@/assets/disquiet-design-1.png";
+import disquietDesign2 from "@/assets/disquiet-design-2.png";
+import disquietDesign3 from "@/assets/disquiet-design-3.png";
+import disquietDesign4 from "@/assets/disquiet-design-4.png";
+import disquietDesign5 from "@/assets/disquiet-design-5.png";
+import disquietDesign6 from "@/assets/disquiet-design-6.png";
+import disquietDesign7 from "@/assets/disquiet-design-7.png";
+import disquietDesign8 from "@/assets/disquiet-design-8.png";
 
 interface SubProject {
   id: number;
@@ -47,6 +56,8 @@ interface SubProject {
   isHorror?: boolean;
   referenceImages?: Array<{ id: number; title: string; image: string }>;
   timelineImages?: Array<{ id: number; title: string; image: string }>;
+  physicalPhoto?: string;
+  designStylings?: Array<{ id: number; image: string }>;
 }
 
 const ProjectDetail = () => {
@@ -142,7 +153,25 @@ const ProjectDetail = () => {
           { id: 2, title: "Outcome", image: treasureChestOutcome }
         ]
       },
-      { id: 2, title: "Character Modeling", year: "2024", description: "Stylized 3D character creation", image: project3DModeling },
+      { 
+        id: 2, 
+        title: "DISQUIET ANATOMY", 
+        year: "", 
+        description: "Stylized 3D character creation", 
+        image: project3DModeling,
+        overview: "An exploration of anatomical design through stylized 3D character modeling.",
+        designStylings: [
+          { id: 1, image: disquietDesign1 },
+          { id: 2, image: disquietDesign2 },
+          { id: 3, image: disquietDesign3 },
+          { id: 4, image: disquietDesign4 },
+          { id: 5, image: disquietDesign5 },
+          { id: 6, image: disquietDesign6 },
+          { id: 7, image: disquietDesign7 },
+          { id: 8, image: disquietDesign8 }
+        ],
+        videoPath: "/videos/disquiet-anatomy-outcome.mp4"
+      },
       { id: 3, title: "Environment Design", year: "2024", description: "Immersive 3D environments", image: project3DModeling }
     ] as SubProject[]
   }, {
@@ -171,6 +200,7 @@ const ProjectDetail = () => {
         image: imperfectionStoryboard,
         overview: "A journey exploring self-acceptance and character evolution through different stages of time.",
         videoPath: "/videos/imperfection-outcome.mp4",
+        physicalPhoto: imperfectionPhysicalPhoto,
         timelineImages: [
           { id: 1, title: "Past", image: timelinePast },
           { id: 2, title: "Now", image: timelineNow },
@@ -350,6 +380,51 @@ const ProjectDetail = () => {
                     <img 
                       src={timeline.image} 
                       alt={timeline.title}
+                      className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Physical Photo Section - Only show if physicalPhoto exists */}
+        {subProject.physicalPhoto && (
+          <section className="py-32 bg-background">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[PHYSICAL PHOTO]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Physical Photo
+              </h2>
+              <div className="relative cursor-pointer group" onClick={() => window.open(subProject.physicalPhoto, '_blank')}>
+                <img 
+                  src={subProject.physicalPhoto} 
+                  alt="Physical Photo"
+                  className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                />
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Design Stylings Section - Only show if designStylings exist */}
+        {subProject.designStylings && subProject.designStylings.length > 0 && (
+          <section className="py-32 bg-background">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[DESIGN STYLINGS]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Design Stylings
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {subProject.designStylings.map((design) => (
+                  <div key={design.id} className="relative cursor-pointer group" onClick={() => window.open(design.image, '_blank')}>
+                    <div className="absolute -top-6 left-0 text-primary font-mono text-xs">
+                      Design {design.id}
+                    </div>
+                    <img 
+                      src={design.image} 
+                      alt={`Design Styling ${design.id}`}
                       className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
                     />
                   </div>
