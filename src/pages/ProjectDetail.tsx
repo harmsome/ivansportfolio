@@ -158,24 +158,19 @@ const ProjectDetail = () => {
       { 
         id: 1, 
         title: "Nologram", 
-        year: "2024", 
+        year: "", 
         description: "This project used Sipa Projector, Stage Fogging machine LED, Unity and Kinect Sensor", 
         image: nologramInstallation,
         videoPath: "/videos/nologram-outcome.mp4"
       },
       { 
         id: 2, 
-        title: "Storyboard", 
-        year: "2024", 
+        title: "imperfection", 
+        year: "", 
         description: "Time Reflection: A Journey to Self-Acceptance", 
-        image: imperfectionStoryboard
-      },
-      { 
-        id: 3, 
-        title: "Background", 
-        year: "2024", 
-        description: "Character evolution through time", 
-        image: nologramInstallation,
+        image: imperfectionStoryboard,
+        overview: "A journey exploring self-acceptance and character evolution through different stages of time.",
+        videoPath: "/videos/imperfection-outcome.mp4",
         timelineImages: [
           { id: 1, title: "Past", image: timelinePast },
           { id: 2, title: "Now", image: timelineNow },
@@ -402,7 +397,6 @@ const ProjectDetail = () => {
                 <video 
                   controls
                   className="w-full h-full"
-                  poster={subProject.image}
                 >
                   <source src={subProject.videoPath} type="video/mp4" />
                   Your browser does not support the video tag.
