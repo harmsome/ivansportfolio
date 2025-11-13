@@ -43,6 +43,8 @@ import disquietDesign5 from "@/assets/disquiet-design-5.png";
 import disquietDesign6 from "@/assets/disquiet-design-6.png";
 import disquietDesign7 from "@/assets/disquiet-design-7.png";
 import disquietDesign8 from "@/assets/disquiet-design-8.png";
+import disquietAnatomyBg from "@/assets/disquiet-anatomy-bg.png";
+import interiorStillLifeBg from "@/assets/interior-still-life-bg.jpg";
 
 interface SubProject {
   id: number;
@@ -158,7 +160,7 @@ const ProjectDetail = () => {
         title: "DISQUIET ANATOMY", 
         year: "", 
         description: "Stylized 3D character creation", 
-        image: project3DModeling,
+        image: disquietAnatomyBg,
         overview: "An exploration of anatomical design through stylized 3D character modeling.",
         designStylings: [
           { id: 1, image: disquietDesign1 },
@@ -172,7 +174,7 @@ const ProjectDetail = () => {
         ],
         videoPath: "/videos/disquiet-anatomy-outcome.mp4"
       },
-      { id: 3, title: "Environment Design", year: "2024", description: "Immersive 3D environments", image: project3DModeling }
+      { id: 3, title: "Interior & Still Life", year: "2024", description: "Immersive 3D environments", image: interiorStillLifeBg }
     ] as SubProject[]
   }, {
     id: 5,

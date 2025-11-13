@@ -15,6 +15,7 @@ import figmaLogo from "@/assets/figma-logo.png";
 import framerLogo from "@/assets/framer-logo.png";
 import blenderLogo from "@/assets/blender-logo.png";
 import unityLogo from "@/assets/unity-logo.png";
+import disquietAnatomyBg from "@/assets/disquiet-anatomy-bg.png";
 
 const Projects = () => {
   const [api, setApi] = useState<CarouselApi>();
@@ -53,7 +54,7 @@ const Projects = () => {
       { name: "Blender", icon: blenderLogo },
       { name: "Photoshop", icon: photoshopLogo }
     ],
-    image: project3DModeling
+    image: disquietAnatomyBg
   }, {
     title: "Installations",
     description: "Interactive project that i made on physical",
