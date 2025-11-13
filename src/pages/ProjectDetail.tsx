@@ -29,6 +29,11 @@ import blenderLogo from "@/assets/blender-logo.png";
 import unityLogo from "@/assets/unity-logo.png";
 import treasureChestReference from "@/assets/treasure-chest-reference.jpg";
 import treasureChestOutcome from "@/assets/treasure-chest-outcome.jpg";
+import nologramInstallation from "@/assets/nologram-installation.png";
+import imperfectionStoryboard from "@/assets/imperfection-storyboard.png";
+import timelinePast from "@/assets/timeline-past.jpg";
+import timelineNow from "@/assets/timeline-now.jpg";
+import timelineFuture from "@/assets/timeline-future.jpg";
 
 interface SubProject {
   id: number;
@@ -41,6 +46,7 @@ interface SubProject {
   videoPath?: string;
   isHorror?: boolean;
   referenceImages?: Array<{ id: number; title: string; image: string }>;
+  timelineImages?: Array<{ id: number; title: string; image: string }>;
 }
 
 const ProjectDetail = () => {
@@ -149,9 +155,33 @@ const ProjectDetail = () => {
     ],
     image: projectInstallations,
     subProjects: [
-      { id: 1, title: "Interactive Wall", year: "2024", description: "Touch-responsive digital installation", image: projectInstallations },
-      { id: 2, title: "VR Experience", year: "2024", description: "Immersive virtual reality environment", image: projectInstallations },
-      { id: 3, title: "Motion Tracking", year: "2024", description: "Gesture-controlled interactive space", image: projectInstallations }
+      { 
+        id: 1, 
+        title: "Nologram", 
+        year: "2024", 
+        description: "This project used Sipa Projector, Stage Fogging machine LED, Unity and Kinect Sensor", 
+        image: nologramInstallation,
+        videoPath: "/videos/nologram-outcome.mp4"
+      },
+      { 
+        id: 2, 
+        title: "Storyboard", 
+        year: "2024", 
+        description: "Time Reflection: A Journey to Self-Acceptance", 
+        image: imperfectionStoryboard
+      },
+      { 
+        id: 3, 
+        title: "Background", 
+        year: "2024", 
+        description: "Character evolution through time", 
+        image: nologramInstallation,
+        timelineImages: [
+          { id: 1, title: "Past", image: timelinePast },
+          { id: 2, title: "Now", image: timelineNow },
+          { id: 3, title: "Future", image: timelineFuture }
+        ]
+      }
     ] as SubProject[]
   }];
 
@@ -299,6 +329,32 @@ const ProjectDetail = () => {
                     <img 
                       src={ref.image} 
                       alt={ref.title}
+                      className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Timeline Images Section - Only show if timelineImages exist */}
+        {subProject.timelineImages && subProject.timelineImages.length > 0 && (
+          <section className="py-32 bg-background">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[TIME REFLECTION]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Journey Through Time
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {subProject.timelineImages.map((timeline) => (
+                  <div key={timeline.id} className="relative cursor-pointer group" onClick={() => window.open(timeline.image, '_blank')}>
+                    <div className="text-primary font-mono text-sm mb-4">
+                      {timeline.title}
+                    </div>
+                    <img 
+                      src={timeline.image} 
+                      alt={timeline.title}
                       className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
                     />
                   </div>
