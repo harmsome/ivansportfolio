@@ -16,6 +16,7 @@ import framerLogo from "@/assets/framer-logo.png";
 import blenderLogo from "@/assets/blender-logo.png";
 import unityLogo from "@/assets/unity-logo.png";
 import disquietAnatomyBg from "@/assets/disquiet-anatomy-bg.png";
+import c4dLogo from "@/assets/c4d-logo.png";
 
 const Projects = () => {
   const [api, setApi] = useState<CarouselApi>();
@@ -52,6 +53,7 @@ const Projects = () => {
     description: "Detailed 3D models with nice light and smooth shape.",
     apps: [
       { name: "Blender", icon: blenderLogo },
+      { name: "Cinema 4D", icon: c4dLogo },
       { name: "Photoshop", icon: photoshopLogo }
     ],
     image: disquietAnatomyBg
