@@ -54,6 +54,13 @@ import interiorShaded3 from "@/assets/interior-shaded-3.jpg";
 import interiorWireframe1 from "@/assets/interior-wireframe-1.jpg";
 import interiorWireframe2 from "@/assets/interior-wireframe-2.jpg";
 import interiorWireframe3 from "@/assets/interior-wireframe-3.jpg";
+import stillLifeRendered1 from "@/assets/still-life-rendered-1.jpg";
+import stillLifeShaded1 from "@/assets/still-life-shaded-1.jpg";
+import stillLifeShaded2 from "@/assets/still-life-shaded-2.jpg";
+import stillLifeShaded3 from "@/assets/still-life-shaded-3.jpg";
+import stillLifeWireframe1 from "@/assets/still-life-wireframe-1.jpg";
+import stillLifeWireframe2 from "@/assets/still-life-wireframe-2.jpg";
+import stillLifeWireframe3 from "@/assets/still-life-wireframe-3.jpg";
 
 interface SubProject {
   id: number;
@@ -74,6 +81,12 @@ interface SubProject {
     shaded?: Array<{ id: number; image: string }>;
     wireframe?: Array<{ id: number; image: string }>;
   };
+  categorizedRenderingStages?: Array<{
+    categoryTitle: string;
+    rendered?: Array<{ id: number; image: string }>;
+    shaded?: Array<{ id: number; image: string }>;
+    wireframe?: Array<{ id: number; image: string }>;
+  }>;
 }
 
 const ProjectDetail = () => {
@@ -194,23 +207,42 @@ const ProjectDetail = () => {
         year: "2024", 
         description: "Immersive 3D environments", 
         image: interiorStillLifeBg,
-        renderingStages: {
-          rendered: [
-            { id: 1, image: interiorRendered1 },
-            { id: 2, image: interiorRendered2 },
-            { id: 3, image: interiorRendered3 }
-          ],
-          shaded: [
-            { id: 1, image: interiorShaded1 },
-            { id: 2, image: interiorShaded2 },
-            { id: 3, image: interiorShaded3 }
-          ],
-          wireframe: [
-            { id: 1, image: interiorWireframe1 },
-            { id: 2, image: interiorWireframe2 },
-            { id: 3, image: interiorWireframe3 }
-          ]
-        }
+        categorizedRenderingStages: [
+          {
+            categoryTitle: "Interior",
+            rendered: [
+              { id: 1, image: interiorRendered1 },
+              { id: 2, image: interiorRendered2 },
+              { id: 3, image: interiorRendered3 }
+            ],
+            shaded: [
+              { id: 1, image: interiorShaded1 },
+              { id: 2, image: interiorShaded2 },
+              { id: 3, image: interiorShaded3 }
+            ],
+            wireframe: [
+              { id: 1, image: interiorWireframe1 },
+              { id: 2, image: interiorWireframe2 },
+              { id: 3, image: interiorWireframe3 }
+            ]
+          },
+          {
+            categoryTitle: "Still Life",
+            rendered: [
+              { id: 1, image: stillLifeRendered1 }
+            ],
+            shaded: [
+              { id: 1, image: stillLifeShaded1 },
+              { id: 2, image: stillLifeShaded2 },
+              { id: 3, image: stillLifeShaded3 }
+            ],
+            wireframe: [
+              { id: 1, image: stillLifeWireframe1 },
+              { id: 2, image: stillLifeWireframe2 },
+              { id: 3, image: stillLifeWireframe3 }
+            ]
+          }
+        ]
       }
     ] as SubProject[]
   }, {
@@ -535,6 +567,80 @@ const ProjectDetail = () => {
                   </div>
                 </div>
               )}
+            </div>
+          </section>
+        )}
+
+        {/* Categorized Rendering Stages Section - Only show if categorizedRenderingStages exist */}
+        {subProject.categorizedRenderingStages && (
+          <section className="py-32 bg-background">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[RENDERING STAGES]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Production Process
+              </h2>
+              
+              {subProject.categorizedRenderingStages.map((category, categoryIndex) => (
+                <div key={categoryIndex} className="mb-32 last:mb-0">
+                  <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight text-primary">
+                    {category.categoryTitle}
+                  </h2>
+                  
+                  {/* Rendered Section */}
+                  {category.rendered && (
+                    <div className="mb-24">
+                      <h3 className="text-2xl md:text-3xl font-bold mb-8 text-primary">Rendered</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {category.rendered.map((item) => (
+                          <div key={item.id} className="relative cursor-pointer group" onClick={() => window.open(item.image, '_blank')}>
+                            <img 
+                              src={item.image} 
+                              alt={`${category.categoryTitle} Rendered ${item.id}`}
+                              className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Shaded Section */}
+                  {category.shaded && (
+                    <div className="mb-24">
+                      <h3 className="text-2xl md:text-3xl font-bold mb-8 text-primary">Shaded</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {category.shaded.map((item) => (
+                          <div key={item.id} className="relative cursor-pointer group" onClick={() => window.open(item.image, '_blank')}>
+                            <img 
+                              src={item.image} 
+                              alt={`${category.categoryTitle} Shaded ${item.id}`}
+                              className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Wireframe Section */}
+                  {category.wireframe && (
+                    <div>
+                      <h3 className="text-2xl md:text-3xl font-bold mb-8 text-primary">Wireframe</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {category.wireframe.map((item) => (
+                          <div key={item.id} className="relative cursor-pointer group" onClick={() => window.open(item.image, '_blank')}>
+                            <img 
+                              src={item.image} 
+                              alt={`${category.categoryTitle} Wireframe ${item.id}`}
+                              className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
           </section>
         )}
