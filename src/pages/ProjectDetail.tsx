@@ -45,6 +45,15 @@ import disquietDesign7 from "@/assets/disquiet-design-7.png";
 import disquietDesign8 from "@/assets/disquiet-design-8.png";
 import disquietAnatomyBg from "@/assets/disquiet-anatomy-bg.png";
 import interiorStillLifeBg from "@/assets/interior-still-life-bg.jpg";
+import interiorRendered1 from "@/assets/interior-rendered-1.jpg";
+import interiorRendered2 from "@/assets/interior-rendered-2.jpg";
+import interiorRendered3 from "@/assets/interior-rendered-3.jpg";
+import interiorShaded1 from "@/assets/interior-shaded-1.jpg";
+import interiorShaded2 from "@/assets/interior-shaded-2.jpg";
+import interiorShaded3 from "@/assets/interior-shaded-3.jpg";
+import interiorWireframe1 from "@/assets/interior-wireframe-1.jpg";
+import interiorWireframe2 from "@/assets/interior-wireframe-2.jpg";
+import interiorWireframe3 from "@/assets/interior-wireframe-3.jpg";
 
 interface SubProject {
   id: number;
@@ -60,6 +69,11 @@ interface SubProject {
   timelineImages?: Array<{ id: number; title: string; image: string }>;
   physicalPhoto?: string;
   designStylings?: Array<{ id: number; image: string }>;
+  renderingStages?: {
+    rendered?: Array<{ id: number; image: string }>;
+    shaded?: Array<{ id: number; image: string }>;
+    wireframe?: Array<{ id: number; image: string }>;
+  };
 }
 
 const ProjectDetail = () => {
@@ -174,7 +188,30 @@ const ProjectDetail = () => {
         ],
         videoPath: "/videos/disquiet-anatomy-outcome.mp4"
       },
-      { id: 3, title: "Interior & Still Life", year: "2024", description: "Immersive 3D environments", image: interiorStillLifeBg }
+      { 
+        id: 3, 
+        title: "Interior & Still Life", 
+        year: "2024", 
+        description: "Immersive 3D environments", 
+        image: interiorStillLifeBg,
+        renderingStages: {
+          rendered: [
+            { id: 1, image: interiorRendered1 },
+            { id: 2, image: interiorRendered2 },
+            { id: 3, image: interiorRendered3 }
+          ],
+          shaded: [
+            { id: 1, image: interiorShaded1 },
+            { id: 2, image: interiorShaded2 },
+            { id: 3, image: interiorShaded3 }
+          ],
+          wireframe: [
+            { id: 1, image: interiorWireframe1 },
+            { id: 2, image: interiorWireframe2 },
+            { id: 3, image: interiorWireframe3 }
+          ]
+        }
+      }
     ] as SubProject[]
   }, {
     id: 5,
@@ -432,6 +469,72 @@ const ProjectDetail = () => {
                   </div>
                 ))}
               </div>
+            </div>
+          </section>
+        )}
+
+        {/* Rendering Stages Section - Only show if renderingStages exist */}
+        {subProject.renderingStages && (
+          <section className="py-32 bg-background">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[RENDERING STAGES]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Production Process
+              </h2>
+              
+              {/* Rendered Section */}
+              {subProject.renderingStages.rendered && (
+                <div className="mb-24">
+                  <h3 className="text-2xl md:text-3xl font-bold mb-8 text-primary">Rendered</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {subProject.renderingStages.rendered.map((item) => (
+                      <div key={item.id} className="relative cursor-pointer group" onClick={() => window.open(item.image, '_blank')}>
+                        <img 
+                          src={item.image} 
+                          alt={`Rendered ${item.id}`}
+                          className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Shaded Section */}
+              {subProject.renderingStages.shaded && (
+                <div className="mb-24">
+                  <h3 className="text-2xl md:text-3xl font-bold mb-8 text-primary">Shaded</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {subProject.renderingStages.shaded.map((item) => (
+                      <div key={item.id} className="relative cursor-pointer group" onClick={() => window.open(item.image, '_blank')}>
+                        <img 
+                          src={item.image} 
+                          alt={`Shaded ${item.id}`}
+                          className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Wireframe Section */}
+              {subProject.renderingStages.wireframe && (
+                <div>
+                  <h3 className="text-2xl md:text-3xl font-bold mb-8 text-primary">Wireframe</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {subProject.renderingStages.wireframe.map((item) => (
+                      <div key={item.id} className="relative cursor-pointer group" onClick={() => window.open(item.image, '_blank')}>
+                        <img 
+                          src={item.image} 
+                          alt={`Wireframe ${item.id}`}
+                          className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </section>
         )}
