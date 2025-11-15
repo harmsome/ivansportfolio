@@ -61,6 +61,8 @@ import stillLifeShaded3 from "@/assets/still-life-shaded-3.jpg";
 import stillLifeWireframe1 from "@/assets/still-life-wireframe-1.jpg";
 import stillLifeWireframe2 from "@/assets/still-life-wireframe-2.jpg";
 import stillLifeWireframe3 from "@/assets/still-life-wireframe-3.jpg";
+import uturonLogo from "@/assets/uturon-logo.png";
+import uturonInstagram from "@/assets/uturon-instagram.png";
 
 interface SubProject {
   id: number;
@@ -87,6 +89,10 @@ interface SubProject {
     shaded?: Array<{ id: number; image: string }>;
     wireframe?: Array<{ id: number; image: string }>;
   }>;
+  marketingContent?: {
+    instagramImage: string;
+    videoPath: string;
+  };
 }
 
 const ProjectDetail = () => {
@@ -243,6 +249,18 @@ const ProjectDetail = () => {
             ]
           }
         ]
+      },
+      { 
+        id: 4, 
+        title: "Uturon Box Animations", 
+        year: "2024", 
+        description: "Online Marketing lesson - Brand creation and marketing", 
+        image: uturonLogo,
+        overview: "This project is part of an Online Marketing lesson where we created and marketed our own brand 'Uturon'. The project showcases brand development, social media presence, and marketing strategies through Instagram and promotional video content.",
+        marketingContent: {
+          instagramImage: uturonInstagram,
+          videoPath: "/videos/uturon-marketing.mp4"
+        }
       }
     ] as SubProject[]
   }, {
@@ -641,6 +659,43 @@ const ProjectDetail = () => {
                   )}
                 </div>
               ))}
+            </div>
+          </section>
+        )}
+
+        {/* Marketing Content Section - Only show if marketingContent exists */}
+        {subProject.marketingContent && (
+          <section className="py-32 bg-background">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[MARKETING CONTENT]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Brand Marketing
+              </h2>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                {/* Instagram Image on Left */}
+                <div className="relative">
+                  <div className="text-primary font-mono text-sm mb-4">Instagram Presence</div>
+                  <img 
+                    src={subProject.marketingContent.instagramImage} 
+                    alt="Instagram Marketing"
+                    className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300"
+                  />
+                </div>
+                
+                {/* Marketing Video on Right */}
+                <div className="relative">
+                  <div className="text-primary font-mono text-sm mb-4">Promotional Video</div>
+                  <div className="relative w-full aspect-video bg-black border border-border">
+                    <video 
+                      controls
+                      className="w-full h-full"
+                    >
+                      <source src={subProject.marketingContent.videoPath} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
         )}
