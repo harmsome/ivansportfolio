@@ -63,6 +63,9 @@ import stillLifeWireframe2 from "@/assets/still-life-wireframe-2.jpg";
 import stillLifeWireframe3 from "@/assets/still-life-wireframe-3.jpg";
 import uturonLogo from "@/assets/uturon-logo.png";
 import uturonInstagram from "@/assets/uturon-instagram.png";
+import growtopiaLogo from "@/assets/growtopia-logo.png";
+import growtopiaFiles from "@/assets/growtopia-files.png";
+import growtopiaWorkspace from "@/assets/growtopia-workspace.png";
 
 interface SubProject {
   id: number;
@@ -93,6 +96,8 @@ interface SubProject {
     instagramImage: string;
     videoPath: string;
   };
+  workspaceImage?: string;
+  filesImage?: string;
 }
 
 const ProjectDetail = () => {
@@ -261,6 +266,17 @@ const ProjectDetail = () => {
           instagramImage: uturonInstagram,
           videoPath: "/videos/uturon-marketing.mp4"
         }
+      },
+      { 
+        id: 5, 
+        title: "Growtopia Ads Animations", 
+        year: "2024", 
+        description: "2D Animation video ads for Growtopia game", 
+        image: growtopiaLogo,
+        overview: "This is a project where I helped my online friend create 2D animation video ads for the game Growtopia to promote his website. Since there was no storyboard phase, I went straight into After Effects to create the animations, working directly with the vision and requirements provided.",
+        workspaceImage: growtopiaWorkspace,
+        filesImage: growtopiaFiles,
+        videoPath: "/videos/growtopia-outcome.mp4"
       }
     ] as SubProject[]
   }, {
@@ -669,7 +685,7 @@ const ProjectDetail = () => {
             <div className="container max-w-7xl mx-auto px-4">
               <div className="text-primary font-mono text-sm mb-6">[MARKETING CONTENT]</div>
               <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
-                Brand Marketing
+                Marketing Brand
               </h2>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
                 {/* Instagram Image on Left */}
@@ -696,6 +712,48 @@ const ProjectDetail = () => {
                   </div>
                 </div>
               </div>
+            </div>
+          </section>
+        )}
+
+        {/* Workspace & Files Section - Only show if workspace or files exist */}
+        {(subProject.workspaceImage || subProject.filesImage) && (
+          <section className="py-32 bg-card">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[PRODUCTION PROCESS]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Behind The Scenes
+              </h2>
+              
+              {/* Workspace */}
+              {subProject.workspaceImage && (
+                <div className="mb-16">
+                  <div className="text-primary font-mono text-sm mb-4">After Effects Workspace</div>
+                  <p className="text-muted-foreground mb-6">
+                    This project was created directly in After Effects without a storyboard phase. The workspace shows the composition timeline and layers used to create the animation.
+                  </p>
+                  <img 
+                    src={subProject.workspaceImage} 
+                    alt="After Effects Workspace"
+                    className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300"
+                  />
+                </div>
+              )}
+              
+              {/* Files */}
+              {subProject.filesImage && (
+                <div>
+                  <div className="text-primary font-mono text-sm mb-4">Project Files</div>
+                  <p className="text-muted-foreground mb-6">
+                    The complete file structure and assets used in the animation production, including compositions, audio files, and exported renders.
+                  </p>
+                  <img 
+                    src={subProject.filesImage} 
+                    alt="Project Files"
+                    className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300"
+                  />
+                </div>
+              )}
             </div>
           </section>
         )}
