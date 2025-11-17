@@ -66,6 +66,12 @@ import uturonInstagram from "@/assets/uturon-instagram.png";
 import growtopiaLogo from "@/assets/growtopia-logo.png";
 import growtopiaFiles from "@/assets/growtopia-files.png";
 import growtopiaWorkspace from "@/assets/growtopia-workspace.png";
+import unspokenPainBg from "@/assets/unspoken-pain-bg.png";
+import unspokenPainStoryboard1 from "@/assets/unspoken-pain-storyboard-1.png";
+import unspokenPainStoryboard2 from "@/assets/unspoken-pain-storyboard-2.png";
+import unspokenPainStoryboard3 from "@/assets/unspoken-pain-storyboard-3.png";
+import unspokenPainStoryboard4 from "@/assets/unspoken-pain-storyboard-4.png";
+import unspokenPainPresentation from "@/assets/unspoken-pain-presentation.jpg";
 
 interface SubProject {
   id: number;
@@ -98,6 +104,9 @@ interface SubProject {
   };
   workspaceImage?: string;
   filesImage?: string;
+  storyboardImages?: Array<{ id: number; image: string }>;
+  presentationBoard?: string;
+  btsVideoPath?: string;
 }
 
 const ProjectDetail = () => {
@@ -135,8 +144,41 @@ const ProjectDetail = () => {
         videoPath: "/videos/fearflix-final.mp4",
         isHorror: true
       },
-      { id: 2, title: "Motion Graphics Reel", year: "2024", description: "Dynamic typography and shape animations", image: project2DAnimation },
-      { id: 3, title: "Explainer Animation", year: "2024", description: "Clear visual storytelling for complex concepts", image: project2DAnimation }
+      { 
+        id: 2, 
+        title: "Marketing Brand", 
+        year: "2024", 
+        description: "Dynamic typography and shape animations", 
+        image: project2DAnimation 
+      },
+      { 
+        id: 3, 
+        title: "Growtopia Ads Animations", 
+        year: "2024", 
+        description: "2D Animation video ads for Growtopia game", 
+        image: growtopiaLogo,
+        overview: "This is a project where I helped my online friend create 2D animation video ads for the game Growtopia to promote his website. Since there was no storyboard phase, I went straight into After Effects to create the animations, working directly with the vision and requirements provided.",
+        workspaceImage: growtopiaWorkspace,
+        filesImage: growtopiaFiles,
+        videoPath: "/videos/growtopia-outcome.mp4"
+      },
+      { 
+        id: 4, 
+        title: "Unspoken Pain", 
+        year: "2024", 
+        description: "Motion graphic animation exploring bullying and emotional isolation", 
+        image: unspokenPainBg,
+        overview: "This deeply personal project explores my own experience with bullying during my school years. Through dark, surreal visuals and symbolic storytelling, the animation depicts the emotional journey of isolation, verbal abuse, and the struggle to maintain one's sense of self in the face of relentless negativity. The project aims to raise awareness about how toxic masculinity contributes to bullying among adolescent boys and promote conversations around emotional well-being and mental health.",
+        storyboardImages: [
+          { id: 1, image: unspokenPainStoryboard1 },
+          { id: 2, image: unspokenPainStoryboard2 },
+          { id: 3, image: unspokenPainStoryboard3 },
+          { id: 4, image: unspokenPainStoryboard4 }
+        ],
+        presentationBoard: unspokenPainPresentation,
+        videoPath: "/videos/unspoken-pain-final.mp4",
+        btsVideoPath: "/videos/unspoken-pain-bts.mp4"
+      }
     ] as SubProject[]
   }, {
     id: 2,
@@ -266,17 +308,6 @@ const ProjectDetail = () => {
           instagramImage: uturonInstagram,
           videoPath: "/videos/uturon-marketing.mp4"
         }
-      },
-      { 
-        id: 5, 
-        title: "Growtopia Ads Animations", 
-        year: "2024", 
-        description: "2D Animation video ads for Growtopia game", 
-        image: growtopiaLogo,
-        overview: "This is a project where I helped my online friend create 2D animation video ads for the game Growtopia to promote his website. Since there was no storyboard phase, I went straight into After Effects to create the animations, working directly with the vision and requirements provided.",
-        workspaceImage: growtopiaWorkspace,
-        filesImage: growtopiaFiles,
-        videoPath: "/videos/growtopia-outcome.mp4"
       }
     ] as SubProject[]
   }, {
@@ -758,6 +789,49 @@ const ProjectDetail = () => {
           </section>
         )}
 
+        {/* Storyboard Section - Only show if storyboardImages exist */}
+        {subProject.storyboardImages && subProject.storyboardImages.length > 0 && (
+          <section className="py-32 bg-background">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[STORYBOARD]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Storyboard
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {subProject.storyboardImages.map((board) => (
+                  <div key={board.id} className="relative cursor-pointer group">
+                    <div className="absolute -top-6 left-0 text-primary font-mono text-xs">
+                      Storyboard {board.id}
+                    </div>
+                    <img 
+                      src={board.image} 
+                      alt={`Storyboard ${board.id}`}
+                      className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Presentation Board Section - Only show if presentationBoard exists */}
+        {subProject.presentationBoard && (
+          <section className="py-32 bg-card">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[PRESENTATION]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Presentation Board
+              </h2>
+              <img 
+                src={subProject.presentationBoard} 
+                alt="Presentation Board"
+                className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300"
+              />
+            </div>
+          </section>
+        )}
+
         {/* Design Styleframes Section - Only show if styleframes exist */}
         {subProject.styleframes && subProject.styleframes.length > 0 && (
           <section className="py-32 bg-background">
@@ -798,6 +872,30 @@ const ProjectDetail = () => {
                   className="w-full h-full"
                 >
                   <source src={subProject.videoPath} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Behind The Scenes Video Section - Only show if btsVideoPath exists */}
+        {subProject.btsVideoPath && (
+          <section className="py-32 bg-background">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[BEHIND THE SCENES]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Behind The Scenes & Physical Communication
+              </h2>
+              <p className="text-muted-foreground mb-8 max-w-3xl">
+                This video shows the physical presentation and communication aspects of the project, including real-world interactions and the impact of the work beyond the digital space.
+              </p>
+              <div className="relative w-full aspect-video bg-black">
+                <video 
+                  controls
+                  className="w-full h-full"
+                >
+                  <source src={subProject.btsVideoPath} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               </div>
