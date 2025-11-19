@@ -185,9 +185,13 @@ const ProjectDetail = () => {
     ],
     image: projectVideoEditing,
     subProjects: [
-      { id: 1, title: "Documentary Edit", year: "2024", description: "Narrative-driven documentary storytelling", image: projectVideoEditing },
-      { id: 2, title: "Commercial Campaign", year: "2024", description: "Fast-paced promotional content", image: projectVideoEditing },
-      { id: 3, title: "Music Video", year: "2024", description: "Rhythmic editing synced to music", image: projectVideoEditing }
+      { id: 1, title: "Short Film: Butterfly Sin's", year: "2024", description: "Narrative-driven short film", image: projectVideoEditing },
+      { id: 2, title: "Tong Ah Commercial Ads", year: "2024", description: "Commercial advertising campaign", image: projectVideoEditing },
+      { id: 3, title: "Dasein Kopitiam Event", year: "2024", description: "Event coverage and highlights", image: projectVideoEditing },
+      { id: 4, title: "Equinova Event", year: "2024", description: "Event documentation", image: projectVideoEditing },
+      { id: 5, title: "Instagram 4k Edits", year: "2024", description: "High-quality social media content", image: projectVideoEditing },
+      { id: 6, title: "Tiktok Video", year: "2024", description: "Short-form video content", image: projectVideoEditing },
+      { id: 7, title: "Practices", year: "2024", description: "Video editing practice work", image: projectVideoEditing }
     ] as SubProject[]
   }, {
     id: 3,
