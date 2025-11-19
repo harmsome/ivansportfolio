@@ -146,14 +146,7 @@ const ProjectDetail = () => {
       },
       { 
         id: 2, 
-        title: "Marketing Brand", 
-        year: "2024", 
-        description: "Dynamic typography and shape animations", 
-        image: project2DAnimation 
-      },
-      { 
-        id: 3, 
-        title: "Growtopia Ads Animations", 
+        title: "Growtopia Ads Animations",
         year: "2024", 
         description: "2D Animation video ads for Growtopia game", 
         image: growtopiaLogo,
@@ -163,8 +156,8 @@ const ProjectDetail = () => {
         videoPath: "/videos/growtopia-outcome.mp4"
       },
       { 
-        id: 4, 
-        title: "Unspoken Pain", 
+        id: 3, 
+        title: "Unspoken Pain",
         year: "2024", 
         description: "Motion graphic animation exploring bullying and emotional isolation", 
         image: unspokenPainBg,
