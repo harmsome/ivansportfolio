@@ -263,7 +263,6 @@ const ProjectDetail = () => {
         description: "Commercial advertising campaign", 
         image: tongAhTitleBg,
         mooncakePhotography: [tongAhMooncake1, tongAhMooncake2],
-        footageFiles: [tongAhFootage1, tongAhFootage2],
         videoPath: "/videos/tong-ah-final.mp4"
       },
       { id: 3, title: "Dasein Kopitiam Event", year: "2024", description: "Event coverage and highlights", image: projectVideoEditing },
@@ -1205,28 +1204,6 @@ const ProjectDetail = () => {
           </section>
         )}
 
-        {/* Footage Files Section - Only show if footageFiles exists */}
-        {subProject.footageFiles && subProject.footageFiles.length > 0 && (
-          <section className="py-32 bg-card">
-            <div className="container max-w-7xl mx-auto px-4">
-              <div className="text-primary font-mono text-sm mb-6">[PRODUCTION FILES]</div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
-                Footage Files
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {subProject.footageFiles.map((image, index) => (
-                  <div key={index} className="relative cursor-pointer group" onClick={() => window.open(image, '_blank')}>
-                    <img 
-                      src={image} 
-                      alt={`Footage Files ${index + 1}`}
-                      className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
 
         {/* Final Outcome Video Section - Only show if video exists */}
         {subProject.videoPath && (
