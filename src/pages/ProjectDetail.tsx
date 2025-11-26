@@ -72,6 +72,14 @@ import unspokenPainStoryboard2 from "@/assets/unspoken-pain-storyboard-2.png";
 import unspokenPainStoryboard3 from "@/assets/unspoken-pain-storyboard-3.png";
 import unspokenPainStoryboard4 from "@/assets/unspoken-pain-storyboard-4.png";
 import unspokenPainPresentation from "@/assets/unspoken-pain-presentation.jpg";
+import butterflySinsVerticalPoster from "@/assets/butterfly-sins-vertical-poster.jpg";
+import butterflySinsHorizontalPoster from "@/assets/butterfly-sins-horizontal-poster.jpg";
+import butterflySinsGroupPhoto from "@/assets/butterfly-sins-group-photo.jpg";
+import butterflySinsStoryboard1 from "@/assets/butterfly-sins-storyboard-1.png";
+import butterflySinsStoryboard2 from "@/assets/butterfly-sins-storyboard-2.png";
+import butterflySinsStoryboard3 from "@/assets/butterfly-sins-storyboard-3.png";
+import butterflySinsProduction from "@/assets/butterfly-sins-production.png";
+import butterflySinsCrewList from "@/assets/butterfly-sins-crew-list.png";
 
 interface SubProject {
   id: number;
@@ -107,6 +115,17 @@ interface SubProject {
   storyboardImages?: Array<{ id: number; image: string }>;
   presentationBoard?: string;
   btsVideoPath?: string;
+  posters?: {
+    vertical?: string;
+    horizontal?: string;
+  };
+  groupPhoto?: string;
+  production?: string;
+  crewList?: string;
+  externalLink?: {
+    url: string;
+    title: string;
+  };
 }
 
 const ProjectDetail = () => {
@@ -185,13 +204,36 @@ const ProjectDetail = () => {
     ],
     image: projectVideoEditing,
     subProjects: [
-      { id: 1, title: "Short Film: Butterfly Sin's", year: "2024", description: "Narrative-driven short film", image: projectVideoEditing },
+      { 
+        id: 1, 
+        title: "Short Film: Butterfly Sin's", 
+        year: "2024", 
+        description: "Narrative-driven short film", 
+        image: projectVideoEditing,
+        overview: "A compelling narrative short film that explores themes of transformation and identity through cinematic storytelling.",
+        posters: {
+          vertical: butterflySinsVerticalPoster,
+          horizontal: butterflySinsHorizontalPoster
+        },
+        btsVideoPath: "/videos/butterfly-sins-bts.mp4",
+        externalLink: {
+          url: "https://drive.google.com/drive/folders/1XrrAr_q5b12kdGm8Yok2YQRAcZ_9aQnL?usp=sharing",
+          title: "Final Outcome (10 minutes)"
+        },
+        groupPhoto: butterflySinsGroupPhoto,
+        storyboardImages: [
+          { id: 1, image: butterflySinsStoryboard1 },
+          { id: 2, image: butterflySinsStoryboard2 },
+          { id: 3, image: butterflySinsStoryboard3 }
+        ],
+        production: butterflySinsProduction,
+        crewList: butterflySinsCrewList
+      },
       { id: 2, title: "Tong Ah Commercial Ads", year: "2024", description: "Commercial advertising campaign", image: projectVideoEditing },
       { id: 3, title: "Dasein Kopitiam Event", year: "2024", description: "Event coverage and highlights", image: projectVideoEditing },
       { id: 4, title: "Equinova Event", year: "2024", description: "Event documentation", image: projectVideoEditing },
       { id: 5, title: "Instagram 4k Edits", year: "2024", description: "High-quality social media content", image: projectVideoEditing },
-      { id: 6, title: "Tiktok Video", year: "2024", description: "Short-form video content", image: projectVideoEditing },
-      { id: 7, title: "Practices", year: "2024", description: "Video editing practice work", image: projectVideoEditing }
+      { id: 6, title: "Tiktok Video", year: "2024", description: "Short-form video content", image: projectVideoEditing }
     ] as SubProject[]
   }, {
     id: 3,
@@ -794,12 +836,9 @@ const ProjectDetail = () => {
               <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
                 Storyboard
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {subProject.storyboardImages.map((board) => (
-                  <div key={board.id} className="relative cursor-pointer group">
-                    <div className="absolute -top-6 left-0 text-primary font-mono text-xs">
-                      Storyboard {board.id}
-                    </div>
+                  <div key={board.id} className="relative cursor-pointer group" onClick={() => window.open(board.image, '_blank')}>
                     <img 
                       src={board.image} 
                       alt={`Storyboard ${board.id}`}
@@ -882,11 +921,8 @@ const ProjectDetail = () => {
             <div className="container max-w-7xl mx-auto px-4">
               <div className="text-primary font-mono text-sm mb-6">[BEHIND THE SCENES]</div>
               <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
-                Behind The Scenes & Physical Communication
+                Behind The Scenes with Narrator
               </h2>
-              <p className="text-muted-foreground mb-8 max-w-3xl">
-                This video shows the physical presentation and communication aspects of the project, including real-world interactions and the impact of the work beyond the digital space.
-              </p>
               <div className="relative w-full aspect-video bg-black">
                 <video 
                   controls
@@ -895,6 +931,124 @@ const ProjectDetail = () => {
                   <source src={subProject.btsVideoPath} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Posters Section - Only show if posters exist */}
+        {subProject.posters && (
+          <section className="py-32 bg-card">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[POSTERS]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Film Posters
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {subProject.posters.vertical && (
+                  <div className="relative cursor-pointer group" onClick={() => window.open(subProject.posters.vertical, '_blank')}>
+                    <div className="text-primary font-mono text-sm mb-4">Vertical Poster</div>
+                    <img 
+                      src={subProject.posters.vertical} 
+                      alt="Vertical Poster"
+                      className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                    />
+                  </div>
+                )}
+                {subProject.posters.horizontal && (
+                  <div className="relative cursor-pointer group" onClick={() => window.open(subProject.posters.horizontal, '_blank')}>
+                    <div className="text-primary font-mono text-sm mb-4">Horizontal Poster</div>
+                    <img 
+                      src={subProject.posters.horizontal} 
+                      alt="Horizontal Poster"
+                      className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* External Link Section - Only show if externalLink exists */}
+        {subProject.externalLink && (
+          <section className="py-32 bg-background">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[FINAL OUTCOME]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Final Outcome
+              </h2>
+              <p className="text-muted-foreground mb-8 max-w-3xl">
+                The final video is 10 minutes long. Due to file size constraints, you can view it through the link below.
+              </p>
+              <a 
+                href={subProject.externalLink.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-300 border border-primary"
+              >
+                <span className="font-mono">{subProject.externalLink.title}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+                  <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+                </svg>
+              </a>
+            </div>
+          </section>
+        )}
+
+        {/* Group Photo Section - Only show if groupPhoto exists */}
+        {subProject.groupPhoto && (
+          <section className="py-32 bg-card">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[GROUP PHOTOS]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Group Photos
+              </h2>
+              <div className="relative cursor-pointer group" onClick={() => window.open(subProject.groupPhoto, '_blank')}>
+                <img 
+                  src={subProject.groupPhoto} 
+                  alt="Group Photo"
+                  className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                />
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Production Section - Only show if production exists */}
+        {subProject.production && (
+          <section className="py-32 bg-background">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[PRODUCTION]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Production
+              </h2>
+              <div className="flex justify-center">
+                <img 
+                  src={subProject.production} 
+                  alt="Production Company"
+                  className="max-w-md h-auto object-contain"
+                />
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Crew List Section - Only show if crewList exists */}
+        {subProject.crewList && (
+          <section className="py-32 bg-card">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[CREW LIST]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Crew List
+              </h2>
+              <div className="relative cursor-pointer group" onClick={() => window.open(subProject.crewList, '_blank')}>
+                <img 
+                  src={subProject.crewList} 
+                  alt="Crew List"
+                  className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                />
               </div>
             </div>
           </section>
