@@ -80,6 +80,14 @@ import butterflySinsStoryboard2 from "@/assets/butterfly-sins-storyboard-2.png";
 import butterflySinsStoryboard3 from "@/assets/butterfly-sins-storyboard-3.png";
 import butterflySinsProduction from "@/assets/butterfly-sins-production.png";
 import butterflySinsCrewList from "@/assets/butterfly-sins-crew-list.png";
+import butterflySinsCast1 from "@/assets/butterfly-sins-cast-1.png";
+import butterflySinsCast2 from "@/assets/butterfly-sins-cast-2.png";
+import butterflySinsCast3 from "@/assets/butterfly-sins-cast-3.png";
+import butterflySinsRecce1 from "@/assets/butterfly-sins-recce-1.png";
+import butterflySinsRecce2 from "@/assets/butterfly-sins-recce-2.png";
+import butterflySinsTimeline from "@/assets/butterfly-sins-timeline.png";
+import butterflySinsCastSchedule from "@/assets/butterfly-sins-cast-schedule.png";
+import butterflySinsTimeShotSchedule from "@/assets/butterfly-sins-time-shot-schedule.png";
 
 interface SubProject {
   id: number;
@@ -119,6 +127,11 @@ interface SubProject {
     vertical?: string;
     horizontal?: string;
   };
+  castImages?: string[];
+  recceImages?: string[];
+  timeline?: string;
+  castSchedule?: string;
+  timeShotSchedule?: string;
   groupPhoto?: string;
   production?: string;
   crewList?: string;
@@ -210,11 +223,16 @@ const ProjectDetail = () => {
         year: "2024", 
         description: "Narrative-driven short film", 
         image: projectVideoEditing,
-        overview: "A compelling narrative short film that explores themes of transformation and identity through cinematic storytelling.",
+        overview: "This short film was our semester 6 project in college, an intensive 7-week production that challenged us to execute every aspect of filmmaking from conception to completion. Within this compressed timeline, we handled all creative and logistical responsibilities including drawing storyboards, designing the production logo, casting actors, location scouting (recce), creating detailed shooting schedules, distributing crew responsibilities, managing props and costumes, and coordinating the entire production workflow. This project tested our ability to work under tight deadlines while maintaining creative vision and professional production standards, ultimately delivering a compelling narrative about transformation, identity, and the consequences of our choices.",
         posters: {
           vertical: butterflySinsVerticalPoster,
           horizontal: butterflySinsHorizontalPoster
         },
+        castImages: [butterflySinsCast1, butterflySinsCast2, butterflySinsCast3],
+        recceImages: [butterflySinsRecce1, butterflySinsRecce2],
+        timeline: butterflySinsTimeline,
+        castSchedule: butterflySinsCastSchedule,
+        timeShotSchedule: butterflySinsTimeShotSchedule,
         btsVideoPath: "/videos/butterfly-sins-bts.mp4",
         externalLink: {
           url: "https://drive.google.com/drive/folders/1XrrAr_q5b12kdGm8Yok2YQRAcZ_9aQnL?usp=sharing",
@@ -970,6 +988,109 @@ const ProjectDetail = () => {
           </section>
         )}
 
+        {/* Cast Images Section - Only show if castImages exist */}
+        {subProject.castImages && subProject.castImages.length > 0 && (
+          <section className="py-32 bg-background">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[CAST]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Cast
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {subProject.castImages.map((image, index) => (
+                  <div key={index} className="relative cursor-pointer group" onClick={() => window.open(image, '_blank')}>
+                    <img 
+                      src={image} 
+                      alt={`Cast ${index + 1}`}
+                      className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Recce Images Section - Only show if recceImages exist */}
+        {subProject.recceImages && subProject.recceImages.length > 0 && (
+          <section className="py-32 bg-card">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[LOCATION SCOUTING]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Recce Images
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {subProject.recceImages.map((image, index) => (
+                  <div key={index} className="relative cursor-pointer group" onClick={() => window.open(image, '_blank')}>
+                    <img 
+                      src={image} 
+                      alt={`Recce ${index + 1}`}
+                      className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Timeline Section - Only show if timeline exists */}
+        {subProject.timeline && (
+          <section className="py-32 bg-background">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[PRODUCTION TIMELINE]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                7-Week Production Timeline
+              </h2>
+              <div className="relative cursor-pointer group" onClick={() => window.open(subProject.timeline, '_blank')}>
+                <img 
+                  src={subProject.timeline} 
+                  alt="Production Timeline"
+                  className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                />
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Cast Schedule Section - Only show if castSchedule exists */}
+        {subProject.castSchedule && (
+          <section className="py-32 bg-card">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[SCHEDULING]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Cast Schedule
+              </h2>
+              <div className="relative cursor-pointer group" onClick={() => window.open(subProject.castSchedule, '_blank')}>
+                <img 
+                  src={subProject.castSchedule} 
+                  alt="Cast Schedule"
+                  className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                />
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Time Shot Schedule Section - Only show if timeShotSchedule exists */}
+        {subProject.timeShotSchedule && (
+          <section className="py-32 bg-background">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[SHOOTING SCHEDULE]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Time Shot Schedule
+              </h2>
+              <div className="relative cursor-pointer group" onClick={() => window.open(subProject.timeShotSchedule, '_blank')}>
+                <img 
+                  src={subProject.timeShotSchedule} 
+                  alt="Time Shot Schedule"
+                  className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                />
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* External Link Section - Only show if externalLink exists */}
         {subProject.externalLink && (
           <section className="py-32 bg-background">
@@ -1039,16 +1160,18 @@ const ProjectDetail = () => {
         {subProject.crewList && (
           <section className="py-32 bg-card">
             <div className="container max-w-7xl mx-auto px-4">
-              <div className="text-primary font-mono text-sm mb-6">[CREW LIST]</div>
+              <div className="text-primary font-mono text-sm mb-6">[PRODUCTION CREW]</div>
               <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
-                Crew List
+                Production Crew
               </h2>
-              <div className="relative cursor-pointer group" onClick={() => window.open(subProject.crewList, '_blank')}>
-                <img 
-                  src={subProject.crewList} 
-                  alt="Crew List"
-                  className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
-                />
+              <div className="flex justify-center">
+                <div className="relative cursor-pointer group max-w-2xl w-full" onClick={() => window.open(subProject.crewList, '_blank')}>
+                  <img 
+                    src={subProject.crewList} 
+                    alt="Crew List"
+                    className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                  />
+                </div>
               </div>
             </div>
           </section>
