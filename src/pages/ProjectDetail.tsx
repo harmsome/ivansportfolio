@@ -88,6 +88,8 @@ import butterflySinsRecce2 from "@/assets/butterfly-sins-recce-2.png";
 import butterflySinsTimeline from "@/assets/butterfly-sins-timeline.png";
 import butterflySinsCastSchedule from "@/assets/butterfly-sins-cast-schedule.png";
 import butterflySinsTimeShotSchedule from "@/assets/butterfly-sins-time-shot-schedule.png";
+import butterflySinsTimeShotSchedule2 from "@/assets/butterfly-sins-time-shot-schedule-2.png";
+import butterflySinsTimeShotSchedule3 from "@/assets/butterfly-sins-time-shot-schedule-3.png";
 
 interface SubProject {
   id: number;
@@ -131,7 +133,7 @@ interface SubProject {
   recceImages?: string[];
   timeline?: string;
   castSchedule?: string;
-  timeShotSchedule?: string;
+  timeShotSchedule?: string[];
   groupPhoto?: string;
   production?: string;
   crewList?: string;
@@ -232,7 +234,7 @@ const ProjectDetail = () => {
         recceImages: [butterflySinsRecce1, butterflySinsRecce2],
         timeline: butterflySinsTimeline,
         castSchedule: butterflySinsCastSchedule,
-        timeShotSchedule: butterflySinsTimeShotSchedule,
+        timeShotSchedule: [butterflySinsTimeShotSchedule, butterflySinsTimeShotSchedule2, butterflySinsTimeShotSchedule3],
         btsVideoPath: "/videos/butterfly-sins-bts.mp4",
         externalLink: {
           url: "https://drive.google.com/drive/folders/1XrrAr_q5b12kdGm8Yok2YQRAcZ_9aQnL?usp=sharing",
@@ -869,6 +871,260 @@ const ProjectDetail = () => {
           </section>
         )}
 
+        {/* 2. Recce Images Section */}
+        {subProject.recceImages && subProject.recceImages.length > 0 && (
+          <section className="py-32 bg-card">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[LOCATION SCOUTING]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Recce Images
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {subProject.recceImages.map((image, index) => (
+                  <div key={index} className="relative cursor-pointer group" onClick={() => window.open(image, '_blank')}>
+                    <img 
+                      src={image} 
+                      alt={`Recce ${index + 1}`}
+                      className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* 3. Crew List Section */}
+        {subProject.crewList && (
+          <section className="py-32 bg-background">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[PRODUCTION CREW]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Production Crew
+              </h2>
+              <div className="flex justify-center">
+                <div className="relative cursor-pointer group w-full md:w-2/3 lg:w-1/2" onClick={() => window.open(subProject.crewList, '_blank')}>
+                  <img 
+                    src={subProject.crewList} 
+                    alt="Crew List"
+                    className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* 4. Cast Images Section */}
+        {subProject.castImages && subProject.castImages.length > 0 && (
+          <section className="py-32 bg-card">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[CAST]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Cast
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {subProject.castImages.map((image, index) => (
+                  <div key={index} className="relative cursor-pointer group" onClick={() => window.open(image, '_blank')}>
+                    <img 
+                      src={image} 
+                      alt={`Cast ${index + 1}`}
+                      className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* 5. Production Section */}
+        {subProject.production && (
+          <section className="py-32 bg-background">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[PRODUCTION]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Production
+              </h2>
+              <div className="flex justify-center">
+                <img 
+                  src={subProject.production} 
+                  alt="Production Company"
+                  className="max-w-md h-auto object-contain"
+                />
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* 6. Timeline Section */}
+        {subProject.timeline && (
+          <section className="py-32 bg-card">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[PRODUCTION TIMELINE]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                7-Week Production Timeline
+              </h2>
+              <div className="flex justify-center">
+                <div className="relative cursor-pointer group w-full md:w-2/3 lg:w-1/2" onClick={() => window.open(subProject.timeline, '_blank')}>
+                  <img 
+                    src={subProject.timeline} 
+                    alt="Production Timeline"
+                    className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* 7. Cast Schedule Section */}
+        {subProject.castSchedule && (
+          <section className="py-32 bg-background">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[SCHEDULING]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Cast Schedule
+              </h2>
+              <div className="flex justify-center">
+                <div className="relative cursor-pointer group w-full md:w-2/3 lg:w-1/2" onClick={() => window.open(subProject.castSchedule, '_blank')}>
+                  <img 
+                    src={subProject.castSchedule} 
+                    alt="Cast Schedule"
+                    className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* 8. Time Shot Schedule Section */}
+        {subProject.timeShotSchedule && subProject.timeShotSchedule.length > 0 && (
+          <section className="py-32 bg-card">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[SHOOTING SCHEDULE]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Time Shot Schedule
+              </h2>
+              <div className="flex justify-center">
+                <div className="w-full md:w-2/3 lg:w-1/2 space-y-8">
+                  {subProject.timeShotSchedule.map((image, index) => (
+                    <div key={index} className="relative cursor-pointer group" onClick={() => window.open(image, '_blank')}>
+                      <img 
+                        src={image} 
+                        alt={`Time Shot Schedule ${index + 1}`}
+                        className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* 9. Posters Section */}
+        {subProject.posters && (
+          <section className="py-32 bg-background">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[POSTERS]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Film Posters
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {subProject.posters.vertical && (
+                  <div className="relative cursor-pointer group" onClick={() => window.open(subProject.posters.vertical, '_blank')}>
+                    <div className="text-primary font-mono text-sm mb-4">Vertical Poster</div>
+                    <img 
+                      src={subProject.posters.vertical} 
+                      alt="Vertical Poster"
+                      className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                    />
+                  </div>
+                )}
+                {subProject.posters.horizontal && (
+                  <div className="relative cursor-pointer group" onClick={() => window.open(subProject.posters.horizontal, '_blank')}>
+                    <div className="text-primary font-mono text-sm mb-4">Horizontal Poster</div>
+                    <img 
+                      src={subProject.posters.horizontal} 
+                      alt="Horizontal Poster"
+                      className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* 10. External Link Section */}
+        {subProject.externalLink && (
+          <section className="py-32 bg-card">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[FINAL OUTCOME]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Final Outcome
+              </h2>
+              <p className="text-muted-foreground mb-8 max-w-3xl">
+                The final video is 10 minutes long. Due to file size constraints, you can view it through the link below.
+              </p>
+              <a 
+                href={subProject.externalLink.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-300 border border-primary"
+              >
+                <span className="font-mono">{subProject.externalLink.title}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+                  <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+                </svg>
+              </a>
+            </div>
+          </section>
+        )}
+
+        {/* 11. Behind The Scenes Video Section */}
+        {subProject.btsVideoPath && (
+          <section className="py-32 bg-background">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[BEHIND THE SCENES]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Behind The Scenes with Narrator
+              </h2>
+              <div className="relative w-full aspect-video bg-black">
+                <video 
+                  controls
+                  className="w-full h-full"
+                >
+                  <source src={subProject.btsVideoPath} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* 12. Group Photo Section */}
+        {subProject.groupPhoto && (
+          <section className="py-32 bg-card">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[GROUP PHOTOS]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Group Photos
+              </h2>
+              <div className="relative cursor-pointer group" onClick={() => window.open(subProject.groupPhoto, '_blank')}>
+                <img 
+                  src={subProject.groupPhoto} 
+                  alt="Group Photo"
+                  className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                />
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* Presentation Board Section - Only show if presentationBoard exists */}
         {subProject.presentationBoard && (
           <section className="py-32 bg-card">
@@ -928,250 +1184,6 @@ const ProjectDetail = () => {
                   <source src={subProject.videoPath} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* Behind The Scenes Video Section - Only show if btsVideoPath exists */}
-        {subProject.btsVideoPath && (
-          <section className="py-32 bg-background">
-            <div className="container max-w-7xl mx-auto px-4">
-              <div className="text-primary font-mono text-sm mb-6">[BEHIND THE SCENES]</div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
-                Behind The Scenes with Narrator
-              </h2>
-              <div className="relative w-full aspect-video bg-black">
-                <video 
-                  controls
-                  className="w-full h-full"
-                >
-                  <source src={subProject.btsVideoPath} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* Posters Section - Only show if posters exist */}
-        {subProject.posters && (
-          <section className="py-32 bg-card">
-            <div className="container max-w-7xl mx-auto px-4">
-              <div className="text-primary font-mono text-sm mb-6">[POSTERS]</div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
-                Film Posters
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {subProject.posters.vertical && (
-                  <div className="relative cursor-pointer group" onClick={() => window.open(subProject.posters.vertical, '_blank')}>
-                    <div className="text-primary font-mono text-sm mb-4">Vertical Poster</div>
-                    <img 
-                      src={subProject.posters.vertical} 
-                      alt="Vertical Poster"
-                      className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
-                    />
-                  </div>
-                )}
-                {subProject.posters.horizontal && (
-                  <div className="relative cursor-pointer group" onClick={() => window.open(subProject.posters.horizontal, '_blank')}>
-                    <div className="text-primary font-mono text-sm mb-4">Horizontal Poster</div>
-                    <img 
-                      src={subProject.posters.horizontal} 
-                      alt="Horizontal Poster"
-                      className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
-                    />
-                  </div>
-                )}
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* Cast Images Section - Only show if castImages exist */}
-        {subProject.castImages && subProject.castImages.length > 0 && (
-          <section className="py-32 bg-background">
-            <div className="container max-w-7xl mx-auto px-4">
-              <div className="text-primary font-mono text-sm mb-6">[CAST]</div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
-                Cast
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {subProject.castImages.map((image, index) => (
-                  <div key={index} className="relative cursor-pointer group" onClick={() => window.open(image, '_blank')}>
-                    <img 
-                      src={image} 
-                      alt={`Cast ${index + 1}`}
-                      className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* Recce Images Section - Only show if recceImages exist */}
-        {subProject.recceImages && subProject.recceImages.length > 0 && (
-          <section className="py-32 bg-card">
-            <div className="container max-w-7xl mx-auto px-4">
-              <div className="text-primary font-mono text-sm mb-6">[LOCATION SCOUTING]</div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
-                Recce Images
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {subProject.recceImages.map((image, index) => (
-                  <div key={index} className="relative cursor-pointer group" onClick={() => window.open(image, '_blank')}>
-                    <img 
-                      src={image} 
-                      alt={`Recce ${index + 1}`}
-                      className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* Timeline Section - Only show if timeline exists */}
-        {subProject.timeline && (
-          <section className="py-32 bg-background">
-            <div className="container max-w-7xl mx-auto px-4">
-              <div className="text-primary font-mono text-sm mb-6">[PRODUCTION TIMELINE]</div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
-                7-Week Production Timeline
-              </h2>
-              <div className="relative cursor-pointer group" onClick={() => window.open(subProject.timeline, '_blank')}>
-                <img 
-                  src={subProject.timeline} 
-                  alt="Production Timeline"
-                  className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
-                />
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* Cast Schedule Section - Only show if castSchedule exists */}
-        {subProject.castSchedule && (
-          <section className="py-32 bg-card">
-            <div className="container max-w-7xl mx-auto px-4">
-              <div className="text-primary font-mono text-sm mb-6">[SCHEDULING]</div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
-                Cast Schedule
-              </h2>
-              <div className="relative cursor-pointer group" onClick={() => window.open(subProject.castSchedule, '_blank')}>
-                <img 
-                  src={subProject.castSchedule} 
-                  alt="Cast Schedule"
-                  className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
-                />
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* Time Shot Schedule Section - Only show if timeShotSchedule exists */}
-        {subProject.timeShotSchedule && (
-          <section className="py-32 bg-background">
-            <div className="container max-w-7xl mx-auto px-4">
-              <div className="text-primary font-mono text-sm mb-6">[SHOOTING SCHEDULE]</div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
-                Time Shot Schedule
-              </h2>
-              <div className="relative cursor-pointer group" onClick={() => window.open(subProject.timeShotSchedule, '_blank')}>
-                <img 
-                  src={subProject.timeShotSchedule} 
-                  alt="Time Shot Schedule"
-                  className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
-                />
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* External Link Section - Only show if externalLink exists */}
-        {subProject.externalLink && (
-          <section className="py-32 bg-background">
-            <div className="container max-w-7xl mx-auto px-4">
-              <div className="text-primary font-mono text-sm mb-6">[FINAL OUTCOME]</div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
-                Final Outcome
-              </h2>
-              <p className="text-muted-foreground mb-8 max-w-3xl">
-                The final video is 10 minutes long. Due to file size constraints, you can view it through the link below.
-              </p>
-              <a 
-                href={subProject.externalLink.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-300 border border-primary"
-              >
-                <span className="font-mono">{subProject.externalLink.title}</span>
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
-                  <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
-                </svg>
-              </a>
-            </div>
-          </section>
-        )}
-
-        {/* Group Photo Section - Only show if groupPhoto exists */}
-        {subProject.groupPhoto && (
-          <section className="py-32 bg-card">
-            <div className="container max-w-7xl mx-auto px-4">
-              <div className="text-primary font-mono text-sm mb-6">[GROUP PHOTOS]</div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
-                Group Photos
-              </h2>
-              <div className="relative cursor-pointer group" onClick={() => window.open(subProject.groupPhoto, '_blank')}>
-                <img 
-                  src={subProject.groupPhoto} 
-                  alt="Group Photo"
-                  className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
-                />
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* Production Section - Only show if production exists */}
-        {subProject.production && (
-          <section className="py-32 bg-background">
-            <div className="container max-w-7xl mx-auto px-4">
-              <div className="text-primary font-mono text-sm mb-6">[PRODUCTION]</div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
-                Production
-              </h2>
-              <div className="flex justify-center">
-                <img 
-                  src={subProject.production} 
-                  alt="Production Company"
-                  className="max-w-md h-auto object-contain"
-                />
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* Crew List Section - Only show if crewList exists */}
-        {subProject.crewList && (
-          <section className="py-32 bg-card">
-            <div className="container max-w-7xl mx-auto px-4">
-              <div className="text-primary font-mono text-sm mb-6">[PRODUCTION CREW]</div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
-                Production Crew
-              </h2>
-              <div className="flex justify-center">
-                <div className="relative cursor-pointer group max-w-2xl w-full" onClick={() => window.open(subProject.crewList, '_blank')}>
-                  <img 
-                    src={subProject.crewList} 
-                    alt="Crew List"
-                    className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
-                  />
-                </div>
               </div>
             </div>
           </section>
