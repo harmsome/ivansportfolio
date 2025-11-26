@@ -90,6 +90,11 @@ import butterflySinsCastSchedule from "@/assets/butterfly-sins-cast-schedule.png
 import butterflySinsTimeShotSchedule from "@/assets/butterfly-sins-time-shot-schedule.png";
 import butterflySinsTimeShotSchedule2 from "@/assets/butterfly-sins-time-shot-schedule-2.png";
 import butterflySinsTimeShotSchedule3 from "@/assets/butterfly-sins-time-shot-schedule-3.png";
+import tongAhTitleBg from "@/assets/tong-ah-title-bg.png";
+import tongAhMooncake1 from "@/assets/tong-ah-mooncake-1.jpg";
+import tongAhMooncake2 from "@/assets/tong-ah-mooncake-2.jpg";
+import tongAhFootage1 from "@/assets/tong-ah-footage-1.png";
+import tongAhFootage2 from "@/assets/tong-ah-footage-2.png";
 
 interface SubProject {
   id: number;
@@ -141,6 +146,8 @@ interface SubProject {
     url: string;
     title: string;
   };
+  mooncakePhotography?: string[];
+  footageFiles?: string[];
 }
 
 const ProjectDetail = () => {
@@ -249,7 +256,16 @@ const ProjectDetail = () => {
         production: butterflySinsProduction,
         crewList: butterflySinsCrewList
       },
-      { id: 2, title: "Tong Ah Commercial Ads", year: "2024", description: "Commercial advertising campaign", image: projectVideoEditing },
+      { 
+        id: 2, 
+        title: "Tong Ah Commercial Ads", 
+        year: "2024", 
+        description: "Commercial advertising campaign", 
+        image: tongAhTitleBg,
+        mooncakePhotography: [tongAhMooncake1, tongAhMooncake2],
+        footageFiles: [tongAhFootage1, tongAhFootage2],
+        videoPath: "/videos/tong-ah-final.mp4"
+      },
       { id: 3, title: "Dasein Kopitiam Event", year: "2024", description: "Event coverage and highlights", image: projectVideoEditing },
       { id: 4, title: "Equinova Event", year: "2024", description: "Event documentation", image: projectVideoEditing },
       { id: 5, title: "Instagram 4k Edits", year: "2024", description: "High-quality social media content", image: projectVideoEditing },
@@ -1007,18 +1023,16 @@ const ProjectDetail = () => {
               <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
                 Time Shot Schedule
               </h2>
-              <div className="flex justify-center">
-                <div className="w-full md:w-2/3 lg:w-1/2 space-y-8">
-                  {subProject.timeShotSchedule.map((image, index) => (
-                    <div key={index} className="relative cursor-pointer group" onClick={() => window.open(image, '_blank')}>
-                      <img 
-                        src={image} 
-                        alt={`Time Shot Schedule ${index + 1}`}
-                        className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
-                      />
-                    </div>
-                  ))}
-                </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {subProject.timeShotSchedule.map((image, index) => (
+                  <div key={index} className="relative cursor-pointer group" onClick={() => window.open(image, '_blank')}>
+                    <img 
+                      src={image} 
+                      alt={`Time Shot Schedule ${index + 1}`}
+                      className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                    />
+                  </div>
+                ))}
               </div>
             </div>
           </section>
@@ -1160,6 +1174,52 @@ const ProjectDetail = () => {
                       src={frame.image} 
                       alt={`Styleframe ${frame.id}`}
                       className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-105"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Mooncake Photography Section - Only show if mooncakePhotography exists */}
+        {subProject.mooncakePhotography && subProject.mooncakePhotography.length > 0 && (
+          <section className="py-32 bg-background">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[PRODUCT PHOTOGRAPHY]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Mooncake Photography
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {subProject.mooncakePhotography.map((image, index) => (
+                  <div key={index} className="relative cursor-pointer group" onClick={() => window.open(image, '_blank')}>
+                    <img 
+                      src={image} 
+                      alt={`Mooncake Photography ${index + 1}`}
+                      className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Footage Files Section - Only show if footageFiles exists */}
+        {subProject.footageFiles && subProject.footageFiles.length > 0 && (
+          <section className="py-32 bg-card">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[PRODUCTION FILES]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Footage Files
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {subProject.footageFiles.map((image, index) => (
+                  <div key={index} className="relative cursor-pointer group" onClick={() => window.open(image, '_blank')}>
+                    <img 
+                      src={image} 
+                      alt={`Footage Files ${index + 1}`}
+                      className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
                     />
                   </div>
                 ))}
