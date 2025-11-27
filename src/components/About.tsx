@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { useEffect, useRef, useState } from "react";
-import ASCIIText from "./ASCIIText";
+import ProfileCard from "./ProfileCard";
 
 const About = () => {
   const highlights = [{
@@ -42,30 +42,38 @@ const About = () => {
   return (
     <section id="about" className="relative py-24 px-4 bg-gradient-to-b from-card via-card to-muted/30" ref={sectionRef}>
       <div className="container max-w-6xl mx-auto">
-        <div className="text-center space-y-6 mb-12">
-          <h2 className="sr-only">About Me</h2>
+        <div className="text-center space-y-12 mb-12">
           <div 
-            className={`relative mx-auto flex justify-center items-center h-[140px] md:h-[180px] w-full max-w-5xl transition-all duration-1000 ${
+            className={`flex justify-center transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            <ASCIIText
-              text="About Me"
-              asciiFontSize={6}
-              textFontSize={180}
-              textColor="#fdf9f3"
-              planeBaseHeight={6}
-              enableWaves={true}
+            <ProfileCard
+              avatarUrl="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop"
+              name="Ivan"
+              title="Motion Designer & Video Editor"
+              handle="ivan"
+              status="Available"
+              contactText="Contact"
+              showUserInfo={true}
+              onContactClick={() => {
+                const contactSection = document.getElementById('contact');
+                contactSection?.scrollIntoView({ behavior: 'smooth' });
+              }}
             />
           </div>
-          <div
-            className={`transition-all duration-1000 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              I&apos;m Ivan, a motion designer and video editor driven by positivity and rhythm. My strength lies in creating visuals that move with emotion — blending design, timing, and storytelling into one seamless experience.
-            </p>
+          
+          <div className="space-y-6">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">About Me</h2>
+            <div
+              className={`transition-all duration-1000 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+            >
+              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                I&apos;m Ivan, a motion designer and video editor driven by positivity and rhythm. My strength lies in creating visuals that move with emotion — blending design, timing, and storytelling into one seamless experience.
+              </p>
+            </div>
           </div>
         </div>
 
