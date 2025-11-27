@@ -95,6 +95,7 @@ import tongAhMooncake1 from "@/assets/tong-ah-mooncake-1.jpg";
 import tongAhMooncake2 from "@/assets/tong-ah-mooncake-2.jpg";
 import tongAhFootage1 from "@/assets/tong-ah-footage-1.png";
 import tongAhFootage2 from "@/assets/tong-ah-footage-2.png";
+import daseinKopitiamTitle from "@/assets/dasein-kopitiam-title.png";
 
 interface SubProject {
   id: number;
@@ -265,7 +266,14 @@ const ProjectDetail = () => {
         mooncakePhotography: [tongAhMooncake1, tongAhMooncake2],
         videoPath: "/videos/tong-ah-final.mp4"
       },
-      { id: 3, title: "Dasein Kopitiam Event", year: "2024", description: "Event coverage and highlights", image: projectVideoEditing },
+      { 
+        id: 3, 
+        title: "Dasein Kopitiam Event", 
+        year: "", 
+        description: "Event coverage and highlights", 
+        image: daseinKopitiamTitle,
+        videoPath: "/videos/dasein-kopitiam-outcome.mp4"
+      },
       { id: 4, title: "Equinova Event", year: "2024", description: "Event documentation", image: projectVideoEditing },
       { id: 5, title: "Instagram 4k Edits", year: "2024", description: "High-quality social media content", image: projectVideoEditing },
       { id: 6, title: "Tiktok Video", year: "2024", description: "Short-form video content", image: projectVideoEditing }

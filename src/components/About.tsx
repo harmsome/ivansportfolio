@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { useEffect, useRef, useState } from "react";
 import ProfileCard from "./ProfileCard";
+import profilePicture from "@/assets/profile-picture.png";
 
 const About = () => {
   const highlights = [{
@@ -65,7 +66,7 @@ const About = () => {
             }`}
           >
             <ProfileCard
-              avatarUrl=""
+              avatarUrl={profilePicture}
               name=""
               title=""
               handle=""
