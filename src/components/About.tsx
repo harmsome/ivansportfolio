@@ -49,13 +49,13 @@ const About = () => {
             }`}
           >
             <ProfileCard
-              avatarUrl="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop"
-              name="Ivan"
-              title="Motion Designer & Video Editor"
-              handle="ivan"
-              status="Available"
+              avatarUrl=""
+              name=""
+              title=""
+              handle=""
+              status=""
               contactText="Contact"
-              showUserInfo={true}
+              showUserInfo={false}
               onContactClick={() => {
                 const contactSection = document.getElementById('contact');
                 contactSection?.scrollIntoView({ behavior: 'smooth' });
