@@ -100,6 +100,7 @@ import equinovaTitle from "@/assets/equinova-title.png";
 import equinovaPoster from "@/assets/equinova-poster.png";
 import fourKEditingTitle from "@/assets/4k-editing-title.png";
 import tiktokTitle from "@/assets/tiktok-title.png";
+import teamBuildingGroupPhoto from "@/assets/team-building-camp-group-photo.png";
 
 interface SubProject {
   id: number;
@@ -316,6 +317,15 @@ const ProjectDetail = () => {
           { name: "Nako Tingkap", video: "/videos/nako-tingkap.mp4" },
           { name: "Bumbung Kaca", video: "/videos/bumbung-kaca.mp4" }
         ]
+      },
+      { 
+        id: 7, 
+        title: "Team Building Camp", 
+        year: "", 
+        description: "DDM2025 Team Building Camp", 
+        image: teamBuildingGroupPhoto,
+        groupPhoto: teamBuildingGroupPhoto,
+        videoPath: "/videos/team-building-camp-outcome.mp4"
       }
     ] as SubProject[]
   }, {
@@ -1343,6 +1353,26 @@ const ProjectDetail = () => {
                     </div>
                   </div>
                 ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Group Photo Section */}
+        {subProject.groupPhoto && (
+          <section className="py-32 bg-background">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[GROUP PHOTO]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                DDM2025 Team Building Camp Group Photo
+              </h2>
+              <div className="relative w-full aspect-[21/9] overflow-hidden rounded-lg cursor-pointer hover:opacity-90 transition-opacity">
+                <img 
+                  src={subProject.groupPhoto} 
+                  alt="Team Building Camp Group Photo" 
+                  className="w-full h-full object-cover"
+                  onClick={() => window.open(subProject.groupPhoto, '_blank')}
+                />
               </div>
             </div>
           </section>
