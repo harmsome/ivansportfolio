@@ -96,6 +96,8 @@ import tongAhMooncake2 from "@/assets/tong-ah-mooncake-2.jpg";
 import tongAhFootage1 from "@/assets/tong-ah-footage-1.png";
 import tongAhFootage2 from "@/assets/tong-ah-footage-2.png";
 import daseinKopitiamTitle from "@/assets/dasein-kopitiam-title.png";
+import equinovaTitle from "@/assets/equinova-title.png";
+import equinovaPoster from "@/assets/equinova-poster.png";
 
 interface SubProject {
   id: number;
@@ -149,6 +151,9 @@ interface SubProject {
   };
   mooncakePhotography?: string[];
   footageFiles?: string[];
+  equinovaPoster?: string;
+  trailerVideo?: string;
+  instagramReels?: Array<{ name: string; video: string }>;
 }
 
 const ProjectDetail = () => {
@@ -274,8 +279,29 @@ const ProjectDetail = () => {
         image: daseinKopitiamTitle,
         videoPath: "/videos/dasein-kopitiam-outcome.mp4"
       },
-      { id: 4, title: "Equinova Event", year: "2024", description: "Event documentation", image: projectVideoEditing },
-      { id: 5, title: "Instagram 4k Edits", year: "2024", description: "High-quality social media content", image: projectVideoEditing },
+      { 
+        id: 4, 
+        title: "Equinova Event", 
+        year: "", 
+        description: "Event documentation", 
+        image: equinovaTitle,
+        equinovaPoster: equinovaPoster,
+        trailerVideo: "/videos/equinova-trailer.mp4"
+      },
+      { 
+        id: 5, 
+        title: "Instagram 4k Edits", 
+        year: "", 
+        description: "High-quality social media content", 
+        image: projectVideoEditing,
+        instagramReels: [
+          { name: "BlackMyth Edit", video: "/videos/blackmyth-edit.mp4" },
+          { name: "Rengoku Edit", video: "/videos/rengoku-edit.mp4" },
+          { name: "Gachiakuta Edit", video: "/videos/gachiakuta-edit.mp4" },
+          { name: "Villains Edit", video: "/videos/villains-edit.mp4" },
+          { name: "Stranger Things Edit", video: "/videos/stranger-things-edit.mp4" }
+        ]
+      },
       { id: 6, title: "Tiktok Video", year: "2024", description: "Short-form video content", image: projectVideoEditing }
     ] as SubProject[]
   }, {
@@ -1205,6 +1231,74 @@ const ProjectDetail = () => {
                       alt={`Mooncake Photography ${index + 1}`}
                       className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
                     />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Equinova Posters Section */}
+        {subProject.equinovaPoster && (
+          <section className="py-32 bg-background">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[EVENT POSTERS]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Equinova Posters
+              </h2>
+              <div className="relative cursor-pointer group" onClick={() => window.open(subProject.equinovaPoster, '_blank')}>
+                <img 
+                  src={subProject.equinovaPoster} 
+                  alt="Equinova Poster"
+                  className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                />
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Equinova Trailer Peak Video Section */}
+        {subProject.trailerVideo && (
+          <section className="py-32 bg-muted/30">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[TRAILER PREVIEW]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Equinova Trailer Peak Video
+              </h2>
+              <div className="relative w-full aspect-video bg-black">
+                <video 
+                  controls
+                  className="w-full h-full"
+                >
+                  <source src={subProject.trailerVideo} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Instagram Reels Section */}
+        {subProject.instagramReels && subProject.instagramReels.length > 0 && (
+          <section className="py-32 bg-background">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[SOCIAL MEDIA CONTENT]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Instagram Reels
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                {subProject.instagramReels.map((reel, index) => (
+                  <div key={index} className="space-y-4">
+                    <h3 className="text-xl font-semibold text-center">{reel.name}</h3>
+                    <div className="relative w-full aspect-[9/16] bg-black">
+                      <video 
+                        controls
+                        className="w-full h-full"
+                      >
+                        <source src={reel.video} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
                   </div>
                 ))}
               </div>
