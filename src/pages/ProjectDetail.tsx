@@ -98,6 +98,8 @@ import tongAhFootage2 from "@/assets/tong-ah-footage-2.png";
 import daseinKopitiamTitle from "@/assets/dasein-kopitiam-title.png";
 import equinovaTitle from "@/assets/equinova-title.png";
 import equinovaPoster from "@/assets/equinova-poster.png";
+import fourKEditingTitle from "@/assets/4k-editing-title.png";
+import tiktokTitle from "@/assets/tiktok-title.png";
 
 interface SubProject {
   id: number;
@@ -154,6 +156,7 @@ interface SubProject {
   equinovaPoster?: string;
   trailerVideo?: string;
   instagramReels?: Array<{ name: string; video: string }>;
+  tiktokVideos?: Array<{ name: string; video: string }>;
 }
 
 const ProjectDetail = () => {
@@ -293,7 +296,7 @@ const ProjectDetail = () => {
         title: "Instagram 4k Edits", 
         year: "", 
         description: "High-quality social media content", 
-        image: projectVideoEditing,
+        image: fourKEditingTitle,
         instagramReels: [
           { name: "BlackMyth Edit", video: "/videos/blackmyth-edit.mp4" },
           { name: "Rengoku Edit", video: "/videos/rengoku-edit.mp4" },
@@ -302,7 +305,18 @@ const ProjectDetail = () => {
           { name: "Stranger Things Edit", video: "/videos/stranger-things-edit.mp4" }
         ]
       },
-      { id: 6, title: "Tiktok Video", year: "2024", description: "Short-form video content", image: projectVideoEditing }
+      { 
+        id: 6, 
+        title: "Tiktok Video", 
+        year: "2024", 
+        description: "Short-form video content", 
+        image: tiktokTitle,
+        tiktokVideos: [
+          { name: "Bumbung Kaca Putih", video: "/videos/bumbung-kaca-putih.mp4" },
+          { name: "Nako Tingkap", video: "/videos/nako-tingkap.mp4" },
+          { name: "Bumbung Kaca", video: "/videos/bumbung-kaca.mp4" }
+        ]
+      }
     ] as SubProject[]
   }, {
     id: 3,
@@ -1306,6 +1320,33 @@ const ProjectDetail = () => {
           </section>
         )}
 
+        {/* TikTok Videos Section */}
+        {subProject.tiktokVideos && subProject.tiktokVideos.length > 0 && (
+          <section className="py-32 bg-muted/30">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[TIKTOK CONTENT]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                TikTok Videos
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                {subProject.tiktokVideos.map((video, index) => (
+                  <div key={index} className="space-y-4">
+                    <h3 className="text-xl font-semibold text-center">{video.name}</h3>
+                    <div className="relative w-full aspect-[9/16] bg-black">
+                      <video 
+                        controls
+                        className="w-full h-full"
+                      >
+                        <source src={video.video} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Final Outcome Video Section - Only show if video exists */}
         {subProject.videoPath && (
