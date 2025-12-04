@@ -101,6 +101,8 @@ import equinovaPoster from "@/assets/equinova-poster.png";
 import fourKEditingTitle from "@/assets/4k-editing-title.png";
 import tiktokTitle from "@/assets/tiktok-title.png";
 import teamBuildingGroupPhoto from "@/assets/team-building-camp-group-photo.png";
+import dominoPizzaTitle from "@/assets/domino-pizza-title.png";
+import rottenParadiseTitle from "@/assets/rotten-paradise-title.png";
 
 interface SubProject {
   id: number;
@@ -339,9 +341,9 @@ const ProjectDetail = () => {
     ],
     image: projectUIUXDesign,
     subProjects: [
-      { id: 1, title: "E-commerce Platform", year: "2024", description: "Seamless shopping experience design", image: projectUIUXDesign },
-      { id: 2, title: "Mobile App Interface", year: "2024", description: "Intuitive mobile-first design", image: projectUIUXDesign },
-      { id: 3, title: "Dashboard Design", year: "2024", description: "Data visualization and analytics", image: projectUIUXDesign }
+      { id: 1, title: "Domino Pizza Revamp", year: "", description: "Website redesign project", image: dominoPizzaTitle },
+      { id: 2, title: "Rotten Paradise", year: "", description: "E-commerce website design", image: rottenParadiseTitle },
+      { id: 3, title: "Dashboard Design", year: "", description: "Data visualization and analytics", image: projectUIUXDesign }
     ] as SubProject[]
   }, {
     id: 4,
