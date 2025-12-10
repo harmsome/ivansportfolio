@@ -163,10 +163,8 @@ interface SubProject {
   instagramReels?: Array<{ name: string; video: string }>;
   tiktokVideos?: Array<{ name: string; video: string }>;
   moodboardImages?: Array<{ id: number; image: string }>;
-  designStyleframeLink?: {
-    url: string;
-    title: string;
-  };
+  showcaseVideo?: string;
+  showcaseVideos?: Array<{ title: string; video: string }>;
 }
 
 const ProjectDetail = () => {
@@ -359,12 +357,19 @@ const ProjectDetail = () => {
           { id: 1, image: dominoMoodboard1 },
           { id: 2, image: dominoMoodboard2 }
         ],
-        designStyleframeLink: {
-          url: "https://drive.google.com/drive/folders/1jvj-brVvaZ97iE1jqlzrkQMhmNbg2fDB?usp=sharing",
-          title: "View Design Styleframes"
-        }
+        showcaseVideo: "/videos/domino-pizza-showcase.mp4"
       },
-      { id: 2, title: "Rotten Paradise", year: "", description: "E-commerce website design", image: rottenParadiseTitle }
+      { 
+        id: 2, 
+        title: "Rotten Paradise", 
+        year: "", 
+        description: "E-commerce website design", 
+        image: rottenParadiseTitle,
+        showcaseVideos: [
+          { title: "Mobile Phone Showcase", video: "/videos/rotten-paradise-mobile.mp4" },
+          { title: "Laptop Showcase", video: "/videos/rotten-paradise-laptop.mp4" }
+        ]
+      }
     ] as SubProject[]
   }, {
     id: 4,
@@ -650,27 +655,51 @@ const ProjectDetail = () => {
           </section>
         )}
 
-        {/* Design Styleframe Link Section - Only show if designStyleframeLink exists */}
-        {subProject.designStyleframeLink && (
+        {/* Showcase Video Section - Only show if showcaseVideo exists */}
+        {subProject.showcaseVideo && (
           <section className="py-32 bg-card">
             <div className="container max-w-7xl mx-auto px-4">
-              <div className="text-primary font-mono text-sm mb-6">[DESIGN STYLEFRAME]</div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-8 tracking-tight">
-                Design Styleframe
+              <div className="text-primary font-mono text-sm mb-6">[UI/UX SHOWCASE]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Showcase
               </h2>
-              <p className="text-muted-foreground mb-8 max-w-2xl">
-                View the complete design styleframes and visual assets for this project.
-              </p>
-              <Button 
-                size="lg"
-                asChild
-                className="bg-primary text-primary-foreground hover:bg-primary/90"
-              >
-                <a href={subProject.designStyleframeLink.url} target="_blank" rel="noopener noreferrer">
-                  {subProject.designStyleframeLink.title}
-                  <ArrowLeft className="h-4 w-4 ml-2 rotate-180" />
-                </a>
-              </Button>
+              <div className="relative w-full aspect-video bg-black">
+                <video 
+                  controls
+                  className="w-full h-full"
+                >
+                  <source src={subProject.showcaseVideo} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Showcase Videos Section - Only show if showcaseVideos exist */}
+        {subProject.showcaseVideos && subProject.showcaseVideos.length > 0 && (
+          <section className="py-32 bg-card">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[UI/UX SHOWCASE]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Showcase
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                {subProject.showcaseVideos.map((showcase, index) => (
+                  <div key={index} className="space-y-4">
+                    <h3 className="text-xl font-semibold">{showcase.title}</h3>
+                    <div className="relative w-full aspect-video bg-black">
+                      <video 
+                        controls
+                        className="w-full h-full"
+                      >
+                        <source src={showcase.video} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </section>
         )}
