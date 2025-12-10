@@ -103,6 +103,8 @@ import tiktokTitle from "@/assets/tiktok-title.png";
 import teamBuildingGroupPhoto from "@/assets/team-building-camp-group-photo.png";
 import dominoPizzaTitle from "@/assets/domino-pizza-title.png";
 import rottenParadiseTitle from "@/assets/rotten-paradise-title.png";
+import dominoMoodboard1 from "@/assets/domino-moodboard-1.png";
+import dominoMoodboard2 from "@/assets/domino-moodboard-2.png";
 
 interface SubProject {
   id: number;
@@ -160,6 +162,11 @@ interface SubProject {
   trailerVideo?: string;
   instagramReels?: Array<{ name: string; video: string }>;
   tiktokVideos?: Array<{ name: string; video: string }>;
+  moodboardImages?: Array<{ id: number; image: string }>;
+  designStyleframeLink?: {
+    url: string;
+    title: string;
+  };
 }
 
 const ProjectDetail = () => {
@@ -341,9 +348,23 @@ const ProjectDetail = () => {
     ],
     image: projectUIUXDesign,
     subProjects: [
-      { id: 1, title: "Domino Pizza Revamp", year: "", description: "Website redesign project", image: dominoPizzaTitle },
-      { id: 2, title: "Rotten Paradise", year: "", description: "E-commerce website design", image: rottenParadiseTitle },
-      { id: 3, title: "Dashboard Design", year: "", description: "Data visualization and analytics", image: projectUIUXDesign }
+      { 
+        id: 1, 
+        title: "Domino Pizza Revamp", 
+        year: "", 
+        description: "Website redesign project", 
+        image: dominoPizzaTitle,
+        overview: "A comprehensive redesign of the Domino's Pizza website, focusing on improving user experience, visual appeal, and ordering flow.",
+        moodboardImages: [
+          { id: 1, image: dominoMoodboard1 },
+          { id: 2, image: dominoMoodboard2 }
+        ],
+        designStyleframeLink: {
+          url: "https://drive.google.com/drive/folders/1jvj-brVvaZ97iE1jqlzrkQMhmNbg2fDB?usp=sharing",
+          title: "View Design Styleframes"
+        }
+      },
+      { id: 2, title: "Rotten Paradise", year: "", description: "E-commerce website design", image: rottenParadiseTitle }
     ] as SubProject[]
   }, {
     id: 4,
@@ -605,6 +626,54 @@ const ProjectDetail = () => {
             }
           }
         `}</style>
+
+        {/* Moodboard Section - Only show if moodboardImages exist */}
+        {subProject.moodboardImages && subProject.moodboardImages.length > 0 && (
+          <section className="py-32 bg-background">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[MOODBOARD]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+                Moodboard
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {subProject.moodboardImages.map((moodboard) => (
+                  <div key={moodboard.id} className="relative cursor-pointer group" onClick={() => window.open(moodboard.image, '_blank')}>
+                    <img 
+                      src={moodboard.image} 
+                      alt={`Moodboard ${moodboard.id}`}
+                      className="w-full h-auto object-cover border border-border hover:border-primary transition-all duration-300 hover:scale-[1.02]"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Design Styleframe Link Section - Only show if designStyleframeLink exists */}
+        {subProject.designStyleframeLink && (
+          <section className="py-32 bg-card">
+            <div className="container max-w-7xl mx-auto px-4">
+              <div className="text-primary font-mono text-sm mb-6">[DESIGN STYLEFRAME]</div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-8 tracking-tight">
+                Design Styleframe
+              </h2>
+              <p className="text-muted-foreground mb-8 max-w-2xl">
+                View the complete design styleframes and visual assets for this project.
+              </p>
+              <Button 
+                size="lg"
+                asChild
+                className="bg-primary text-primary-foreground hover:bg-primary/90"
+              >
+                <a href={subProject.designStyleframeLink.url} target="_blank" rel="noopener noreferrer">
+                  {subProject.designStyleframeLink.title}
+                  <ArrowLeft className="h-4 w-4 ml-2 rotate-180" />
+                </a>
+              </Button>
+            </div>
+          </section>
+        )}
 
         {/* Reference Images Section - Only show if referenceImages exist */}
         {subProject.referenceImages && subProject.referenceImages.length > 0 && (
