@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, CarouselApi } from "@/components/ui/carousel";
 import project2DAnimation from "@/assets/fearflix-door.jpg";
 import projectVideoEditing from "@/assets/project-video-editing.jpg";
@@ -69,6 +69,19 @@ const Projects = () => {
   return (
     <section id="projects" className="pt-20 pb-12 overflow-hidden bg-card">
       <div className="container max-w-7xl mx-auto px-4">
+        <div className="flex justify-center mb-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <Button 
+            variant="outline" 
+            size="lg"
+            asChild
+            className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+          >
+            <a href="/cv/ivan-cv.pdf" download>
+              <Download className="h-4 w-4 mr-2" />
+              Download Ivan's CV
+            </a>
+          </Button>
+        </div>
         <div className="text-center space-y-1 mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Projects</h2>
           <p className="text-muted-foreground text-base font-mono tracking-wider">
