@@ -174,7 +174,7 @@ const ProjectDetail = () => {
   const projects = [{
     id: 1,
     title: "2D Animation",
-    year: "2024",
+    year: "",
     description: "Motion story that made with 2D and smooth animation to show feelings and rhythm.",
     apps: [
       { name: "After Effects", icon: aftereffectsLogo },
@@ -186,7 +186,7 @@ const ProjectDetail = () => {
       { 
         id: 1, 
         title: "The Fearflix", 
-        year: "2024", 
+        year: "", 
         description: "This is a Netflix horror series 2d animation ads", 
         image: fearflixNetflixBg,
         overview: "A chilling Netflix horror series brought to life through compelling 2D animation. This project combines dark atmospheric visuals with smooth motion design to create an engaging promotional campaign that captures the essence of fear and suspense. Each frame was meticulously crafted to build tension and intrigue, drawing viewers into a world of supernatural terror.",
@@ -205,7 +205,7 @@ const ProjectDetail = () => {
       { 
         id: 2, 
         title: "Growtopia Ads Animations",
-        year: "2024", 
+        year: "", 
         description: "2D Animation video ads for Growtopia game", 
         image: growtopiaLogo,
         overview: "This is a project where I helped my online friend create 2D animation video ads for the game Growtopia to promote his website. Since there was no storyboard phase, I went straight into After Effects to create the animations, working directly with the vision and requirements provided.",
@@ -216,7 +216,7 @@ const ProjectDetail = () => {
       { 
         id: 3, 
         title: "Unspoken Pain",
-        year: "2024", 
+        year: "", 
         description: "Motion graphic animation exploring bullying and emotional isolation", 
         image: unspokenPainBg,
         overview: "This deeply personal project explores my own experience with bullying during my school years. Through dark, surreal visuals and symbolic storytelling, the animation depicts the emotional journey of isolation, verbal abuse, and the struggle to maintain one's sense of self in the face of relentless negativity. The project aims to raise awareness about how toxic masculinity contributes to bullying among adolescent boys and promote conversations around emotional well-being and mental health.",
@@ -234,7 +234,7 @@ const ProjectDetail = () => {
   }, {
     id: 2,
     title: "Video Editing",
-    year: "2024",
+    year: "",
     description: "Cut and mix videos with music and mood to make the story feel alive.",
     apps: [
       { name: "After Effects", icon: aftereffectsLogo },
@@ -246,7 +246,7 @@ const ProjectDetail = () => {
       { 
         id: 1, 
         title: "Short Film: Butterfly Sin's", 
-        year: "2024", 
+        year: "", 
         description: "Narrative-driven short film", 
         image: projectVideoEditing,
         overview: "This short film was our semester 6 project in college, an intensive 7-week production that challenged us to execute every aspect of filmmaking from conception to completion. Within this compressed timeline, we handled all creative and logistical responsibilities including drawing storyboards, designing the production logo, casting actors, location scouting (recce), creating detailed shooting schedules, distributing crew responsibilities, managing props and costumes, and coordinating the entire production workflow. This project tested our ability to work under tight deadlines while maintaining creative vision and professional production standards, ultimately delivering a compelling narrative about transformation, identity, and the consequences of our choices.",
@@ -276,9 +276,10 @@ const ProjectDetail = () => {
       { 
         id: 2, 
         title: "Tong Ah Commercial Ads", 
-        year: "2024", 
+        year: "", 
         description: "Commercial advertising campaign", 
         image: tongAhTitleBg,
+        overview: "This project is to make an interview about the artist which collaborate with an old brand mooncake named \"Tong Ah\" and for this ads we need to bring out the artist art that brings out the Malaysia local brand art.",
         mooncakePhotography: [tongAhMooncake1, tongAhMooncake2],
         videoPath: "/videos/tong-ah-final.mp4"
       },
@@ -316,7 +317,7 @@ const ProjectDetail = () => {
       { 
         id: 6, 
         title: "Tiktok Video", 
-        year: "2024", 
+        year: "", 
         description: "Short-form video content", 
         image: tiktokTitle,
         tiktokVideos: [
@@ -337,7 +338,7 @@ const ProjectDetail = () => {
   }, {
     id: 3,
     title: "UI/UX Design",
-    year: "2024",
+    year: "",
     description: "User Friendly and convenient design that looks nice and feels simple to use.",
     apps: [
       { name: "Figma", icon: figmaLogo },
@@ -374,7 +375,7 @@ const ProjectDetail = () => {
   }, {
     id: 4,
     title: "3D Modeling",
-    year: "2024",
+    year: "",
     description: "Detailed 3D models with nice light and smooth shape.",
     apps: [
       { name: "Blender", icon: blenderLogo },
@@ -385,7 +386,7 @@ const ProjectDetail = () => {
       { 
         id: 1, 
         title: "Treasure Chest 3D Modeling", 
-        year: "2024", 
+        year: "", 
         description: "", 
         image: project3DModeling,
         overview: "This is a practice in college",
@@ -416,7 +417,7 @@ const ProjectDetail = () => {
       { 
         id: 3, 
         title: "Interior & Still Life", 
-        year: "2024", 
+        year: "", 
         description: "Immersive 3D environments", 
         image: interiorStillLifeBg,
         categorizedRenderingStages: [
@@ -459,7 +460,7 @@ const ProjectDetail = () => {
       { 
         id: 4, 
         title: "Uturon Box Animations", 
-        year: "2024", 
+        year: "", 
         description: "Online Marketing lesson - Brand creation and marketing", 
         image: uturonLogo,
         overview: "This project is part of an Online Marketing lesson where we created and marketed our own brand 'Uturon'. The project showcases brand development, social media presence, and marketing strategies through Instagram and promotional video content.",
@@ -472,7 +473,7 @@ const ProjectDetail = () => {
   }, {
     id: 5,
     title: "Installations",
-    year: "2024",
+    year: "",
     description: "Interactive project that i made on physical",
     apps: [
       { name: "Unity", icon: unityLogo }
@@ -1525,7 +1526,7 @@ const ProjectDetail = () => {
         <div className="absolute top-8 left-8">
           <Button 
             variant="ghost" 
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/#projects")}
             className="bg-background/10 backdrop-blur-sm hover:bg-background/20 text-white border border-white/20"
           >
             <ArrowLeft className="h-4 w-4" />
