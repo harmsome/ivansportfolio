@@ -69,6 +69,19 @@ const Projects = () => {
   return (
     <section id="projects" className="pt-20 pb-12 overflow-hidden bg-card">
       <div className="container max-w-7xl mx-auto px-4">
+        {/* Showreel Section */}
+        <div className="mb-10 animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <h3 className="text-xl md:text-2xl font-bold text-center mb-4 tracking-tight">Showreel</h3>
+          <div className="relative w-full max-w-4xl mx-auto aspect-video rounded-lg overflow-hidden border border-border shadow-lg">
+            <video 
+              src="/videos/ivan-showreel.mp4"
+              controls
+              className="w-full h-full object-cover"
+              poster=""
+            />
+          </div>
+        </div>
+
         <div className="flex justify-center mb-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
           <Button 
             variant="outline" 
