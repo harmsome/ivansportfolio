@@ -14,7 +14,8 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    message: ""
+    message: "",
+    website: "" // Honeypot field - should remain empty
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -42,7 +43,12 @@ const Contact = () => {
 
     try {
       const { error } = await supabase.functions.invoke("send-contact-email", {
-        body: formData,
+        body: {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          honeypot: formData.website // Send honeypot for server-side validation
+        },
       });
 
       if (error) throw error;
@@ -52,7 +58,7 @@ const Contact = () => {
         description: "Thanks for reaching out. I'll get back to you soon!",
       });
 
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({ name: "", email: "", message: "", website: "" });
     } catch (error: any) {
       console.error("Error sending message:", error);
       toast({
@@ -113,6 +119,17 @@ const Contact = () => {
 
             <Card className="p-6 border-2 border-border bg-card hover:shadow-lg transition-all duration-300 hover:border-primary group">
               <form onSubmit={handleSubmit} className="space-y-4">
+                {/* Honeypot field - hidden from users, bots will fill it */}
+                <div className="absolute -left-[9999px]" aria-hidden="true">
+                  <Input 
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={formData.website}
+                    onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                  />
+                </div>
                 <div>
                   <Input 
                     placeholder="Your Name" 
