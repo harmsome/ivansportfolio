@@ -89,9 +89,9 @@ const Projects = () => {
             asChild
             className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
           >
-            <a href="/cv/ivan-cv.png" download="ivan-cv.png">
+            <a href="/cv/ivans-resume.pdf" download="ivans-resume.pdf">
               <Download className="h-4 w-4 mr-2" />
-              Download Ivan's CV
+              Download Ivan's Resume
             </a>
           </Button>
         </div>
