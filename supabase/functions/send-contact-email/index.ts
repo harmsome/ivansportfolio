@@ -51,12 +51,17 @@ function sanitizeHtml(str: string): string {
     .replace(/'/g, "&#039;");
 }
 
-function validateInput(data: unknown): { valid: boolean; error?: string; parsed?: { name: string; email: string; message: string } } {
+function validateInput(data: unknown): { valid: boolean; error?: string; isBot?: boolean; parsed?: { name: string; email: string; message: string } } {
   if (!data || typeof data !== "object") {
     return { valid: false, error: "Invalid request body" };
   }
 
-  const { name, email, message } = data as Record<string, unknown>;
+  const { name, email, message, honeypot } = data as Record<string, unknown>;
+
+  // Honeypot check - if filled, it's likely a bot
+  if (honeypot && typeof honeypot === "string" && honeypot.trim().length > 0) {
+    return { valid: false, isBot: true, error: "Invalid submission" };
+  }
 
   // Validate name
   if (typeof name !== "string" || name.trim().length === 0) {
@@ -127,7 +132,12 @@ const handler = async (req: Request): Promise<Response> => {
 
     const validation = validateInput(requestData);
     if (!validation.valid || !validation.parsed) {
-      console.log("Validation failed:", validation.error);
+      // Log bot attempts separately for monitoring
+      if (validation.isBot) {
+        console.log("Bot submission detected and rejected");
+      } else {
+        console.log("Validation failed:", validation.error);
+      }
       return new Response(
         JSON.stringify({ error: validation.error }),
         {
