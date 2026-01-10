@@ -161,7 +161,7 @@ interface SubProject {
   equinovaPoster?: string;
   trailerVideo?: string;
   instagramReels?: Array<{ name: string; video: string }>;
-  tiktokVideos?: Array<{ name: string; video: string }>;
+  tiktokVideos?: Array<{ name: string; video: string; isNew?: boolean }>;
   moodboardImages?: Array<{ id: number; image: string }>;
   showcaseVideo?: string;
   showcaseVideos?: Array<{ title: string; video: string }>;
@@ -321,6 +321,10 @@ const ProjectDetail = () => {
         description: "Short-form video content", 
         image: tiktokTitle,
         tiktokVideos: [
+          { name: "Site Visit", video: "/videos/site-visit.mp4", isNew: true },
+          { name: "Office Partition & Lock", video: "/videos/office-partition-lock.mp4", isNew: true },
+          { name: "Meeting room", video: "/videos/meeting-room.mp4", isNew: true },
+          { name: "Lider Glass", video: "/videos/lider-glass.mp4", isNew: true },
           { name: "Bumbung Kaca Putih", video: "/videos/bumbung-kaca-putih.mp4" },
           { name: "Nako Tingkap", video: "/videos/nako-tingkap.mp4" },
           { name: "Bumbung Kaca", video: "/videos/bumbung-kaca.mp4" }
@@ -1438,11 +1442,43 @@ const ProjectDetail = () => {
               <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
                 TikTok Videos
               </h2>
+              
+              {/* New Videos Section */}
+              {subProject.tiktokVideos.some(v => v.isNew) && (
+                <>
+                  <div className="flex items-center gap-3 mb-8">
+                    <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-semibold">
+                      New added
+                    </span>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                    {subProject.tiktokVideos.filter(v => v.isNew).map((video, index) => (
+                      <div key={index} className="space-y-4">
+                        <h3 className="text-xl font-semibold text-center">{video.name}</h3>
+                        <div className="relative w-full aspect-[9/16] bg-black rounded-lg overflow-hidden">
+                          <video 
+                            controls
+                            className="w-full h-full"
+                          >
+                            <source src={video.video} type="video/mp4" />
+                            Your browser does not support the video tag.
+                          </video>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  {/* Separator */}
+                  <div className="border-t border-border my-12"></div>
+                </>
+              )}
+              
+              {/* Existing Videos */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-                {subProject.tiktokVideos.map((video, index) => (
+                {subProject.tiktokVideos.filter(v => !v.isNew).map((video, index) => (
                   <div key={index} className="space-y-4">
                     <h3 className="text-xl font-semibold text-center">{video.name}</h3>
-                    <div className="relative w-full aspect-[9/16] bg-black">
+                    <div className="relative w-full aspect-[9/16] bg-black rounded-lg overflow-hidden">
                       <video 
                         controls
                         className="w-full h-full"
