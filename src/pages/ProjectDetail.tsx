@@ -321,11 +321,11 @@ const ProjectDetail = () => {
         description: "Short-form video content", 
         image: tiktokTitle,
         tiktokVideos: [
+          { name: "Bumbung Kaca Putih", video: "/videos/bumbung-kaca-putih.mp4" },
           { name: "Site Visit", video: "/videos/site-visit.mp4", isNew: true },
           { name: "Office Partition & Lock", video: "/videos/office-partition-lock.mp4", isNew: true },
           { name: "Meeting room", video: "/videos/meeting-room.mp4", isNew: true },
           { name: "Lider Glass", video: "/videos/lider-glass.mp4", isNew: true },
-          { name: "Bumbung Kaca Putih", video: "/videos/bumbung-kaca-putih.mp4" },
           { name: "Nako Tingkap", video: "/videos/nako-tingkap.mp4" },
           { name: "Bumbung Kaca", video: "/videos/bumbung-kaca.mp4" }
         ]
@@ -1447,15 +1447,18 @@ const ProjectDetail = () => {
               {subProject.tiktokVideos.some(v => v.isNew) && (
                 <>
                   <div className="flex items-center gap-3 mb-8">
-                    <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-semibold">
-                      New added
+                    <span className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white px-5 py-2.5 rounded-full text-base font-bold shadow-lg shadow-green-500/30 animate-pulse">
+                      <span className="w-2.5 h-2.5 bg-white rounded-full animate-ping"></span>
+                      New Added
                     </span>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
                     {subProject.tiktokVideos.filter(v => v.isNew).map((video, index) => (
-                      <div key={index} className="space-y-4">
-                        <h3 className="text-xl font-semibold text-center">{video.name}</h3>
-                        <div className="relative w-full aspect-[9/16] bg-black rounded-lg overflow-hidden">
+                      <div key={index} className="space-y-4 group">
+                        <div className="flex items-center justify-center gap-2">
+                          <h3 className="text-xl font-semibold text-center">{video.name}</h3>
+                        </div>
+                        <div className="relative w-full aspect-[9/16] bg-black rounded-lg overflow-hidden ring-2 ring-green-500/50 group-hover:ring-green-500 transition-all">
                           <video 
                             controls
                             className="w-full h-full"

@@ -95,6 +95,42 @@ const Projects = () => {
             </a>
           </Button>
         </div>
+        {/* New TikTok Videos Section */}
+        <div className="mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg shadow-green-500/30">
+              <span className="w-2 h-2 bg-white rounded-full animate-ping"></span>
+              New Added
+            </span>
+            <h3 className="text-xl md:text-2xl font-bold tracking-tight">Latest TikTok Videos</h3>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { name: "Site Visit", video: "/videos/site-visit.mp4" },
+              { name: "Office Partition & Lock", video: "/videos/office-partition-lock.mp4" },
+              { name: "Meeting room", video: "/videos/meeting-room.mp4" },
+              { name: "Lider Glass", video: "/videos/lider-glass.mp4" }
+            ].map((video, index) => (
+              <div key={index} className="space-y-2 group">
+                <p className="text-sm font-medium text-center text-foreground/80">{video.name}</p>
+                <div className="relative w-full aspect-[9/16] bg-black rounded-lg overflow-hidden ring-2 ring-green-500/30 group-hover:ring-green-500 transition-all">
+                  <video 
+                    controls
+                    className="w-full h-full object-cover"
+                  >
+                    <source src={video.video} type="video/mp4" />
+                  </video>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-4">
+            <a href="/project/2" className="text-primary hover:underline text-sm font-medium">
+              View all TikTok videos →
+            </a>
+          </div>
+        </div>
+
         <div className="text-center space-y-1 mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Projects</h2>
           <p className="text-muted-foreground text-base font-mono tracking-wider">
