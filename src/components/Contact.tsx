@@ -1,11 +1,10 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Download, Mail, MapPin, Phone } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { Linkedin, Mail, Download } from "lucide-react";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -22,8 +21,8 @@ const Contact = () => {
     
     if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
       toast({
-        title: "Missing Information",
-        description: "Please fill in all fields.",
+        title: "MISSING INFO",
+        description: "Fill in all fields.",
         variant: "destructive",
       });
       return;
@@ -31,8 +30,8 @@ const Contact = () => {
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       toast({
-        title: "Invalid Email",
-        description: "Please enter a valid email address.",
+        title: "INVALID EMAIL",
+        description: "Enter a valid email address.",
         variant: "destructive",
       });
       return;
@@ -53,16 +52,16 @@ const Contact = () => {
       if (error) throw error;
 
       toast({
-        title: "Message Sent!",
-        description: "Thanks for reaching out. I'll get back to you soon!",
+        title: "MESSAGE SENT",
+        description: "I'll get back to you soon.",
       });
 
       setFormData({ name: "", email: "", message: "", website: "" });
     } catch (error: any) {
       console.error("Error sending message:", error);
       toast({
-        title: "Error",
-        description: "Failed to send message. Please try again.",
+        title: "ERROR",
+        description: "Failed to send message. Try again.",
         variant: "destructive",
       });
     } finally {
@@ -71,70 +70,82 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-40 lg:py-52 px-6 bg-background">
-      <div className="container max-w-5xl mx-auto">
-        <div className="text-center space-y-8 mb-24 animate-in fade-in slide-in-from-bottom-4 duration-700">
-          <p className="text-primary text-sm font-medium tracking-[0.3em] uppercase">Contact</p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium tracking-tight">Let's Work Together</h2>
-          <p className="text-muted-foreground text-lg font-light max-w-xl mx-auto">
-            Have a project in mind? I'd love to hear from you.
-          </p>
-        </div>
-
-        {/* Large Email CTA */}
-        <div className="text-center mb-20">
-          <a 
-            href="mailto:ivanlay88@gmail.com" 
-            className="inline-block text-3xl md:text-4xl lg:text-5xl font-serif font-medium text-foreground hover:text-primary transition-colors duration-300 tracking-tight"
-          >
-            ivanlay88@gmail.com
-          </a>
-        </div>
-
-        {/* Contact Info Grid */}
-        <div className="grid md:grid-cols-3 gap-8 mb-20">
-          <div className="text-center p-8 border border-border bg-card/30 hover:border-primary/30 transition-all duration-500">
-            <Mail className="h-6 w-6 text-primary mx-auto mb-4" />
-            <h3 className="font-serif font-medium text-base mb-2 tracking-wide">Email</h3>
-            <a href="mailto:ivanlay88@gmail.com" className="text-muted-foreground text-sm font-light hover:text-primary transition-colors">
-              ivanlay88@gmail.com
-            </a>
+    <section id="contact" className="py-24 md:py-32 px-4 md:px-6 bg-card">
+      <div className="max-w-7xl mx-auto">
+        {/* Section Header */}
+        <div className="mb-16 md:mb-20">
+          <div className="flex items-center gap-4 mb-6">
+            <div className="w-12 h-px bg-foreground" />
+            <span className="hud-text">CONTACT_ME</span>
           </div>
-          
-          <div className="text-center p-8 border border-border bg-card/30 hover:border-primary/30 transition-all duration-500">
-            <Phone className="h-6 w-6 text-primary mx-auto mb-4" />
-            <h3 className="font-serif font-medium text-base mb-2 tracking-wide">Phone</h3>
-            <a href="tel:+60137131212" className="text-muted-foreground text-sm font-light hover:text-primary transition-colors">
-              +60 13 713 1212
-            </a>
-          </div>
-          
-          <div className="text-center p-8 border border-border bg-card/30 hover:border-primary/30 transition-all duration-500">
-            <MapPin className="h-6 w-6 text-primary mx-auto mb-4" />
-            <h3 className="font-serif font-medium text-base mb-2 tracking-wide">Location</h3>
-            <p className="text-muted-foreground text-sm font-light">Johor Bahru, Malaysia</p>
-          </div>
+          <h2 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight">
+            LET'S
+            <br />
+            CONNECT<span className="text-accent">.</span>
+          </h2>
         </div>
 
-        {/* Resume Download */}
-        <div className="flex justify-center mb-20">
-          <Button 
-            variant="outline" 
-            size="lg"
-            asChild
-            className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-500 font-medium tracking-wide px-10 py-6"
-          >
-            <a href="/cv/ivans-resume.pdf" download="ivans-resume.pdf">
-              <Download className="h-5 w-5 mr-3" />
-              Download Resume
-            </a>
-          </Button>
-        </div>
+        <div className="grid md:grid-cols-2 gap-16 md:gap-20">
+          {/* Left - Contact Info */}
+          <div>
+            <p className="font-mono text-muted-foreground leading-relaxed mb-12">
+              Got a project in mind? Need someone who can turn raw footage into
+              something that actually works? Let's talk.
+            </p>
 
-        {/* Contact Form */}
-        <div className="max-w-xl mx-auto">
-          <Card className="p-10 border border-border bg-card/50">
+            {/* Large Email */}
+            <a
+              href="mailto:ivanlay88@gmail.com"
+              className="block font-display text-2xl md:text-3xl lg:text-4xl font-bold hover:text-accent transition-colors mb-8 break-all"
+            >
+              IVANLAY88@GMAIL.COM
+            </a>
+
+            {/* Social Links */}
+            <div className="flex gap-4 mb-12">
+              <a
+                href="https://www.linkedin.com/in/ivan-lay-jiun-yu-923a05358/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border border-border p-4 hover:border-accent hover:text-accent transition-all"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="h-6 w-6" />
+              </a>
+              <a
+                href="mailto:ivanlay88@gmail.com"
+                className="border border-border p-4 hover:border-accent hover:text-accent transition-all"
+                aria-label="Email"
+              >
+                <Mail className="h-6 w-6" />
+              </a>
+            </div>
+
+            {/* Resume Download */}
+            <a
+              href="/cv/ivans-resume.pdf"
+              download="ivans-resume.pdf"
+              className="btn-brutal inline-flex items-center gap-3 px-6 py-4 text-sm"
+            >
+              <Download className="w-4 h-4" />
+              DOWNLOAD RESUME
+            </a>
+
+            {/* Location */}
+            <div className="mt-12 pt-8 border-t border-border">
+              <p className="hud-text">
+                <span className="hud-bracket">JOHOR BAHRU, MY</span>
+              </p>
+              <p className="hud-text mt-2 opacity-60">
+                OPEN TO RELOCATION // SG COMMUTE OK
+              </p>
+            </div>
+          </div>
+
+          {/* Right - Form */}
+          <div>
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Honeypot */}
               <div className="absolute -left-[9999px]" aria-hidden="true">
                 <Input 
                   type="text"
@@ -145,45 +156,63 @@ const Contact = () => {
                   onChange={(e) => setFormData({ ...formData, website: e.target.value })}
                 />
               </div>
+
               <div>
-                <Input 
-                  placeholder="Your Name" 
-                  className="bg-background border-border focus:border-primary h-12" 
+                <label className="hud-text text-xs mb-2 block">NAME_</label>
+                <Input
+                  placeholder="YOUR NAME"
                   value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
+                  className="bg-background border-border font-mono placeholder:text-muted-foreground/50 focus:border-accent h-14 rounded-none"
                   required
                 />
               </div>
+
               <div>
-                <Input 
-                  type="email" 
-                  placeholder="Your Email" 
-                  className="bg-background border-border focus:border-primary h-12" 
+                <label className="hud-text text-xs mb-2 block">EMAIL_</label>
+                <Input
+                  type="email"
+                  placeholder="YOUR@EMAIL.COM"
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
+                  className="bg-background border-border font-mono placeholder:text-muted-foreground/50 focus:border-accent h-14 rounded-none"
                   required
                 />
               </div>
+
               <div>
-                <Textarea 
-                  placeholder="Your Message" 
-                  rows={6} 
-                  className="bg-background border-border focus:border-primary resize-none" 
+                <label className="hud-text text-xs mb-2 block">MESSAGE_</label>
+                <Textarea
+                  placeholder="TELL ME ABOUT YOUR PROJECT..."
                   value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, message: e.target.value })
+                  }
+                  className="bg-background border-border font-mono placeholder:text-muted-foreground/50 focus:border-accent min-h-[160px] resize-none rounded-none"
                   required
                 />
               </div>
-              <Button 
-                type="submit" 
-                variant="hero" 
-                className="w-full py-6 font-medium tracking-wide" 
+
+              <Button
+                type="submit"
                 disabled={isSubmitting}
+                className="btn-brutal w-full h-14 text-sm"
               >
-                {isSubmitting ? "Sending..." : "Send Message"}
+                {isSubmitting ? "SENDING..." : "SEND MESSAGE →"}
               </Button>
             </form>
-          </Card>
+
+            {/* Form Decoration */}
+            <div className="mt-8 hud-text text-[10px] opacity-40">
+              <span>// ALL FIELDS REQUIRED</span>
+              <br />
+              <span>// RESPONSE TIME: 24-48H</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -8,6 +8,7 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import LoadingScreen from "@/components/LoadingScreen";
+import HUDNavigation from "@/components/HUDNavigation";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -18,15 +19,23 @@ const Index = () => {
         {isLoading && <LoadingScreen onLoadingComplete={() => setIsLoading(false)} />}
       </AnimatePresence>
       {!isLoading && (
-        <main className="min-h-screen scroll-smooth">
-          <Hero />
-          <About />
-          <Skills />
-          <Projects />
-          <Contact />
-          <Footer />
-          <ScrollToTop />
-        </main>
+        <>
+          {/* Film Grain Overlay */}
+          <div className="grain-overlay" />
+          {/* Scanline Effect */}
+          <div className="scanline" />
+          {/* HUD Navigation */}
+          <HUDNavigation />
+          <main className="min-h-screen scroll-smooth">
+            <Hero />
+            <Projects />
+            <About />
+            <Skills />
+            <Contact />
+            <Footer />
+            <ScrollToTop />
+          </main>
+        </>
       )}
     </>
   );

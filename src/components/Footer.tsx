@@ -1,61 +1,35 @@
-import { Download, Linkedin, Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
-
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="py-24 px-6 border-t border-border bg-background">
-      <div className="container max-w-6xl mx-auto">
-        <div className="flex flex-col items-center gap-12">
-          
-          {/* Large Email */}
-          <a 
-            href="mailto:ivanlay88@gmail.com" 
-            className="text-2xl md:text-3xl font-serif font-medium text-foreground hover:text-primary transition-colors duration-300 tracking-tight"
-          >
-            ivanlay88@gmail.com
-          </a>
-
-          {/* Location Note */}
-          <p className="text-muted-foreground text-sm font-light tracking-wide text-center max-w-md">
-            Based in Johor Bahru | Open to relocation or commuting opportunities in Singapore
-          </p>
-
-          {/* Resume Download */}
-          <Button 
-            variant="outline" 
-            size="default"
-            asChild
-            className="border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-500 font-medium tracking-wide"
-          >
-            <a href="/cv/ivans-resume.pdf" download="ivans-resume.pdf">
-              <Download className="h-4 w-4 mr-2" />
-              Download Resume
-            </a>
-          </Button>
-
-          {/* Social Links */}
-          <div className="flex gap-8">
-            <a 
-              href="https://www.linkedin.com/in/ivan-lay-jiun-yu-923a05358/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-muted-foreground hover:text-primary transition-colors duration-300" 
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="h-5 w-5" />
-            </a>
-            <a 
-              href="mailto:ivanlay88@gmail.com" 
-              className="text-muted-foreground hover:text-primary transition-colors duration-300" 
-              aria-label="Email"
-            >
-              <Mail className="h-5 w-5" />
-            </a>
+    <footer className="py-12 px-4 md:px-6 bg-background border-t border-border">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+          {/* Left - Copyright */}
+          <div className="hud-text text-center md:text-left">
+            <span>© {currentYear} IVAN LAY</span>
+            <span className="mx-4">//</span>
+            <span>ALL RIGHTS RESERVED</span>
           </div>
 
-          {/* Copyright */}
-          <p className="text-muted-foreground/50 text-xs font-light tracking-widest uppercase">
-            © {new Date().getFullYear()} Ivan Lay
+          {/* Center - Made with */}
+          <div className="hud-text opacity-60">
+            <span className="hud-bracket">BUILT WITH CAFFEINE & DEADLINES</span>
+          </div>
+
+          {/* Right - Back to top */}
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="hud-text hover:text-accent transition-colors"
+          >
+            ↑ BACK TO TOP
+          </button>
+        </div>
+
+        {/* Decorative Line */}
+        <div className="mt-12 pt-8 border-t border-border/50 text-center">
+          <p className="font-display text-4xl md:text-6xl font-bold tracking-tight opacity-10">
+            IVAN<span className="text-accent">.</span>
           </p>
         </div>
       </div>
