@@ -1,22 +1,8 @@
-import { Card } from "@/components/ui/card";
 import { useEffect, useRef, useState } from "react";
-import ProfileCard from "./ProfileCard";
-import profilePicture from "@/assets/profile-picture.png";
+import { Download } from "lucide-react";
 
 const About = () => {
-  const highlights = [{
-    title: "Technical Precision",
-    description: "Expert-level proficiency in Premiere Pro, After Effects, and DaVinci Resolve for seamless post-production workflows."
-  }, {
-    title: "Creative Storytelling",
-    description: "Every frame serves the narrative — I craft visuals that evoke emotion and drive engagement."
-  }, {
-    title: "Client-Focused Delivery",
-    description: "Reliable turnaround with attention to brand guidelines and project specifications."
-  }];
-
   const [isVisible, setIsVisible] = useState(false);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -40,76 +26,151 @@ const About = () => {
     };
   }, []);
 
+  const experience = [
+    { year: "2024", role: "FREELANCE EDITOR", company: "VARIOUS CLIENTS" },
+    { year: "2023", role: "MOTION DESIGNER", company: "STUDIO PROJECTS" },
+    { year: "2022", role: "VIDEO EDITOR", company: "COMMERCIAL WORK" },
+  ];
+
+  const awards = [
+    { year: "2024", title: "KANCIL AWARD", category: "BEST STUDENT FILM" },
+  ];
+
   return (
-    <section id="about" className="relative py-40 lg:py-52 px-6 bg-background" ref={sectionRef}>
-      <div className="container max-w-6xl mx-auto">
-        {/* Title and Description at the top */}
-        <div className="text-center space-y-8 mb-24">
-          <p className="text-primary text-sm font-medium tracking-[0.3em] uppercase">About</p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium tracking-tight">The Craft Behind the Work</h2>
+    <section id="about" className="py-24 md:py-32 px-4 md:px-6 bg-card" ref={sectionRef}>
+      <div className="max-w-7xl mx-auto">
+        {/* Section Header */}
+        <div className="mb-16 md:mb-24">
+          <div className="flex items-center gap-4 mb-6">
+            <div className="w-12 h-px bg-foreground" />
+            <span className="hud-text">ABOUT_ME</span>
+          </div>
+          <h2 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight">
+            THE
+            <br />
+            MANIFESTO<span className="text-accent">.</span>
+          </h2>
+        </div>
+
+        {/* Manifesto Content - Brutalist Layout */}
+        <div className="grid md:grid-cols-2 gap-12 md:gap-20 mb-20">
+          {/* Left - Statement */}
           <div
             className={`transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto font-light leading-relaxed">
-              I am a detail-oriented Video Editor and Motion Designer based in Johor Bahru. 
-              With a strong foundation in technical post-production (Premiere Pro, After Effects, DaVinci Resolve), 
-              I bridge the gap between creative storytelling and technical precision.
+            <p className="font-display text-2xl md:text-3xl lg:text-4xl font-bold leading-tight mb-8">
+              I MAKE VISUALS THAT PUNCH.
+              <br />
+              EDIT CONTENT THAT STICKS.
+              <br />
+              <span className="text-muted-foreground">NO FLUFF. JUST IMPACT.</span>
             </p>
-          </div>
-        </div>
 
-        {/* Two-column layout: Namecard left, Highlights right */}
-        <div className="grid md:grid-cols-2 gap-16 lg:gap-20 items-start">
-          {/* Left: Profile Card */}
-          <div 
-            className={`flex justify-center md:justify-start transition-all duration-1000 ${
+            <p className="font-mono text-muted-foreground leading-relaxed mb-8">
+              Detail-oriented editor based in JB. Technical precision meets creative vision.
+              Every cut serves the story. Every frame earns its place.
+            </p>
+
+            <a
+              href="/cv/ivans-resume.pdf"
+              download="ivans-resume.pdf"
+              className="btn-brutal inline-flex items-center gap-3 px-6 py-3 text-sm"
+            >
+              <Download className="w-4 h-4" />
+              DOWNLOAD CV
+            </a>
+          </div>
+
+          {/* Right - Stats */}
+          <div
+            className={`space-y-8 transition-all duration-1000 delay-300 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            <ProfileCard
-              avatarUrl={profilePicture}
-              name=""
-              title=""
-              handle=""
-              status=""
-              contactText="Contact"
-              showUserInfo={false}
-              onContactClick={() => {
-                const contactSection = document.getElementById('contact');
-                contactSection?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            />
+            <div className="grid grid-cols-2 gap-8">
+              <div>
+                <span className="font-display text-5xl md:text-6xl font-bold">50+</span>
+                <p className="hud-text mt-2">PROJECTS DELIVERED</p>
+              </div>
+              <div>
+                <span className="font-display text-5xl md:text-6xl font-bold">3+</span>
+                <p className="hud-text mt-2">YEARS EXPERIENCE</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-8">
+              <div>
+                <span className="font-display text-5xl md:text-6xl font-bold">24</span>
+                <p className="hud-text mt-2">FPS PREFERRED</p>
+              </div>
+              <div>
+                <span className="font-display text-5xl md:text-6xl font-bold">∞</span>
+                <p className="hud-text mt-2">CAFFEINE CONSUMED</p>
+              </div>
+            </div>
           </div>
+        </div>
 
-          {/* Right: Three highlight cards stacked vertically */}
-          <div className="flex flex-col gap-8 h-full justify-between">
-            {highlights.map((item, index) => (
+        {/* Horizontal Divider */}
+        <div className="hr-brutal mb-16" />
+
+        {/* Experience Section */}
+        <div className="mb-16">
+          <h3 className="font-display text-2xl md:text-3xl font-bold mb-8">
+            EXPERIENCE<span className="text-accent">_</span>
+          </h3>
+          <div className="space-y-4">
+            {experience.map((item, index) => (
               <div
                 key={index}
-                className={`transition-all duration-1000 ${
-                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-                }`}
-                style={{ transitionDelay: `${index * 200}ms` }}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
+                className="flex flex-col md:flex-row md:items-center justify-between py-4 border-b border-border hover:border-accent transition-colors group"
               >
-                <Card 
-                  className="p-8 hover:border-primary/30 transition-all duration-500 border-border bg-card/50 h-full"
-                  style={{
-                    opacity: hoveredIndex === null ? 0.9 : hoveredIndex === index ? 1 : 0.5,
-                    transform: hoveredIndex === index ? 'translateX(8px)' : 'translateX(0)'
-                  }}
-                >
-                  <h3 className="text-lg font-serif font-medium mb-4 tracking-wide text-foreground">
-                    {item.title}
-                  </h3>
-                  <p className="text-muted-foreground font-light leading-relaxed text-sm">{item.description}</p>
-                </Card>
+                <div className="flex items-center gap-4 md:gap-8">
+                  <span className="hud-text w-16">{item.year}</span>
+                  <span className="font-display text-lg md:text-xl font-bold group-hover:text-accent transition-colors">
+                    {item.role}
+                  </span>
+                </div>
+                <span className="hud-text opacity-60 mt-2 md:mt-0">{item.company}</span>
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Horizontal Divider */}
+        <div className="hr-brutal mb-16" />
+
+        {/* Awards Section */}
+        <div className="mb-16">
+          <h3 className="font-display text-2xl md:text-3xl font-bold mb-8">
+            AWARDS<span className="text-accent">_</span>
+          </h3>
+          <div className="space-y-4">
+            {awards.map((item, index) => (
+              <div
+                key={index}
+                className="flex flex-col md:flex-row md:items-center justify-between py-4 border-b border-accent group"
+              >
+                <div className="flex items-center gap-4 md:gap-8">
+                  <span className="hud-text w-16">{item.year}</span>
+                  <span className="font-display text-xl md:text-2xl font-bold text-accent neon-glow">
+                    ★ {item.title}
+                  </span>
+                </div>
+                <span className="hud-text mt-2 md:mt-0">{item.category}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Location Note */}
+        <div className="text-center py-12 border-t border-b border-border">
+          <p className="hud-text text-sm">
+            <span className="hud-bracket">BASED IN JOHOR BAHRU</span>
+            <span className="mx-4">//</span>
+            <span className="hud-bracket">OPEN TO SG COMMUTE</span>
+          </p>
         </div>
       </div>
     </section>
