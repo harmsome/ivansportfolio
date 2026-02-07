@@ -47,7 +47,7 @@ const Hero = () => {
           <div className="space-y-6">
             <h1
               ref={headingRef}
-              className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-wide leading-tight whitespace-nowrap"
+              className="text-4xl md:text-6xl lg:text-7xl font-serif font-semibold tracking-wide leading-tight whitespace-nowrap"
               style={{
                 perspective: "1000px",
                 transformStyle: "preserve-3d",
@@ -55,10 +55,10 @@ const Hero = () => {
             >
               Hey! I&apos;m <span className="gradient-animated">Ivan</span>
             </h1>
-            <p className="text-xl md:text-2xl lg:text-3xl text-muted-foreground animate-in slide-in-from-right-8 duration-1000 delay-400 mt-6">
+            <p className="text-xl md:text-2xl lg:text-3xl text-muted-foreground font-light tracking-wide animate-in slide-in-from-right-8 duration-1000 delay-400 mt-8">
               A Motion Grapher & Video Editor
             </p>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto animate-in slide-in-from-bottom-4 duration-1000 delay-600 mt-4">
+            <p className="text-lg md:text-xl text-muted-foreground/80 max-w-3xl mx-auto animate-in slide-in-from-bottom-4 duration-1000 delay-600 mt-6 font-light leading-relaxed">
               I Crafting stories that move — with rhythm and soul.
             </p>
           </div>

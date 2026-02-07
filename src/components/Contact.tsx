@@ -70,54 +70,54 @@ const Contact = () => {
       setIsSubmitting(false);
     }
   };
-  return <section id="contact" className="py-24 px-4 bg-muted/30">
+  return <section id="contact" className="py-32 lg:py-40 px-4 bg-muted/30">
       <div className="container max-w-6xl mx-auto">
-        <div className="text-center space-y-4 mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
-          <h2 className="text-3xl md:text-4xl font-bold">Get In Touch</h2>
-          <p className="text-muted-foreground text-lg">
+        <div className="text-center space-y-6 mb-20 animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-semibold tracking-wide">Get In Touch</h2>
+          <p className="text-muted-foreground text-lg md:text-xl font-light">
             Have a project in mind? Let's talk!
           </p>
         </div>
 
         <div className="max-w-2xl mx-auto">
-          <div className="space-y-6">
-            <Card className="p-6 border-2 border-border bg-card hover:shadow-lg transition-all duration-300 hover:scale-[1.02] hover:border-primary group">
-              <div className="flex items-start gap-4">
+          <div className="space-y-8">
+            <Card className="p-8 border border-border bg-card hover:shadow-lg transition-all duration-300 hover:scale-[1.02] hover:border-primary group">
+              <div className="flex items-start gap-5">
                 <div className="p-3 rounded-full gradient-primary group-hover:scale-110 transition-transform duration-300">
                   <Mail className="h-6 w-6 text-primary-foreground" />
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-1">Email</h3>
-                  <p className="text-muted-foreground">ivanlay88@gmail.com</p>
+                  <h3 className="font-serif font-medium text-lg mb-2 tracking-wide">Email</h3>
+                  <p className="text-muted-foreground font-light">ivanlay88@gmail.com</p>
                 </div>
               </div>
             </Card>
 
-            <Card className="p-6 border-2 border-border bg-card hover:shadow-lg transition-all duration-300 hover:scale-[1.02] hover:border-primary group">
-              <div className="flex items-start gap-4">
+            <Card className="p-8 border border-border bg-card hover:shadow-lg transition-all duration-300 hover:scale-[1.02] hover:border-primary group">
+              <div className="flex items-start gap-5">
                 <div className="p-3 rounded-full gradient-primary group-hover:scale-110 transition-transform duration-300">
                   <Phone className="h-6 w-6 text-primary-foreground" />
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-1">Phone</h3>
-                  <p className="text-muted-foreground">+60 13 713 1212</p>
+                  <h3 className="font-serif font-medium text-lg mb-2 tracking-wide">Phone</h3>
+                  <p className="text-muted-foreground font-light">+60 13 713 1212</p>
                 </div>
               </div>
             </Card>
 
-            <Card className="p-6 border-2 border-border bg-card hover:shadow-lg transition-all duration-300 hover:scale-[1.02] hover:border-primary group">
-              <div className="flex items-start gap-4">
+            <Card className="p-8 border border-border bg-card hover:shadow-lg transition-all duration-300 hover:scale-[1.02] hover:border-primary group">
+              <div className="flex items-start gap-5">
                 <div className="p-3 rounded-full gradient-primary group-hover:scale-110 transition-transform duration-300">
                   <MapPin className="h-6 w-6 text-primary-foreground" />
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-1">Location</h3>
-                  <p className="text-muted-foreground">Johor Bahru</p>
+                  <h3 className="font-serif font-medium text-lg mb-2 tracking-wide">Location</h3>
+                  <p className="text-muted-foreground font-light">Johor Bahru</p>
                 </div>
               </div>
             </Card>
 
-            <Card className="p-6 border-2 border-border bg-card hover:shadow-lg transition-all duration-300 hover:border-primary group">
+            <Card className="p-8 border border-border bg-card hover:shadow-lg transition-all duration-300 hover:border-primary group">
               <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Honeypot field - hidden from users, bots will fill it */}
                 <div className="absolute -left-[9999px]" aria-hidden="true">

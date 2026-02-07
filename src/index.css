@@ -8,100 +8,102 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 220 18% 10%;
-    --foreground: 210 10% 92%;
+    /* High-End Luxury Portfolio Theme */
+    --background: 0 0% 7%;
+    --foreground: 0 0% 96%;
 
-    --card: 220 16% 14%;
-    --card-foreground: 210 10% 92%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 96%;
 
-    --popover: 220 16% 14%;
-    --popover-foreground: 210 10% 92%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 96%;
 
-    --primary: 220 90% 56%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 43 65% 52%;
+    --primary-foreground: 0 0% 7%;
 
-    --secondary: 220 14% 22%;
-    --secondary-foreground: 210 10% 88%;
+    --secondary: 0 0% 14%;
+    --secondary-foreground: 0 0% 90%;
 
-    --muted: 220 14% 20%;
-    --muted-foreground: 210 8% 65%;
+    --muted: 0 0% 16%;
+    --muted-foreground: 0 0% 65%;
 
-    --accent: 210 85% 65%;
-    --accent-foreground: 220 18% 10%;
+    --accent: 43 65% 52%;
+    --accent-foreground: 0 0% 7%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 12% 25%;
-    --input: 220 12% 25%;
-    --ring: 220 90% 56%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 43 65% 52%;
 
-    --radius: 0.25rem;
+    --radius: 0.125rem;
 
-    /* Custom design tokens - Blue Video Editor Theme */
-    --gradient-primary: linear-gradient(135deg, hsl(220 90% 56%), hsl(210 85% 65%));
-    --gradient-hero: linear-gradient(135deg, hsl(220 18% 16%) 0%, hsl(220 18% 10%) 100%);
-    --shadow-sm: 0 2px 8px -2px hsl(0 0% 0% / 0.4);
-    --shadow-md: 0 4px 16px -4px hsl(220 90% 56% / 0.2);
-    --shadow-lg: 0 12px 32px -8px hsl(220 90% 56% / 0.3);
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --glow-effect: 0 0 30px hsl(220 90% 56% / 0.5);
+    /* Custom design tokens - Luxury Gold Theme */
+    --gradient-primary: linear-gradient(135deg, hsl(43 65% 52%), hsl(43 70% 62%));
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 9%) 0%, hsl(0 0% 5%) 100%);
+    --shadow-sm: 0 2px 8px -2px hsl(0 0% 0% / 0.6);
+    --shadow-md: 0 4px 16px -4px hsl(43 65% 52% / 0.15);
+    --shadow-lg: 0 12px 32px -8px hsl(43 65% 52% / 0.25);
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --glow-effect: 0 0 40px hsl(43 65% 52% / 0.3);
 
-    --sidebar-background: 240 12% 12%;
-    --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 263 70% 60%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 8% 18%;
-    --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 240 8% 20%;
-    --sidebar-ring: 263 70% 60%;
+    --sidebar-background: 0 0% 8%;
+    --sidebar-foreground: 0 0% 96%;
+    --sidebar-primary: 43 65% 52%;
+    --sidebar-primary-foreground: 0 0% 7%;
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 0 0% 96%;
+    --sidebar-border: 0 0% 18%;
+    --sidebar-ring: 43 65% 52%;
   }
 
   .dark {
-    --background: 220 18% 10%;
-    --foreground: 210 10% 92%;
+    /* High-End Luxury Portfolio Theme - Dark Mode */
+    --background: 0 0% 7%;
+    --foreground: 0 0% 96%;
 
-    --card: 220 16% 14%;
-    --card-foreground: 210 10% 92%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 96%;
 
-    --popover: 220 16% 14%;
-    --popover-foreground: 210 10% 92%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 96%;
 
-    --primary: 220 90% 56%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 43 65% 52%;
+    --primary-foreground: 0 0% 7%;
 
-    --secondary: 220 14% 22%;
-    --secondary-foreground: 210 10% 88%;
+    --secondary: 0 0% 14%;
+    --secondary-foreground: 0 0% 90%;
 
-    --muted: 220 14% 20%;
-    --muted-foreground: 210 8% 65%;
+    --muted: 0 0% 16%;
+    --muted-foreground: 0 0% 65%;
 
-    --accent: 210 85% 65%;
-    --accent-foreground: 220 18% 10%;
+    --accent: 43 65% 52%;
+    --accent-foreground: 0 0% 7%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 12% 25%;
-    --input: 220 12% 25%;
-    --ring: 220 90% 56%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 43 65% 52%;
 
-    /* Custom design tokens for dark mode */
-    --gradient-primary: linear-gradient(135deg, hsl(220 90% 56%), hsl(210 85% 65%));
-    --gradient-hero: linear-gradient(135deg, hsl(220 18% 16%) 0%, hsl(220 18% 10%) 100%);
-    --shadow-sm: 0 2px 8px -2px hsl(0 0% 0% / 0.4);
-    --shadow-md: 0 4px 16px -4px hsl(220 90% 56% / 0.2);
-    --shadow-lg: 0 12px 32px -8px hsl(220 90% 56% / 0.3);
-    --glow-effect: 0 0 30px hsl(220 90% 56% / 0.5);
+    /* Custom design tokens for dark mode - Luxury Gold Theme */
+    --gradient-primary: linear-gradient(135deg, hsl(43 65% 52%), hsl(43 70% 62%));
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 9%) 0%, hsl(0 0% 5%) 100%);
+    --shadow-sm: 0 2px 8px -2px hsl(0 0% 0% / 0.6);
+    --shadow-md: 0 4px 16px -4px hsl(43 65% 52% / 0.15);
+    --shadow-lg: 0 12px 32px -8px hsl(43 65% 52% / 0.25);
+    --glow-effect: 0 0 40px hsl(43 65% 52% / 0.3);
 
-    --sidebar-background: 240 12% 12%;
-    --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 263 70% 60%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 8% 18%;
-    --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 240 8% 20%;
-    --sidebar-ring: 263 70% 60%;
+    --sidebar-background: 0 0% 8%;
+    --sidebar-foreground: 0 0% 96%;
+    --sidebar-primary: 43 65% 52%;
+    --sidebar-primary-foreground: 0 0% 7%;
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 0 0% 96%;
+    --sidebar-border: 0 0% 18%;
+    --sidebar-ring: 43 65% 52%;
   }
 }
 
@@ -127,14 +129,14 @@ All colors MUST be HSL.
 
   .gradient-animated {
     background: linear-gradient(90deg, 
-      hsl(220 90% 56%), 
-      hsl(210 85% 65%), 
-      hsl(220 90% 56%));
+      hsl(43 65% 52%), 
+      hsl(43 75% 65%), 
+      hsl(43 65% 52%));
     background-size: 200% auto;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: gradient-shift 3s ease infinite;
+    animation: gradient-shift 4s ease infinite;
   }
 
   @keyframes gradient-shift {

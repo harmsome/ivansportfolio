@@ -15,18 +15,18 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="relative py-24 px-4 bg-gradient-to-b from-muted/30 via-muted/30 to-background">
+    <section id="skills" className="relative py-32 lg:py-40 px-4 bg-gradient-to-b from-muted/30 via-muted/30 to-background">
       <div className="container max-w-6xl mx-auto">
-        <div className="text-center space-y-4 mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
-          <h2 className="text-3xl md:text-4xl font-bold">Skills</h2>
-          <p className="text-muted-foreground text-lg">Tools that I work with</p>
+        <div className="text-center space-y-6 mb-20 animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-semibold tracking-wide">Skills</h2>
+          <p className="text-muted-foreground text-lg md:text-xl font-light">Tools that I work with</p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-10 max-w-5xl mx-auto">
           {tools.map((tool, index) => (
             <Card 
               key={index} 
-              className="p-6 flex flex-col items-center justify-center gap-4 hover:shadow-custom-lg transition-smooth border-border bg-card animate-float"
+              className="p-8 flex flex-col items-center justify-center gap-5 hover:shadow-custom-lg transition-smooth border-border bg-card animate-float"
               style={{
                 animationDelay: `${index * 0.2}s`
               }}
@@ -38,7 +38,7 @@ const Skills = () => {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <p className="text-sm font-medium text-center">{tool.name}</p>
+              <p className="text-sm font-medium text-center tracking-wide">{tool.name}</p>
             </Card>
           ))}
         </div>
