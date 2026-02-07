@@ -12,9 +12,12 @@ const Footer = () => {
             <span>ALL RIGHTS RESERVED</span>
           </div>
 
-          {/* Center - Made with */}
-          <div className="hud-text opacity-60">
-            <span className="hud-bracket">BUILT WITH CAFFEINE & DEADLINES</span>
+          {/* Center - Status */}
+          <div className="hud-text text-accent">
+            <span className="hud-bracket flex items-center gap-2 justify-center">
+              <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
+              STATUS: AVAILABLE FOR COMMISSION
+            </span>
           </div>
 
           {/* Right - Back to top */}

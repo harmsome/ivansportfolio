@@ -57,9 +57,9 @@ const Hero = () => {
             <span className="hud-bracket">LOC: JB/SG</span>
             <span className="hud-bracket flex items-center gap-2">
               <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
-              REC: ON
+              STATUS: ONLINE
             </span>
-            <span className="hud-bracket">ROLE: EDITOR</span>
+            <span className="hud-bracket">MODE: CREATE</span>
             <span className="hud-bracket">FPS: 24</span>
           </div>
 
@@ -67,7 +67,7 @@ const Hero = () => {
           <h1
             ref={headingRef}
             className="font-display text-[12vw] md:text-[10vw] lg:text-[8vw] font-bold leading-[0.85] tracking-tight mb-8 glitch-text"
-            data-text="VISUALS THAT MOVE."
+            data-text="VISUAL ENGINEER // STORYTELLER"
             style={{
               transform: isHovering
                 ? `translate(${mousePos.x}px, ${mousePos.y}px)`
@@ -75,16 +75,16 @@ const Hero = () => {
               transition: "transform 0.1s ease-out",
             }}
           >
-            VISUALS
+            VISUAL ENGINEER
             <br />
-            THAT MOVE<span className="text-accent">.</span>
+            <span className="text-accent">//</span> STORYTELLER
           </h1>
 
           {/* Subtext */}
           <p className="font-mono text-lg md:text-xl text-muted-foreground max-w-2xl mb-12 animate-in slide-in-from-bottom-4 duration-1000 delay-500">
-            High-end video editing, motion design & 3D visualization.
+            Crafting high-fidelity motion narratives and digital experiences.
             <br />
-            Crafting raw, cinematic content that cuts through the noise.
+            Blending technical precision with raw emotion.
           </p>
 
           {/* CTA Buttons */}
@@ -93,7 +93,7 @@ const Hero = () => {
               href="#projects"
               className="btn-brutal px-8 py-4 text-sm font-display"
             >
-              VIEW WORKS
+              VIEW SELECTED WORKS
             </a>
             <a
               href="#contact"
