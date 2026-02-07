@@ -15,9 +15,8 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        serif: ['Cinzel', 'Georgia', 'serif'],
+        serif: ['Playfair Display', 'Georgia', 'serif'],
         mono: ['JetBrains Mono', 'monospace'],
-        horror: ['Nosifer', 'cursive'],
       },
       colors: {
         border: "hsl(var(--border))",

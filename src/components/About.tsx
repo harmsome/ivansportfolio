@@ -5,14 +5,14 @@ import profilePicture from "@/assets/profile-picture.png";
 
 const About = () => {
   const highlights = [{
-    title: "🎨 Visual Storytelling",
-    description: "I create motion pieces that tell stories and capture feelings, not just visuals that look nice."
+    title: "Technical Precision",
+    description: "Expert-level proficiency in Premiere Pro, After Effects, and DaVinci Resolve for seamless post-production workflows."
   }, {
-    title: "💫 Design with Emotion",
-    description: "Every movement has purpose — I design with feeling, flow, and a sense of rhythm."
+    title: "Creative Storytelling",
+    description: "Every frame serves the narrative — I craft visuals that evoke emotion and drive engagement."
   }, {
-    title: "🎵 Timing & Flow",
-    description: "I pay attention to pacing and energy, making sure everything moves naturally and connects with the audience."
+    title: "Client-Focused Delivery",
+    description: "Reliable turnaround with attention to brand guidelines and project specifications."
   }];
 
   const [isVisible, setIsVisible] = useState(false);
@@ -41,24 +41,27 @@ const About = () => {
   }, []);
 
   return (
-    <section id="about" className="relative py-32 lg:py-40 px-4 bg-gradient-to-b from-card via-card to-muted/30" ref={sectionRef}>
+    <section id="about" className="relative py-40 lg:py-52 px-6 bg-background" ref={sectionRef}>
       <div className="container max-w-6xl mx-auto">
         {/* Title and Description at the top */}
-        <div className="text-center space-y-8 mb-20">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-semibold tracking-wide">About Me</h2>
+        <div className="text-center space-y-8 mb-24">
+          <p className="text-primary text-sm font-medium tracking-[0.3em] uppercase">About</p>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-medium tracking-tight">The Craft Behind the Work</h2>
           <div
             className={`transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
-              I&apos;m Ivan, a motion designer and video editor driven by positivity and rhythm. My strength lies in creating visuals that move with emotion — blending design, timing, and storytelling into one seamless experience.
+            <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto font-light leading-relaxed">
+              I am a detail-oriented Video Editor and Motion Designer based in Johor Bahru. 
+              With a strong foundation in technical post-production (Premiere Pro, After Effects, DaVinci Resolve), 
+              I bridge the gap between creative storytelling and technical precision.
             </p>
           </div>
         </div>
 
         {/* Two-column layout: Namecard left, Highlights right */}
-        <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-start">
+        <div className="grid md:grid-cols-2 gap-16 lg:gap-20 items-start">
           {/* Left: Profile Card */}
           <div 
             className={`flex justify-center md:justify-start transition-all duration-1000 ${
@@ -93,16 +96,16 @@ const About = () => {
                 onMouseLeave={() => setHoveredIndex(null)}
               >
                 <Card 
-                  className="p-8 hover:shadow-custom-lg transition-all duration-500 border-border bg-card h-full"
+                  className="p-8 hover:border-primary/30 transition-all duration-500 border-border bg-card/50 h-full"
                   style={{
-                    filter: hoveredIndex === null ? 'blur(1px)' : hoveredIndex === index ? 'blur(0px)' : 'blur(4px)',
-                    transform: hoveredIndex === index ? 'scale(1.02)' : 'scale(1)'
+                    opacity: hoveredIndex === null ? 0.9 : hoveredIndex === index ? 1 : 0.5,
+                    transform: hoveredIndex === index ? 'translateX(8px)' : 'translateX(0)'
                   }}
                 >
-                  <h3 className="text-xl font-serif font-medium mb-4 tracking-wide">
+                  <h3 className="text-lg font-serif font-medium mb-4 tracking-wide text-foreground">
                     {item.title}
                   </h3>
-                  <p className="text-muted-foreground font-light leading-relaxed">{item.description}</p>
+                  <p className="text-muted-foreground font-light leading-relaxed text-sm">{item.description}</p>
                 </Card>
               </div>
             ))}
