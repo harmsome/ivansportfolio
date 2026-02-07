@@ -12,17 +12,19 @@ const Projects = () => {
   const projects = [
     {
       id: 2,
-      title: "VIDEO EDITING",
-      subtitle: "COMMERCIAL // NARRATIVE",
+      title: "NON-LINEAR EDITING",
+      subtitle: "PRECISION CUTTING // ATMOSPHERIC SOUND DESIGN",
+      description: "Transforming raw footage into visceral cinematic experiences with commercial-grade color grading.",
       image: projectVideoEditing,
       video: "/videos/ivan-showreel.mp4",
-      size: "large", // Takes 2 columns
+      size: "large",
       category: "VIDEO",
     },
     {
       id: 1,
-      title: "MOTION GRAPHICS",
-      subtitle: "2D ANIMATION // VFX",
+      title: "KINETIC NARRATIVES",
+      subtitle: "HIGH-FIDELITY 2D MOTION // VFX",
+      description: "Engineered to synchronize visual rhythm with emotional storytelling. Transforming static assets into fluid sequences.",
       image: project2DAnimation,
       video: "/videos/fearflix-final.mp4",
       size: "medium",
@@ -30,32 +32,36 @@ const Projects = () => {
     },
     {
       id: 4,
-      title: "3D VISUALIZATION",
-      subtitle: "MODELING // RENDERING",
+      title: "SPATIAL VISUALIZATION",
+      subtitle: "PHOTOREALISTIC 3D // GEOMETRIC PRECISION",
+      description: "Rendered with calculated lighting, textural depth, and architectural accuracy.",
       image: disquietAnatomyBg,
       size: "medium",
       category: "3D",
     },
     {
       id: 3,
-      title: "UI/UX DESIGN",
-      subtitle: "INTERFACE // EXPERIENCE",
+      title: "INTERFACE ARCHITECTURE",
+      subtitle: "USER-CENTRIC DESIGN SYSTEMS",
+      description: "Bridging the gap between functionality and aesthetics through intuitive navigation.",
       image: projectUIUXDesign,
       size: "small",
       category: "CODE",
     },
     {
       id: 5,
-      title: "INSTALLATIONS",
-      subtitle: "INTERACTIVE // SPATIAL",
+      title: "PHYSICAL COMPUTING",
+      subtitle: "AWARD-WINNING INSTALLATIONS",
+      description: "Bridging the digital-physical divide with sensor-based motion for real-time user engagement.",
       image: projectInstallations,
       size: "tall",
       category: "ART",
     },
     {
       id: 6,
-      title: "SOCIAL CONTENT",
-      subtitle: "TIKTOK // REELS",
+      title: "RAPID CONTENT",
+      subtitle: "TIKTOK // REELS // SHORTS",
+      description: "High-velocity social content optimized for algorithmic reach and audience retention.",
       image: projectVideoEditing,
       video: "/videos/site-visit.mp4",
       size: "small",
@@ -172,7 +178,12 @@ const Projects = () => {
                   <h3 className="font-display text-xl md:text-2xl lg:text-3xl font-bold tracking-tight mb-1">
                     {project.title}
                   </h3>
-                  <p className="hud-text text-[10px] md:text-xs opacity-60">{project.subtitle}</p>
+                  <p className="hud-text text-[10px] md:text-xs opacity-60 mb-2">{project.subtitle}</p>
+                  {project.description && (
+                    <p className="font-mono text-[9px] md:text-[10px] text-muted-foreground/70 leading-relaxed max-w-xs hidden md:block">
+                      {project.description}
+                    </p>
+                  )}
                 </div>
               </div>
 

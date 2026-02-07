@@ -43,12 +43,12 @@ const About = () => {
         <div className="mb-16 md:mb-24">
           <div className="flex items-center gap-4 mb-6">
             <div className="w-12 h-px bg-foreground" />
-            <span className="hud-text">ABOUT_ME</span>
+            <span className="hud-text">PROFILE_DATA</span>
           </div>
           <h2 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight">
             THE
             <br />
-            MANIFESTO<span className="text-accent">.</span>
+            OPERATOR<span className="text-accent">.</span>
           </h2>
         </div>
 
@@ -61,16 +61,22 @@ const About = () => {
             }`}
           >
             <p className="font-display text-2xl md:text-3xl lg:text-4xl font-bold leading-tight mb-8">
-              I MAKE VISUALS THAT PUNCH.
+              MULTIDISCIPLINARY
               <br />
-              EDIT CONTENT THAT STICKS.
+              OPERATOR<span className="text-accent">.</span>
               <br />
-              <span className="text-muted-foreground">NO FLUFF. JUST IMPACT.</span>
+              <span className="text-muted-foreground">JB // SG</span>
             </p>
 
+            <p className="font-mono text-muted-foreground leading-relaxed mb-4">
+              Specializing in the intersection of post-production and digital art.
+            </p>
+            <p className="font-mono text-accent leading-relaxed mb-4">
+              ★ WINNER: 2024 KANCIL AWARD
+            </p>
             <p className="font-mono text-muted-foreground leading-relaxed mb-8">
-              Detail-oriented editor based in JB. Technical precision meets creative vision.
-              Every cut serves the story. Every frame earns its place.
+              <span className="text-foreground">OBSESSION:</span> DETAIL.<br />
+              <span className="text-foreground">MISSION:</span> IMPACT.
             </p>
 
             <a
@@ -79,7 +85,7 @@ const About = () => {
               className="btn-brutal inline-flex items-center gap-3 px-6 py-3 text-sm"
             >
               <Download className="w-4 h-4" />
-              DOWNLOAD CV
+              DOWNLOAD DOSSIER
             </a>
           </div>
 

@@ -76,12 +76,12 @@ const Contact = () => {
         <div className="mb-16 md:mb-20">
           <div className="flex items-center gap-4 mb-6">
             <div className="w-12 h-px bg-foreground" />
-            <span className="hud-text">CONTACT_ME</span>
+            <span className="hud-text">TRANSMISSION_CHANNEL</span>
           </div>
           <h2 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight">
-            LET'S
+            INITIATE
             <br />
-            CONNECT<span className="text-accent">.</span>
+            COLLABORATION<span className="text-accent">.</span>
           </h2>
         </div>
 
@@ -89,8 +89,9 @@ const Contact = () => {
           {/* Left - Contact Info */}
           <div>
             <p className="font-mono text-muted-foreground leading-relaxed mb-12">
-              Got a project in mind? Need someone who can turn raw footage into
-              something that actually works? Let's talk.
+              Ready to transform your vision into visceral reality? 
+              Seeking a collaborator who delivers precision and impact? 
+              <span className="text-foreground"> Initiate contact.</span>
             </p>
 
             {/* Large Email */}
@@ -131,13 +132,19 @@ const Contact = () => {
               DOWNLOAD RESUME
             </a>
 
-            {/* Location */}
+            {/* Location & Status */}
             <div className="mt-12 pt-8 border-t border-border">
+              <p className="hud-text text-accent mb-3">
+                <span className="hud-bracket flex items-center gap-2">
+                  <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
+                  STATUS: AVAILABLE FOR COMMISSION & RELOCATION
+                </span>
+              </p>
               <p className="hud-text">
-                <span className="hud-bracket">JOHOR BAHRU, MY</span>
+                <span className="hud-bracket">BASE: JOHOR BAHRU, MY</span>
               </p>
               <p className="hud-text mt-2 opacity-60">
-                OPEN TO RELOCATION // SG COMMUTE OK
+                OPERATIONAL RANGE: JB // SINGAPORE
               </p>
             </div>
           </div>
@@ -202,7 +209,7 @@ const Contact = () => {
                 disabled={isSubmitting}
                 className="btn-brutal w-full h-14 text-sm"
               >
-                {isSubmitting ? "SENDING..." : "SEND MESSAGE →"}
+                {isSubmitting ? "TRANSMITTING..." : "INITIATE TRANSMISSION →"}
               </Button>
             </form>
 
